@@ -18,14 +18,15 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0 bg-white/30 z-10"></div>
         <video
           src={data.videobackground}
           autoPlay
           muted
           loop
-          className="absolute inset-0 object-cover "
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
         ></video>
+        <div className="absolute inset-0 bg-white/30 z-10"></div>
         <div className="pt-20 relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
           <h1 className="text-5xl md:text-7xl lg:text-8xl poppins tracking-tight font-bold text-black mb-6 animate__animated animate__fadeIn">
             Como Lake Car
