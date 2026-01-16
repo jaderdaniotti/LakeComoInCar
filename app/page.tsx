@@ -1,65 +1,218 @@
-import Image from "next/image";
+import Button from "@/components/ui/Button";
+import data from "@/src/data/images";
+import SectionWrapper from "@/components/layout/SectionWrapper";
+import {
+  Car,
+  Clock,
+  Shield,
+  Users,
+  Building2,
+  Hotel,
+  Plane,
+  Briefcase,
+  Heart,
+} from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <>
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-white/30 z-10"></div>
+        <video
+          src={data.videobackground}
+          autoPlay
+          muted
+          loop
+          className="absolute inset-0 object-cover "
+        ></video>
+        <div className="pt-20 relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl poppins tracking-tight font-bold text-black mb-6 animate__animated animate__fadeIn">
+            Como Lake Car
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+          <p className="text-xl md:text-2xl lg:text-3xl text-black mb-8 font-normal animate__animated animate__fadeIn animate__delay-1s">
+            Servizio di noleggio auto con conducente
+          </p>
+          <p className="text-lg md:text-xl text-black mb-12 animate__animated animate__fadeIn animate__delay-2s">
+            Como • Milano • Svizzera
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate__animated animate__fadeIn animate__delay-3s">
+            <Button href="/prenota" variant="primary" className="min-w-[200px]">
+              Prenota Ora
+            </Button>
+            <Button
+              href="/preventivo"
+              variant="secondary"
+              className="min-w-[200px]"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              Richiedi Preventivo
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Servizi Principali */}
+      <SectionWrapper className="bg-white">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
+            I Nostri Servizi
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Soluzioni di trasporto premium per ogni esigenza
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="border-2 p-1">
+            <div className="border-2 border-black p-8 text-center hover:shadow-lg transition-shadow duration-300 hovercard">
+              <Plane className="w-12 h-12 mx-auto mb-4 text-black" />
+              <h3 className="text-2xl font-bold mb-4 text-black uppercase tracking-wider">
+                Aereoporti
+              </h3>
+              <p className="text-gray-600">
+                Servizio puntuale e professionale da e per gli aeroporti di
+                Milano, Bergamo e Svizzera.
+              </p>
+            </div>
+          </div>
+
+          <div className="border-2 p-1">
+            <div className="border-2 border-black p-8 text-center hover:shadow-lg transition-shadow duration-300 hovercard">
+              <Briefcase className="w-12 h-12 mx-auto mb-4 text-black" />
+              <h3 className="text-2xl font-bold mb-4 text-black uppercase tracking-wider">
+                Servizi Business
+              </h3>
+              <p className="text-gray-600">
+                Trasferimenti per meeting, fiere e viaggi di lavoro con massima
+                professionalità.
+              </p>
+            </div>
+          </div>
+          <div className="border-2 p-1">
+            <div className="border-2 border-black p-8 text-center hover:shadow-lg transition-shadow duration-300 hovercard">
+              <Heart className="w-12 h-12 mx-auto mb-4 text-black" />
+              <h3 className="text-2xl font-bold mb-4 text-black uppercase tracking-wider">
+                Eventi e Matrimoni
+              </h3>
+              <p className="text-gray-600">
+                Per rendere indimenticabile il tuo giorno speciale con eleganza
+                e stile.
+              </p>
+            </div>
+          </div>
         </div>
-      </main>
-    </div>
+
+        <div className="text-center mt-12">
+          <Button href="/servizi" variant="outline">
+            Scopri Tutti i Servizi
+          </Button>
+        </div>
+      </SectionWrapper>
+
+      {/* Target Clienti */}
+      <SectionWrapper className="bg-black text-white">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            Per Chi Lavoriamo
+          </h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Soluzioni personalizzate per ogni tipo di cliente
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="border-2 p-1">
+            <div className="border-2 border-white p-8 text-center bg-black hovercardup">
+              <Users className="w-12 h-12 mx-auto mb-4 text-white" />
+              <h3 className="text-2xl font-bold mb-4 text-white uppercase tracking-wider">
+                Privati
+              </h3>
+              <p className="text-gray-300">
+                Trasferimenti personali, viaggi di piacere e occasioni speciali
+                con il massimo comfort.
+              </p>
+            </div>
+          </div>
+
+          <div className="border-2 p-1">
+            <div className="border-2 border-white p-8 text-center bg-black hovercardup">
+              <Hotel className="w-12 h-12 mx-auto mb-4 text-white" />
+              <h3 className="text-2xl font-bold mb-4 text-white uppercase tracking-wider">
+                Hotel e Strutture
+              </h3>
+              <p className="text-gray-300">
+                Servizi dedicati per strutture ricettive e tour operator del
+                territorio.
+              </p>
+            </div>
+          </div>
+
+          <div className="border-2 p-1">
+            <div className="border-2 border-white p-8 text-center bg-black hovercardup">
+              <Building2 className="w-12 h-12 mx-auto mb-4 text-white" />
+              <h3 className="text-2xl font-bold mb-4 text-white uppercase tracking-wider">
+                Aziende
+              </h3>
+              <p className="text-gray-300">
+                Soluzioni corporate per trasferimenti dipendenti e clienti con
+                fatturazione dedicata.
+              </p>
+            </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Affidabilità */}
+      <SectionWrapper className="bg-white">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black">
+            Perché Sceglierci
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Esperienza, puntualità e comfort al servizio della tua mobilità
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="text-center">
+            <div className="w-20 h-20 border-2 border-black rounded-full flex items-center justify-center mx-auto mb-6">
+              <Clock className="w-10 h-10 text-black" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4 text-black uppercase tracking-wider">
+              Puntualità
+            </h3>
+            <p className="text-gray-600">
+              Monitoraggio in tempo reale e servizio sempre puntuale, garantito.
+            </p>
+          </div>
+
+          <div className="text-center">
+            <div className="w-20 h-20 border-2 border-black rounded-full flex items-center justify-center mx-auto mb-6">
+              <Shield className="w-10 h-10 text-black" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4 text-black uppercase tracking-wider">
+              Affidabilità
+            </h3>
+            <p className="text-gray-600">
+              Oltre 15 anni di esperienza nel settore con migliaia di clienti
+              soddisfatti.
+            </p>
+          </div>
+
+          <div className="text-center">
+            <div className="w-20 h-20 border-2 border-black rounded-full flex items-center justify-center mx-auto mb-6">
+              <Car className="w-10 h-10 text-black" />
+            </div>
+            <h3 className="text-2xl font-bold mb-4 text-black uppercase tracking-wider">
+              Comfort
+            </h3>
+            <p className="text-gray-600">
+              Flotta di veicoli premium sempre impeccabili per il massimo
+              comfort.
+            </p>
+          </div>
+        </div>
+      </SectionWrapper>
+    </>
   );
 }
