@@ -65,6 +65,7 @@ body {
 .hovercard{
   transition: all 0.3s ease-in-out;
   transform: rotateZ(5deg);
+  background: white;
 }
 .hovercard:hover{
   transform: translateY(-25px);
