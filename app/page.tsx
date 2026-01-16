@@ -175,42 +175,47 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div className="text-center">
-            <div className="w-20 h-20 border-2 border-black rounded-full flex items-center justify-center mx-auto mb-6">
-              <Clock className="w-10 h-10 text-black" />
+          <div className="border-2 p-1 ">
+            <div className="text-center border-2 border-black p-3 hovercolor">
+              <div className="w-20 h-20 border-2 border-black rounded-full flex items-center justify-center mx-auto mb-6">
+                <Clock className="w-10 h-10 " />
+              </div>
+              <h3 className="text-2xl font-bold mb-4  uppercase tracking-wider">
+                Puntualità
+              </h3>
+              <p className="">
+                Monitoraggio in tempo reale e servizio sempre puntuale,
+                garantito.
+              </p>
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-black uppercase tracking-wider">
-              Puntualità
-            </h3>
-            <p className="text-gray-600">
-              Monitoraggio in tempo reale e servizio sempre puntuale, garantito.
-            </p>
           </div>
-
-          <div className="text-center">
-            <div className="w-20 h-20 border-2 border-black rounded-full flex items-center justify-center mx-auto mb-6">
-              <Shield className="w-10 h-10 text-black" />
+          <div className="border-2 p-1">
+            <div className="text-center border-2 border-black p-3 hovercolor">
+              <div className="w-20 h-20 border-2 border-black rounded-full flex items-center justify-center mx-auto mb-6">
+                <Shield className="w-10 h-10 " />
+              </div>
+              <h3 className="text-2xl font-bold mb-4  uppercase tracking-wider">
+                Affidabilità
+              </h3>
+              <p className="">
+                Oltre 15 anni di esperienza nel settore con migliaia di clienti
+                soddisfatti.
+              </p>
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-black uppercase tracking-wider">
-              Affidabilità
-            </h3>
-            <p className="text-gray-600">
-              Oltre 15 anni di esperienza nel settore con migliaia di clienti
-              soddisfatti.
-            </p>
           </div>
-
-          <div className="text-center">
-            <div className="w-20 h-20 border-2 border-black rounded-full flex items-center justify-center mx-auto mb-6">
-              <Car className="w-10 h-10 text-black" />
+          <div className="border-2 p-1">
+            <div className="text-center border-2 border-black p-3 hovercolor">
+              <div className="w-20 h-20 border-2 border-black rounded-full flex items-center justify-center mx-auto mb-6">
+                <Car className="w-10 h-10 " />
+              </div>
+              <h3 className="text-2xl font-bold mb-4  uppercase tracking-wider">
+                Comfort
+              </h3>
+              <p className="">
+                Flotta di veicoli premium sempre impeccabili per il massimo
+                comfort.
+              </p>
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-black uppercase tracking-wider">
-              Comfort
-            </h3>
-            <p className="text-gray-600">
-              Flotta di veicoli premium sempre impeccabili per il massimo
-              comfort.
-            </p>
           </div>
         </div>
       </SectionWrapper>

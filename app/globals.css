@@ -79,3 +79,12 @@ body {
   transform: translateY(-25px);
   box-shadow: 0 12px 24px -4px rgba(255, 255, 255, 0.25);
 }
+
+.hovercolor{
+  transition: all 0.3s ease-in-out;
+}
+.hovercolor:hover{
+  background: black;
+  color: white;
+  transform: scale(0.95);
+}
