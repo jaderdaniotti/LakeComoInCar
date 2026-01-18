@@ -18,7 +18,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed animate__animated animate__fadeInDown top-0 left-0 right-0 z-50 bg-white">
+    <nav className="fixed animate__animated animate__fadeInDown top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <div className="flex items-center justify-center space-x-2">
