@@ -7,9 +7,12 @@ import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
 import Button from '@/components/ui/Button';
 import { CheckCircle } from 'lucide-react';
+import images from '@/src/data/images';
+import Image from 'next/image';
 
 export default function PreventivoPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [macchinaSelezionata, setMacchinaSelezionata] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     partenza: '',
     destinazione: '',
@@ -22,6 +25,15 @@ export default function PreventivoPage() {
     email: '',
     telefono: '',
   });
+
+  const macchine = [
+    { value: 'carbianca1', label: 'Car Bianca 1', src: images.carbianca1 },
+    { value: 'carbianca2', label: 'Car Bianca 2', src: images.carbianca2 },
+    { value: 'carbianca3', label: 'Car Bianca 3', src: images.carbianca3 },
+    { value: 'carnera1', label: 'Car Nera 1', src: images.carnera1 },
+    { value: 'carnera2', label: 'Car Nera 2', src: images.carnera2 },
+    { value: 'carnera3', label: 'Car Nera 3', src: images.carnera3 },
+  ];
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -109,6 +121,27 @@ export default function PreventivoPage() {
           subtitle="Fornisci tutti i dettagli per ricevere un preventivo su misura"
           onSubmit={handleSubmit}
         >
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {macchine.map((macchina) => (
+              <div 
+                onClick={() => setMacchinaSelezionata(macchina.value)}
+                className={`flex flex-col items-center justify-center border-2 p-4 cursor-pointer transition-all duration-200 ${
+                  macchinaSelezionata === macchina.value 
+                    ? 'border-black bg-black text-white scale-105 shadow-lg transition-all translate-y-[-10px]'  
+                    : 'border-gray-300 hover:border-black'
+                }`}
+                key={macchina.value}
+              > 
+                <Image src={macchina.src} alt={macchina.label} className="w-full h-full object-contain" />
+                <p className={`text-sm mt-2 ${
+                  macchinaSelezionata === macchina.value 
+                    ? 'text-white' 
+                    : 'text-gray-500'
+                }`}>{macchina.label}</p>
+              </div>
+            ))}
+          
+          </div>
           {/* Dettagli Trasferimento */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold text-black uppercase tracking-wider">

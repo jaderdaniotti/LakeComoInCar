@@ -1,12 +1,13 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
-import type { Metadata } from 'next';
 import SectionWrapper from '@/components/layout/SectionWrapper';
 import FormWrapper from '@/components/forms/FormWrapper';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import { CheckCircle } from 'lucide-react';
+import images from '@/src/data/images';
+import Image from 'next/image';
 
 // Note: Metadata non può essere esportato da componenti client
 // Verrà gestito tramite layout o head
@@ -22,8 +23,18 @@ const tratte = [
   { value: 'milano-centro-linate', label: 'Milano Centro - Linate' },
 ];
 
+const macchine = [
+  { value: 'carbianca1', label: 'Car Bianca 1', src: images.carbianca1 },
+  { value: 'carbianca2', label: 'Car Bianca 2', src: images.carbianca2 },
+  { value: 'carbianca3', label: 'Car Bianca 3', src: images.carbianca3 },
+  { value: 'carnera1', label: 'Car Nera 1', src: images.carnera1 },
+  { value: 'carnera2', label: 'Car Nera 2', src: images.carnera2 },
+  { value: 'carnera3', label: 'Car Nera 3', src: images.carnera3 },
+];
+
 export default function PrenotaPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [macchinaSelezionata, setMacchinaSelezionata] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     tratta: '',
     data: '',
@@ -51,6 +62,7 @@ export default function PrenotaPage() {
     // Reset form dopo 5 secondi (per demo)
     setTimeout(() => {
       setIsSubmitted(false);
+      setMacchinaSelezionata(null);
       setFormData({
         tratta: '',
         data: '',
@@ -95,6 +107,7 @@ export default function PrenotaPage() {
     );
   }
 
+
   return (
     <>
       <SectionWrapper className="bg-black text-white pt-32">
@@ -114,6 +127,27 @@ export default function PrenotaPage() {
           subtitle="Compila tutti i campi per completare la prenotazione"
           onSubmit={handleSubmit}
         >
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {macchine.map((macchina) => (
+              <div 
+                onClick={() => setMacchinaSelezionata(macchina.value)}
+                className={`flex flex-col items-center justify-center border-2 p-4 cursor-pointer transition-all duration-200 ${
+                  macchinaSelezionata === macchina.value 
+                    ? 'border-black bg-black text-white scale-105 shadow-lg transition-all translate-y-[-10px]'  
+                    : 'border-gray-300 hover:border-black'
+                }`}
+                key={macchina.value}
+              > 
+                <Image src={macchina.src} alt={macchina.label} className="w-full h-full object-contain" />
+                <p className={`text-sm mt-2 ${
+                  macchinaSelezionata === macchina.value 
+                    ? 'text-white' 
+                    : 'text-gray-500'
+                }`}>{macchina.label}</p>
+              </div>
+            ))}
+          
+          </div>
           {/* Tratta */}
           <div>
             <label className="block text-sm font-medium mb-2 text-black">
@@ -219,7 +253,7 @@ export default function PrenotaPage() {
           {/* Note Pagamento */}
           <div className="bg-black text-white p-6">
             <p className="text-sm">
-              <strong>Nota:</strong> Dopo l'invio, riceverai una email con il link per completare 
+              <strong>Nota:</strong> Dopo l&apos;invio, riceverai una email con il link per completare 
               il pagamento online tramite Stripe. La prenotazione sarà confermata solo dopo 
               il pagamento.
             </p>
