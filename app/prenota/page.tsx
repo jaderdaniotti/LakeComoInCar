@@ -128,22 +128,29 @@ export default function PrenotaPage() {
           onSubmit={handleSubmit}
         >
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {macchine.map((macchina) => (
-              <div 
+          {macchine.map((macchina) => (
+              <div
                 onClick={() => setMacchinaSelezionata(macchina.value)}
-                className={`flex flex-col items-center justify-center border-2 p-4 cursor-pointer transition-all duration-200 ${
-                  macchinaSelezionata === macchina.value 
-                    ? 'border-black bg-black text-white scale-105 shadow-lg transition-all translate-y-[-10px]'  
-                    : 'border-gray-300 hover:border-black'
+                className={`flex flex-col items-center justify-center border-2 p-4 cursor-pointer hover:shadow-lg hover:translate-y-[-5px] transition-all duration-200 overflow-hidden ${
+                  macchinaSelezionata === macchina.value
+                    ? " scale-105 shadow-lg transition-all translate-y-[-10px] hover:translate-y-[-10px]"
+                    : "border-gray-300 hover:border-black"
                 }`}
                 key={macchina.value}
-              > 
-                <Image src={macchina.src} alt={macchina.label} className="w-full h-full object-contain" />
-                <p className={`text-sm mt-2 ${
-                  macchinaSelezionata === macchina.value 
-                    ? 'text-white' 
-                    : 'text-gray-500'
-                }`}>{macchina.label}</p>
+              >
+                <Image
+                  src={macchina.src}
+                  alt={macchina.label}
+                  className={`w-full h-full object-contain ${
+                    macchinaSelezionata === macchina.value ? "partenza" : ""
+                  }`}
+                />
+                <p
+                  className="text-sm mt-2 text-gray-700"
+                    
+                >
+                  {macchina.label}
+                </p>
               </div>
             ))}
           
