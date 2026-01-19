@@ -77,7 +77,7 @@ export interface Route {
   destination_it: string;
   destination_en: string | null;
   destination_fr: string | null;
-  origin_es: string | null;
+  destination_es: string | null;
   base_price: number;
   distance_km: number | null;
   duration_minutes: number | null;
@@ -96,7 +96,7 @@ export interface RouteInsert {
   destination_it: string;
   destination_en?: string;
   destination_fr?: string;
-  origin_es?: string;
+  destination_es?: string;
   base_price: number;
   distance_km?: number;
   duration_minutes?: number;

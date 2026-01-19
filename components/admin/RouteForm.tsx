@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
-import { X, Plus, Trash2 } from 'lucide-react';
+import {  Plus, Trash2 } from 'lucide-react';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 
@@ -365,7 +365,7 @@ export default function RouteForm({ route, onClose }: RouteFormProps) {
             </div>
 
             <div className="space-y-4">
-              {priceConditions.map((condition, index) => (
+              {priceConditions.map((condition) => (
                 <div key={condition.id} className="bg-white border-2 border-black p-4">
                   <div className="flex justify-between items-start gap-1 mb-4">
                     <Input
