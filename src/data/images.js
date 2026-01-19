@@ -6,6 +6,7 @@ import carbianca3 from "../assets/images/carbianca3.svg"
 import carnera1 from "../assets/images/carnera.svg"
 import carnera2 from "../assets/images/carnera2.svg"
 import carnera3 from "../assets/images/carnera3.svg"
+import logo from "../assets/images/logo.png"
 const data = {
     videobackground,
     van,
@@ -15,6 +16,7 @@ const data = {
     carnera1,
     carnera2,
     carnera3,
+    logo
 };
 
 export default data;

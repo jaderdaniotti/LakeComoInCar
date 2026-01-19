@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import AdminNav from '@/components/admin/AdminNav';
 import RoutesManager from '@/components/admin/RoutesManager';
+import GlobalRulesManager from '@/components/admin/GlobalRulesManager';
 import RegisterForm from '@/components/admin/RegisterForm';
 import LogoutButton from '@/components/admin/LogoutButton';
 
-type Tab = 'routes' | 'users' | 'bookings';
+type Tab = 'routes' | 'global-rules' | 'users' | 'bookings';
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<Tab>('routes');
@@ -35,6 +36,8 @@ export default function DashboardPage() {
         {/* Content */}
         <div className="pb-12">
           {activeTab === 'routes' && <RoutesManager />}
+          
+          {activeTab === 'global-rules' && <GlobalRulesManager />}
           
           {activeTab === 'users' && (
             <div className="max-w-2xl mx-auto">

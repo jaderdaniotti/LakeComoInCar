@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Route, Users, Calendar } from 'lucide-react';
+import { Route, Users, Calendar, Settings } from 'lucide-react';
 
-type Tab = 'routes' | 'users' | 'bookings';
+type Tab = 'routes' | 'global-rules' | 'users' | 'bookings';
 
 interface AdminNavProps {
   activeTab: Tab;
@@ -13,13 +13,14 @@ interface AdminNavProps {
 export default function AdminNav({ activeTab, onTabChange }: AdminNavProps) {
   const tabs = [
     { id: 'routes' as Tab, label: 'Percorsi', icon: Route },
+    { id: 'global-rules' as Tab, label: 'Condizioni Generali', icon: Settings },
     { id: 'users' as Tab, label: 'Utenti', icon: Users },
     { id: 'bookings' as Tab, label: 'Prenotazioni/Preventivi', icon: Calendar },
   ];
 
   return (
     <div className="border-b-2 border-black bg-white mb-8">
-      <div className="grid grid-cols-2 md:grid-cols-3  space-x-1">
+      <div className="grid grid-cols-2 md:grid-cols-4 space-x-1">
         {tabs.map(({ id, label, icon: Icon }) => (
           <button
             key={id}

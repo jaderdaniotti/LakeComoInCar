@@ -51,11 +51,76 @@ CREATE TABLE pricing_rules (
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
+CREATE TABLE global_pricing_rules (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  rule_name TEXT NOT NULL,
+  rule_type TEXT CHECK (rule_type IN ('percentage', 'fixed_amount')),
+  
+  -- Condizioni (stesso formato delle pricing_rules)
+  conditions JSONB NOT NULL,
+  /* Esempio:
+  {
+    "date_from": "2024-12-20",
+    "date_to": "2024-01-06",
+    "days_of_week": [6, 7],  // Weekend
+    "time_from": "22:00",
+    "time_to": "06:00"
+  }
+  */
+  
+  -- Modifica prezzo
+  modifier_type TEXT CHECK (modifier_type IN ('percentage', 'fixed_amount')),
+  modifier_value DECIMAL(10,2) NOT NULL,
+  
+  priority INTEGER DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
 
+CREATE INDEX idx_global_pricing_rules_active ON global_pricing_rules(is_active);
+CREATE INDEX idx_global_pricing_rules_priority ON global_pricing_rules(priority DESC);
 CREATE INDEX idx_routes_active ON routes(is_active);
 CREATE INDEX idx_routes_code ON routes(code);
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-CREATE EXTENSION IF NOT EXISTS "pg_trgm"; 
+CREATE EXTENSION IF NOT EXISTS "pg_trgm";
+
+-- ============================================
+-- TABELLA: global_pricing_rules (Regole Globali Prezzi)
+-- ============================================
+CREATE TABLE global_pricing_rules (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  rule_name TEXT NOT NULL,
+  rule_type TEXT CHECK (rule_type IN ('percentage', 'fixed_amount')),
+  
+  -- Condizioni (stesso formato delle pricing_rules)
+  conditions JSONB NOT NULL,
+  /* Esempio:
+  {
+    "passengers_min": 5,
+    "passengers_max": 8,
+    "date_from": "2024-12-20",
+    "date_to": "2024-01-06",
+    "days_of_week": [6, 7],
+    "time_from": "22:00",
+    "time_to": "06:00"
+  }
+  */
+  
+  -- Modifica prezzo
+  modifier_type TEXT CHECK (modifier_type IN ('percentage', 'fixed_amount')),
+  modifier_value DECIMAL(10,2) NOT NULL,
+  
+  priority INTEGER DEFAULT 0,
+  is_active BOOLEAN DEFAULT true,
+  
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_global_pricing_rules_active ON global_pricing_rules(is_active);
+CREATE INDEX idx_global_pricing_rules_priority ON global_pricing_rules(priority DESC); 
 
 CREATE TABLE users (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
