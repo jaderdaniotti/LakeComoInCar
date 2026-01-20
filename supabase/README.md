@@ -48,7 +48,7 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 ### Tabelle Principali
 
 1. **users** - Utenti admin per dashboard
-2. **vehicles** - Flotta veicoli
+2. **vehicles** - Veicoli disponibili
 3. **routes** - Tratte standard (Release 2)
 4. **bookings** - Prenotazioni standard
 5. **quotes** - Richieste preventivi

@@ -4,8 +4,8 @@ import Button from '@/components/ui/Button';
 import { Car, Users, Shield, Star } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'I Nostri Veicoli - LakeComoInCar | Flotta Premium NCC',
-  description: 'Flotta di veicoli premium per il tuo trasporto: Mercedes, BMW e van di lusso. Veicoli moderni, eleganti e perfettamente manutenuti per il massimo comfort.',
+  title: 'I Nostri Veicoli - LakeComoInCar | Veicoli Premium NCC',
+  description: 'Veicoli premium per il tuo trasporto: Mercedes, BMW e van di lusso. Moderni, eleganti e perfettamente manutenuti per il massimo comfort.',
 };
 
 const vehicles = [
@@ -64,21 +64,21 @@ export default function VeicoliPage() {
             I Nostri Veicoli
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8">
-            Flotta moderna e confortevole per ogni esigenza di trasporto
+            Veicoli moderni e confortevoli per ogni esigenza di trasporto
           </p>
         </div>
       </SectionWrapper>
 
       {/* Immagine Hero */}
       <div className="relative w-full h-96 bg-gray-100 border-b-4 border-black flex items-center justify-center">
-        <span className="text-gray-400 text-xl uppercase tracking-wider">Immagine Flotta</span>
+        <span className="text-gray-400 text-xl uppercase tracking-wider">Immagine Veicoli</span>
       </div>
 
       {/* Descrizione */}
       <SectionWrapper className="bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xl text-gray-700 leading-relaxed mb-8">
-            La nostra flotta è composta da veicoli di ultima generazione, selezionati per garantire 
+            I nostri veicoli sono di ultima generazione, selezionati per garantire 
             il massimo comfort, sicurezza ed eleganza in ogni viaggio. Ogni veicolo è perfettamente 
             manutenuto e dotato di tutti i comfort moderni.
           </p>
@@ -106,7 +106,7 @@ export default function VeicoliPage() {
       <SectionWrapper className="bg-black text-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center uppercase">
-            La Nostra Flotta
+            I Nostri Veicoli
           </h2>
           <div className="space-y-12">
             {vehicles.map((vehicle, index) => (

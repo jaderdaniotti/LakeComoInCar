@@ -134,7 +134,7 @@ Numero passeggeri
 
 Scelta tratta (lista corsi standard)
 
-Scelta veicolo (se previsto: es. berlina/van o flotta)
+Scelta veicolo (se previsto: es. berlina/van)
 
 Note aggiuntive (opzionale)
 

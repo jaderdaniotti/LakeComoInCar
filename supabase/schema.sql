@@ -139,7 +139,7 @@ CREATE INDEX idx_users_email ON users(email);
 CREATE INDEX idx_users_active ON users(is_active);
 
 -- ============================================
--- TABELLA: vehicles (Veicoli/Flotta)
+-- TABELLA: vehicles (Veicoli)
 -- ============================================
 CREATE TABLE vehicles (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -540,7 +540,7 @@ INSERT INTO routes (code, origin_it, origin_en, destination_it, destination_en, 
 -- ============================================
 
 COMMENT ON TABLE users IS 'Utenti admin per accesso dashboard';
-COMMENT ON TABLE vehicles IS 'Flotta veicoli disponibili';
+COMMENT ON TABLE vehicles IS 'Veicoli disponibili';
 COMMENT ON TABLE routes IS 'Tratte standard predefinite con prezzi';
 COMMENT ON TABLE bookings IS 'Prenotazioni corse standard';
 COMMENT ON TABLE quotes IS 'Richieste preventivi personalizzati';

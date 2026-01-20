@@ -150,13 +150,13 @@ export default function ShoppingTourPage() {
           </div>
         </div>
       </SectionWrapper>
-
+<hr className=" border-black" />
       {/* CTA Contatti */}
-      <SectionWrapper className="bg-black text-white text-center">
+      <SectionWrapper className="  text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase">
           Interessato al Tour?
         </h2>
-        <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+        <p className="text-xl  mb-8 max-w-2xl mx-auto">
           Contattaci per maggiori informazioni e per organizzare il tuo shopping tour personalizzato
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">

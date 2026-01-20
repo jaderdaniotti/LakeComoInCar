@@ -36,7 +36,7 @@ export default function ServiziPage() {
             la Svizzera, garantendo trasferimenti sicuri ed efficienti.
           </p>
           <p className="text-lg text-gray-600 leading-relaxed">
-            La nostra flotta è composta da veicoli premium sempre impeccabili, perfettamente 
+            I nostri veicoli sono premium, sempre impeccabili e perfettamente 
             mantenuti e dotati di tutti i comfort necessari per rendere il tuo viaggio 
             piacevole e rilassante.
           </p>

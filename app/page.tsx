@@ -292,7 +292,7 @@ export default function Home() {
                 Veicoli Moderni
               </h3>
               <p className="text-sm">
-                Flotta di veicoli moderni e confortevoli, dotati di ogni comfort 
+                Veicoli moderni e confortevoli, dotati di ogni comfort 
                 per un viaggio in totale relax.
               </p>
             </div>
@@ -315,7 +315,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
 
-      {/* La Nostra Flotta */}
+      {/* I Nostri Veicoli */}
       <SectionWrapper className="bg-black text-white">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">

@@ -84,7 +84,7 @@ CTA: "Prenota Subito" + "Richiedi Preventivo"
    - Sempre disponibili
 
 3. **Veicoli Moderni**
-   - Flotta moderna e confortevole
+   - Veicoli moderni e confortevoli
    - Dotati di ogni comfort
    - Viaggio in totale relax
 
@@ -101,7 +101,7 @@ CTA: "Prenota Subito" + "Richiedi Preventivo"
 
 ---
 
-### 4. Nuova Sezione "La Nostra Flotta" ✅
+### 4. Nuova Sezione "I Nostri Veicoli" ✅
 
 **Posizione:** Prima della CTA finale
 
@@ -327,7 +327,7 @@ languages: {
 - Hero section rinnovata
 - Nuova sezione "Chi Siamo"
 - "Perché Sceglierci" espansa
-- Nuova sezione "La Nostra Flotta"
+- Nuova sezione "I Nostri Veicoli"
 - Nuova CTA finale
 
 **Righe aggiunte:** ~150+
@@ -354,7 +354,7 @@ languages: {
 - [x] Sezione "Chi Siamo" centrata
 - [x] Statistiche in grid 2x2 / 4 colonne
 - [x] "Perché Sceglierci" 4 colonne responsive
-- [x] Placeholder flotta visibili
+- [x] Placeholder veicoli visibili
 - [x] CTA finale con 3 button
 - [x] Tutte le animazioni funzionano
 - [x] Hover effects attivi
@@ -383,7 +383,7 @@ languages: {
 - [x] Hero testo leggibile
 - [x] Statistiche 2 colonne
 - [x] "Perché Sceglierci" 1 colonna
-- [x] Flotta 1 colonna
+- [x] Veicoli 1 colonna
 - [x] CTA buttons full-width
 
 ### Tablet (768px - 1024px):
@@ -401,7 +401,7 @@ languages: {
 
 ## 🔄 PROSSIMI STEP (Quando disponibili immagini)
 
-### Sostituzione Placeholder Flotta:
+### Sostituzione Placeholder Veicoli:
 
 1. **Preparare immagini:**
    - Formato: WebP (ottimizzato)
@@ -450,7 +450,7 @@ languages: {
 - [x] **D2** - Sezione "Perché Sceglierci" migliorata (4 punti) ✅
 - [x] **D3** - SEO ottimizzato (metadata, keywords, OG) ✅
 - [x] **D4** - Call-to-Action più incisive ✅
-- [x] **D5** - Sezione "La Nostra Flotta" con placeholder (BONUS) ✅
+- [x] **D5** - Sezione "I Nostri Veicoli" con placeholder (BONUS) ✅
 - [x] **D6** - Sezione "Chi Siamo" con statistiche (BONUS) ✅
 
 **Tempo Impiegato:** ~2.5 ore  
@@ -492,7 +492,7 @@ languages: {
 - ✅ Più call-to-action = più conversioni
 - ✅ Telefono in evidenza = più chiamate
 - ✅ Trust indicators (15+ anni, 24/7, 2 sedi)
-- ✅ Flotta visualizzata = credibilità
+- ✅ Veicoli visualizzati = credibilità
 
 ### User Engagement:
 - ✅ Più contenuti = tempo sulla pagina ↑

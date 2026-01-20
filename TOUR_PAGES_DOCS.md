@@ -307,7 +307,7 @@ Sono state create 5 nuove pagine complete per i servizi tour e corporate, ognuna
 **Hero Section:**
 - Titolo: "Servizi Corporate"
 - Sottotitolo: "Soluzioni di trasporto professionale per aziende ed enti"
-- Info: Disponibili 24/7, Flotta dedicata, Fatturazione dedicata
+- Info: Disponibili 24/7, Veicoli dedicati, Fatturazione dedicata
 
 **La Proposta:**
 - Soluzioni dedicate al mondo business
@@ -402,7 +402,7 @@ Sono state create 5 nuove pagine complete per i servizi tour e corporate, ognuna
 - **15+** anni di esperienza
 - **24/7** disponibilità
 - **100%** puntualità
-- **TOP** flotta premium
+- **TOP** veicoli premium
 
 **Form Richiesta Proposta Corporate:**
 Campi specifici:

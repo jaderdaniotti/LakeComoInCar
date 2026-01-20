@@ -8,7 +8,7 @@
 
 ## 📋 PANORAMICA
 
-Creata sezione completa dedicata ai veicoli della flotta, con pagina dedicata, componente riutilizzabile e integrazione nella homepage e navbar.
+Creata sezione completa dedicata ai veicoli, con pagina dedicata, componente riutilizzabile e integrazione nella homepage e navbar.
 
 ---
 
@@ -20,8 +20,8 @@ Creata sezione completa dedicata ai veicoli della flotta, con pagina dedicata, c
 
 #### Struttura:
 1. **Hero Section** - Titolo "I Nostri Veicoli" con icona Car
-2. **Immagine Hero** - Placeholder h-96 per foto flotta
-3. **Descrizione** - Breve intro sulla flotta + 3 punti forza (Sicurezza, Comfort, Ogni Esigenza)
+2. **Immagine Hero** - Placeholder h-96 per foto veicoli
+3. **Descrizione** - Breve intro sui veicoli + 3 punti forza (Sicurezza, Comfort, Ogni Esigenza)
 4. **Galleria Veicoli** - 3 veicoli con layout alternato bianco/nero
 5. **Perché Sceglierci** - 4 statistiche (100% Manutenzione, 2023+ Modelli, 24/7 Disponibilità, TOP Comfort)
 6. **Galleria Immagini** - 9 placeholder per foto veicoli
@@ -69,8 +69,8 @@ Ogni veicolo ha:
 #### Metadata SEO:
 ```tsx
 export const metadata: Metadata = {
-  title: 'I Nostri Veicoli - LakeComoInCar | Flotta Premium NCC',
-  description: 'Flotta di veicoli premium: Mercedes, BMW e van di lusso. Moderni, eleganti e perfettamente manutenuti.',
+  title: 'I Nostri Veicoli - LakeComoInCar | Veicoli Premium NCC',
+  description: 'Veicoli premium: Mercedes, BMW e van di lusso. Moderni, eleganti e perfettamente manutenuti.',
 };
 ```
 
@@ -250,7 +250,7 @@ Ogni card contiene:
 - [ ] Aggiungere altri modelli se disponibili
 - [ ] Sezione "Equipaggiamenti Opzionali" (seggiolini, wifi premium, etc.)
 - [ ] Virtual tour 360° degli interni
-- [ ] Video presentazione flotta
+- [ ] Video presentazione veicoli
 - [ ] Certificazioni e premi ricevuti
 
 ---

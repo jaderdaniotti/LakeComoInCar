@@ -75,7 +75,7 @@
 - ✅ Servizio puntuale e affidabile
 - ✅ Flessibilità e personalizzazione
 
-### Flotta
+### Veicoli
 - ✅ Veicoli moderni e confortevoli
 - ✅ Dotati di ogni comfort
 - ✅ Diverse opzioni di veicoli disponibili
@@ -248,7 +248,7 @@ Il sito vecchio utilizza un form con questi campi:
 
 5. **Sezione "I Nostri Mezzi"**
    - [ ] Galleria fotografica veicoli
-   - [ ] Descrizione flotta
+   - [ ] Descrizione veicoli
    - [ ] Caratteristiche auto (Mercedes, BMW, etc.)
    - [ ] Capacità passeggeri
 

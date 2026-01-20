@@ -8,7 +8,7 @@ Schema database ottimizzato per Supabase (PostgreSQL) che supporta:
 - ✅ Sistema multilingua (IT/EN/FR/ES)
 - ✅ Log completo notifiche (email/WhatsApp)
 - ✅ Dashboard admin con filtri avanzati
-- ✅ Gestione flotta veicoli e tratte (Release 2)
+- ✅ Gestione veicoli e tratte (Release 2)
 
 ---
 
@@ -27,7 +27,7 @@ Gestisce accessi alla dashboard privata.
 
 ---
 
-### 2. **vehicles** - Flotta Veicoli
+### 2. **vehicles** - Veicoli
 Catalogo veicoli disponibili con supporto multilingua.
 
 **Campi chiave:**
