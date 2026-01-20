@@ -66,19 +66,19 @@ export default function Footer() {
               <li className="flex items-center space-x-3">
                 <Phone size={18} className="text-gray-300" />
                 <a
-                  href="tel:+390314123456"
+                  href="tel:+393384056027"
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
-                  +39 031 412 3456
+                  +39 338 405 6027
                 </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail size={18} className="text-gray-300" />
                 <a
-                  href="mailto:info@comolakecar.it"
+                  href="mailto:lakecomoincar@gmail.com"
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
-                  info@comolakecar.it
+                  lakecomoincar@gmail.com
                 </a>
               </li>
               <li className="flex items-start space-x-3">
@@ -94,9 +94,17 @@ export default function Footer() {
         {/* Legal Links */}
         <div className="border-t-2 border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Como Lake Car. Tutti i diritti riservati.
-            </p>
+            <div className="flex flex-col items-center md:items-start space-y-1">
+              <p className="text-gray-400 text-sm">
+                © {new Date().getFullYear()} LakeComoInCar - Autoservizi Pasquillo SRL
+              </p>
+              <p className="text-gray-400 text-sm">
+                P.IVA: 04193150135
+              </p>
+            </div>
+            <div className="flex">
+              <p className="text-gray-400 text-sm">Powered By <Link href={"https://jaderdaniotti.netlify.app/"} target='_blank' className='text-white hover:text-white transition-colors duration-200'>Jader Daniotti</Link></p>
+            </div>
             <div className="flex space-x-6">
               <Link
                 href="/privacy"

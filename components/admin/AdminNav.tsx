@@ -19,7 +19,7 @@ export default function AdminNav({ activeTab, onTabChange }: AdminNavProps) {
   ];
 
   return (
-    <div className="border-b-2 border-black bg-white mb-8">
+    <div className="border-b-2 border-black mb-8">
       <div className="grid grid-cols-2 md:grid-cols-4 space-x-1">
         {tabs.map(({ id, label, icon: Icon }) => (
           <button

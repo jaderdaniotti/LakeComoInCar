@@ -28,8 +28,9 @@ export default function PrivacyPage() {
                 1. Titolare del Trattamento
               </h2>
               <p>
-                Il titolare del trattamento dei dati personali è Como Lake Car, con sede in Como, 
-                Lombardia, Italia. Email: info@comolakecar.it | Tel: +39 031 412 3456
+                Il titolare del trattamento dei dati personali è Autoservizi Pasquillo SRL (Como Lake Car), 
+                P.IVA 04193150135, con sede in Como, Lombardia, Italia.<br />
+                Email: lakecomoincar@gmail.com | Tel: +39 338 405 6027
               </p>
             </section>
 
@@ -107,7 +108,7 @@ export default function PrivacyPage() {
                 <li>Revoca del consenso</li>
               </ul>
               <p className="mt-4">
-                Per esercitare questi diritti, contattare: info@comolakecar.it
+                Per esercitare questi diritti, contattare: lakecomoincar@gmail.com
               </p>
             </section>
 

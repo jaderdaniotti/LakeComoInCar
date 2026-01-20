@@ -24,105 +24,141 @@ export default function ContattiPage() {
 
       <SectionWrapper className="bg-white">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Informazioni Contatto */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8 text-black">
-                Dati Aziendali
-              </h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-1 text-black uppercase tracking-wider">
-                      Telefono
-                    </h3>
-                    <a
-                      href="tel:+390314123456"
-                      className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
-                    >
-                      +39 031 412 3456
-                    </a>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Disponibile 24/7 per emergenze
-                    </p>
-                  </div>
+          {/* Informazioni Generali */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold mb-8 text-black text-center">
+              Dati Aziendali
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 mb-4">
+                  <Phone className="w-6 h-6 text-black" />
                 </div>
+                <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
+                  Telefono
+                </h3>
+                <a
+                  href="tel:+393384056027"
+                  className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
+                >
+                  +39 338 405 6027
+                </a>
+                <p className="text-sm text-gray-500 mt-1">
+                  Disponibile 24/7
+                </p>
+              </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-1 text-black uppercase tracking-wider">
-                      Email
-                    </h3>
-                    <a
-                      href="mailto:info@comolakecar.it"
-                      className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
-                    >
-                      info@comolakecar.it
-                    </a>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Rispondiamo entro 24 ore
-                    </p>
-                  </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 mb-4">
+                  <Mail className="w-6 h-6 text-black" />
                 </div>
+                <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
+                  Email
+                </h3>
+                <a
+                  href="mailto:lakecomoincar@gmail.com"
+                  className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
+                >
+                  lakecomoincar@gmail.com
+                </a>
+                <p className="text-sm text-gray-500 mt-1">
+                  Risposta in 24h
+                </p>
+              </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-1 text-black uppercase tracking-wider">
-                      Sede
-                    </h3>
-                    <p className="text-lg text-gray-600">
-                      Como, Lombardia, Italia
-                    </p>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Servizio disponibile in tutta la Lombardia e Svizzera
-                    </p>
-                  </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 mb-4">
+                  <Clock className="w-6 h-6 text-black" />
                 </div>
+                <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
+                  Orari
+                </h3>
+                <p className="text-lg text-gray-600">
+                  Servizio 24/7
+                </p>
+                <p className="text-sm text-gray-500 mt-1">
+                  Ufficio: Lun-Ven 9-18
+                </p>
+              </div>
 
-                <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-black" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-1 text-black uppercase tracking-wider">
-                      Orari
-                    </h3>
-                    <p className="text-lg text-gray-600">
-                      Servizio 24/7
-                    </p>
-                    <p className="text-sm text-gray-500 mt-1">
-                      Ufficio: Lun-Ven 9:00-18:00
-                    </p>
-                  </div>
+              <div className="flex flex-col items-center text-center">
+                <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 mb-4">
+                  <MapPin className="w-6 h-6 text-black" />
                 </div>
+                <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
+                  Area Servizio
+                </h3>
+                <p className="text-lg text-gray-600">
+                  Lombardia e Svizzera
+                </p>
+                <p className="text-sm text-gray-500 mt-1">
+                  2 sedi operative
+                </p>
               </div>
             </div>
+          </div>
 
-            {/* Mappa Placeholder */}
-            <div>
-              <h2 className="text-3xl font-bold mb-8 text-black">
-                La Nostra Zona
-              </h2>
-              <div className="border-2 border-black h-96 bg-gray-100 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <MapPin className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-                  <p className="text-gray-500">
-                    Mappa interattiva
-                  </p>
-                  <p className="text-sm text-gray-400 mt-2">
-                    {/* TODO: Integrare Google Maps o Mapbox */}
-                    Integrazione mappa da implementare
-                  </p>
+          {/* Le Nostre Sedi */}
+          <div>
+            <h2 className="text-3xl font-bold mb-8 text-black text-center">
+              Le Nostre Sedi
+            </h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Sede Corte Re */}
+              <div className="border-2 border-black overflow-hidden">
+                <div className="bg-black text-white p-6">
+                  <h3 className="text-2xl font-bold mb-2 uppercase tracking-wider">
+                    Sede Corte Re
+                  </h3>
+                  <div className="flex items-start space-x-2">
+                    <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <p className="text-gray-300">
+                      Località Corte del Re, 264<br />
+                      22041 Corte Re (CO)
+                    </p>
+                  </div>
+                </div>
+                <div className="relative w-full h-96">
+                  <iframe
+                    src="https://maps.google.com/maps?q=Localit%C3%A0%20Corte%20del%20Re%2C%20264%2C%2022041%20Corte%20Re%20CO&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Mappa Sede Corte Re"
+                  ></iframe>
+                </div>
+              </div>
+
+              {/* Sede Como */}
+              <div className="border-2 border-black overflow-hidden">
+                <div className="bg-black text-white p-6">
+                  <h3 className="text-2xl font-bold mb-2 uppercase tracking-wider">
+                    Sede Como
+                  </h3>
+                  <div className="flex items-start space-x-2">
+                    <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
+                    <p className="text-gray-300">
+                      Via Francesco Benzi, 14<br />
+                      22100 Como (CO)
+                    </p>
+                  </div>
+                </div>
+                <div className="relative w-full h-96">
+                  <iframe
+                    src="https://maps.google.com/maps?q=Via%20Francesco%20Benzi%2C%2014%2C%2022100%20Como%20CO&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Mappa Sede Como"
+                  ></iframe>
                 </div>
               </div>
             </div>

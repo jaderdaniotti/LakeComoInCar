@@ -6,6 +6,7 @@ import FormWrapper from "@/components/forms/FormWrapper";
 import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import Button from "@/components/ui/Button";
+import GDPRDisclaimer from "@/components/ui/GDPRDisclaimer";
 import { CheckCircle } from "lucide-react";
 import images from "@/src/data/images";
 import Image from "next/image";
@@ -15,6 +16,7 @@ export default function PreventivoPage() {
   const [macchinaSelezionata, setMacchinaSelezionata] = useState<string | null>(
     null
   );
+  const [gdprConsent, setGdprConsent] = useState(false);
   const [formData, setFormData] = useState({
     partenza: "",
     destinazione: "",
@@ -268,7 +270,18 @@ export default function PreventivoPage() {
             </p>
           </div>
 
-          <Button type="submit" variant="primary" className="w-full">
+          {/* GDPR Disclaimer */}
+          <GDPRDisclaimer 
+            checked={gdprConsent}
+            onChange={setGdprConsent}
+          />
+
+          <Button 
+            type="submit" 
+            variant="primary" 
+            className="w-full"
+            disabled={!gdprConsent}
+          >
             Invia Richiesta Preventivo
           </Button>
         </FormWrapper>
