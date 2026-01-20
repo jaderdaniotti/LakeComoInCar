@@ -420,9 +420,14 @@ export default function Home() {
           <p className="text-gray-400 mb-6">
             Tutti i nostri veicoli sono sottoposti a manutenzione regolare e sanificazione completa
           </p>
-          <Button href="/contatti" variant="outline">
-            Contattaci per Info
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="/veicoli" variant="primary">
+              Scopri Tutti i Veicoli
+            </Button>
+            <Button href="/contatti" variant="outline">
+              Contattaci per Info
+            </Button>
+          </div>
         </div>
       </SectionWrapper>
 

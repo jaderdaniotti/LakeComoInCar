@@ -9,6 +9,7 @@ import data from '@/src/data/images';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/servizi', label: 'Servizi' },
+  { href: '/veicoli', label: 'Veicoli' },
 ];
 
 const tourLinks = [

@@ -216,32 +216,37 @@
 
 ---
 
-### 🚙 TASK GRUPPO F - Sezione "I Nostri Mezzi"
+### ✅ TASK GRUPPO F - Sezione "I Nostri Veicoli" (COMPLETATO ✅)
 **Deadline:** Prossima settimana | **Tempo stimato:** 3-4 ore
 
-- [ ] **F1.** Creare pagina I Nostri Mezzi
-  - File: `app/flotta/page.tsx`
-  - Sezione dedicata ai veicoli
-  - Layout a griglia
+- [x] **F1.** Creare pagina I Nostri Veicoli
+  - File: `app/veicoli/page.tsx` ✅
+  - Sezione dedicata ai veicoli completa ✅
+  - Layout a griglia con alternanza bianco/nero ✅
+  - Metadata SEO ottimizzato ✅
 
-- [ ] **F2.** Aggiungere galleria veicoli
-  - Componente: `components/sections/VehicleGallery.tsx`
-  - Card per ogni veicolo
-  - Foto, nome modello, caratteristiche
-  - Capacità passeggeri
+- [x] **F2.** Aggiungere galleria veicoli
+  - Componente: `components/sections/VehicleGallery.tsx` ✅
+  - Card per ogni veicolo con dettagli ✅
+  - Placeholder foto pronte ✅
+  - Caratteristiche e capacità passeggeri/bagagli ✅
 
-- [ ] **F3.** Preparare contenuti veicoli
-  - Chiedere al cliente foto veicoli
-  - Mercedes-Benz (specificare modello)
-  - BMW (specificare modello)
-  - Van/Minibus per gruppi
-  - Descrizioni caratteristiche
+- [x] **F3.** Preparare contenuti veicoli
+  - Mercedes Classe E (Berlina Premium) ✅
+  - BMW Serie 5 (Berlina Executive) ✅
+  - Mercedes Viano/Vito (Van Premium 5-8 pax) ✅
+  - Descrizioni complete per ogni veicolo ✅
+  - Sezione "Ideale per" per ogni modello ✅
 
-- [ ] **F4.** Integrare in homepage
-  - Sezione preview "La Nostra Flotta"
-  - Link a pagina completa
+- [x] **F4.** Integrare in homepage
+  - Sezione preview "I nostri mezzi" già presente ✅
+  - Aggiunto link "Scopri Tutti i Veicoli" ✅
+  - Button primary per chiamare all'azione ✅
 
-**Output:** Sezione flotta completa con galleria
+- [x] **F5.** Aggiungere link navbar
+  - Voce "Veicoli" aggiunta al menu principale ✅
+
+**Output:** ✅ Sezione veicoli completa con pagina dedicata, galleria, statistiche e integrazione homepage/navbar!
 
 ---
 

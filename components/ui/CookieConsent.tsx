@@ -98,12 +98,12 @@ export default function CookieConsent() {
     <>
       {/* Overlay */}
       <div 
-        className="fixed inset-0 bg-black bg-opacity-50 z-[60] transition-opacity duration-300"
+        className="fixed inset-0 bg-black/30 bg-opacity-50 z-60 transition-opacity duration-300"
         onClick={() => !showSettings && setIsVisible(false)}
       />
 
       {/* Cookie Banner */}
-      <div className="fixed bottom-0 left-0 right-0 z-[70] animate-slide-up">
+      <div className="fixed bottom-0 left-0 right-0 z-60 animate-slide-up">
         <div className="max-w-7xl mx-auto p-4 sm:p-6">
           <div className="bg-white border-4 border-black shadow-2xl">
             
@@ -132,7 +132,7 @@ export default function CookieConsent() {
                   <p className="text-gray-700 leading-relaxed">
                     Utilizziamo cookie per migliorare la tua esperienza di navigazione, 
                     analizzare il traffico del sito e personalizzare i contenuti. 
-                    Accettando, consenti l'uso di tutti i cookie. Puoi personalizzare 
+                    Accettando, consenti l&apos;uso di tutti i cookie. Puoi personalizzare 
                     le tue preferenze o rifiutare i cookie non essenziali.
                   </p>
 
