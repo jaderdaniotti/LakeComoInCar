@@ -410,7 +410,103 @@
         "button": "Pay Deposit €{amount}"
       },
       "backToForm": "← Back to form",
-      "people": "people"
+      "people": "people",
+      "method": {
+        "title": "Choose Payment Method",
+        "subtitle": "Select how you prefer to pay for your booking",
+        "quickSummary": {
+          "route": "Route",
+          "dateTime": "Date & Time",
+          "total": "Total"
+        },
+        "cash": {
+          "title": "Online Deposit + Cash",
+          "description": "Pay only 40% now and the rest in cash to the driver",
+          "payNow": "Pay now",
+          "toDriver": "To driver",
+          "badges": {
+            "guaranteed": "Guaranteed booking",
+            "flexible": "Flexible payment",
+            "popular": "Most popular"
+          }
+        },
+        "paypal": {
+          "title": "PayPal",
+          "description": "Secure full payment via your PayPal account",
+          "totalToPay": "Total to pay",
+          "badges": {
+            "protection": "PayPal buyer protection",
+            "fast": "Fast and secure"
+          }
+        },
+        "stripe": {
+          "title": "Credit / Debit Card",
+          "description": "Pay with Visa, Mastercard, American Express or other cards",
+          "totalToPay": "Total to pay",
+          "badges": {
+            "security": "Bank-level security",
+            "immediate": "Immediate payment",
+            "allCards": "All cards accepted"
+          }
+        },
+        "securityInfo": {
+          "title": "Secure Payments:",
+          "description": "All payments are protected by SSL encryption. Your financial data is never stored on our servers."
+        },
+        "backToForm": "← Back to Form",
+        "continue": "Continue →"
+      },
+      "confirm": {
+        "title": "Confirm Booking",
+        "subtitle": "Review details before proceeding to payment",
+        "summary": {
+          "title": "Booking Summary",
+          "route": "Route",
+          "dateTime": "Date & Time",
+          "passengers": "Passengers",
+          "passenger": "Passenger",
+          "email": "Email",
+          "phone": "Phone",
+          "vehicle": "Selected Vehicle",
+          "totalPrice": "Total Price"
+        },
+        "paymentMethod": {
+          "title": "Payment Method",
+          "change": "Change method",
+          "cash": {
+            "title": "Online Deposit + Cash",
+            "subtitle": "40% online, rest to driver",
+            "payNow": "Pay now",
+            "toDriverCash": "To driver (cash)"
+          },
+          "paypal": {
+            "title": "PayPal",
+            "subtitle": "Secure full payment",
+            "totalToPay": "Total to pay"
+          },
+          "stripe": {
+            "title": "Credit / Debit Card",
+            "subtitle": "Visa, Mastercard, Amex and more",
+            "totalToPay": "Total to pay"
+          }
+        },
+        "importantNote": {
+          "title": "Note:",
+          "description": "You will receive a confirmation email with all booking details. Service is guaranteed only after deposit payment."
+        },
+        "error": "Error",
+        "back": "← Back",
+        "processing": "Processing...",
+        "payButton": {
+          "cash": "Pay €{amount} and Book",
+          "paypal": "Pay with PayPal €{amount}",
+          "stripe": "Pay with Card €{amount}"
+        }
+      },
+      "validation": {
+        "fillAllFields": "Fill all fields to calculate price",
+        "acceptPrivacy": "Accept privacy policy to continue"
+      }
     }
   },
   "quote": {

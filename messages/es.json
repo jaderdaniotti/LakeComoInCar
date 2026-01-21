@@ -410,7 +410,103 @@
         "button": "Pagar Depósito €{amount}"
       },
       "backToForm": "← Volver al formulario",
-      "people": "personas"
+      "people": "personas",
+      "method": {
+        "title": "Elige el Método de Pago",
+        "subtitle": "Selecciona cómo prefieres pagar tu reserva",
+        "quickSummary": {
+          "route": "Ruta",
+          "dateTime": "Fecha y Hora",
+          "total": "Total"
+        },
+        "cash": {
+          "title": "Depósito Online + Efectivo",
+          "description": "Paga solo el 40% ahora y el resto en efectivo al conductor",
+          "payNow": "Paga ahora",
+          "toDriver": "Al conductor",
+          "badges": {
+            "guaranteed": "Reserva garantizada",
+            "flexible": "Pago flexible",
+            "popular": "Más popular"
+          }
+        },
+        "paypal": {
+          "title": "PayPal",
+          "description": "Pago completo seguro a través de tu cuenta PayPal",
+          "totalToPay": "Total a pagar",
+          "badges": {
+            "protection": "Protección al comprador PayPal",
+            "fast": "Rápido y seguro"
+          }
+        },
+        "stripe": {
+          "title": "Tarjeta de Crédito / Débito",
+          "description": "Paga con Visa, Mastercard, American Express u otras tarjetas",
+          "totalToPay": "Total a pagar",
+          "badges": {
+            "security": "Seguridad bancaria",
+            "immediate": "Pago inmediato",
+            "allCards": "Todas las tarjetas"
+          }
+        },
+        "securityInfo": {
+          "title": "Pagos Seguros:",
+          "description": "Todos los pagos están protegidos por cifrado SSL. Tus datos financieros nunca se almacenan en nuestros servidores."
+        },
+        "backToForm": "← Volver al Formulario",
+        "continue": "Continuar →"
+      },
+      "confirm": {
+        "title": "Confirmar Reserva",
+        "subtitle": "Revisa los detalles antes de proceder al pago",
+        "summary": {
+          "title": "Resumen de Reserva",
+          "route": "Ruta",
+          "dateTime": "Fecha y Hora",
+          "passengers": "Pasajeros",
+          "passenger": "Pasajero",
+          "email": "Email",
+          "phone": "Teléfono",
+          "vehicle": "Vehículo Seleccionado",
+          "totalPrice": "Precio Total"
+        },
+        "paymentMethod": {
+          "title": "Método de Pago",
+          "change": "Cambiar método",
+          "cash": {
+            "title": "Depósito Online + Efectivo",
+            "subtitle": "40% online, resto al conductor",
+            "payNow": "Paga ahora",
+            "toDriverCash": "Al conductor (efectivo)"
+          },
+          "paypal": {
+            "title": "PayPal",
+            "subtitle": "Pago completo seguro",
+            "totalToPay": "Total a pagar"
+          },
+          "stripe": {
+            "title": "Tarjeta de Crédito / Débito",
+            "subtitle": "Visa, Mastercard, Amex y otras",
+            "totalToPay": "Total a pagar"
+          }
+        },
+        "importantNote": {
+          "title": "Nota:",
+          "description": "Recibirás un correo de confirmación con todos los detalles de la reserva. El servicio está garantizado solo después del pago del depósito."
+        },
+        "error": "Error",
+        "back": "← Atrás",
+        "processing": "Procesando...",
+        "payButton": {
+          "cash": "Pagar €{amount} y Reservar",
+          "paypal": "Pagar con PayPal €{amount}",
+          "stripe": "Pagar con Tarjeta €{amount}"
+        }
+      },
+      "validation": {
+        "fillAllFields": "Completa todos los campos para calcular el precio",
+        "acceptPrivacy": "Acepta la política de privacidad para continuar"
+      }
     }
   },
   "quote": {

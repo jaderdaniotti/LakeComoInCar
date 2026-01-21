@@ -410,7 +410,103 @@
         "button": "Payer Acompte €{amount}"
       },
       "backToForm": "← Retour au formulaire",
-      "people": "personnes"
+      "people": "personnes",
+      "method": {
+        "title": "Choisissez le Mode de Paiement",
+        "subtitle": "Sélectionnez comment vous préférez payer votre réservation",
+        "quickSummary": {
+          "route": "Trajet",
+          "dateTime": "Date et Heure",
+          "total": "Total"
+        },
+        "cash": {
+          "title": "Acompte En ligne + Espèces",
+          "description": "Payez seulement 40% maintenant et le reste en espèces au chauffeur",
+          "payNow": "Payez maintenant",
+          "toDriver": "Au chauffeur",
+          "badges": {
+            "guaranteed": "Réservation garantie",
+            "flexible": "Paiement flexible",
+            "popular": "Le plus populaire"
+          }
+        },
+        "paypal": {
+          "title": "PayPal",
+          "description": "Paiement complet sécurisé via votre compte PayPal",
+          "totalToPay": "Total à payer",
+          "badges": {
+            "protection": "Protection acheteur PayPal",
+            "fast": "Rapide et sécurisé"
+          }
+        },
+        "stripe": {
+          "title": "Carte de Crédit / Débit",
+          "description": "Payez avec Visa, Mastercard, American Express ou autres cartes",
+          "totalToPay": "Total à payer",
+          "badges": {
+            "security": "Sécurité bancaire",
+            "immediate": "Paiement immédiat",
+            "allCards": "Toutes les cartes"
+          }
+        },
+        "securityInfo": {
+          "title": "Paiements Sécurisés:",
+          "description": "Tous les paiements sont protégés par cryptage SSL. Vos données financières ne sont jamais stockées sur nos serveurs."
+        },
+        "backToForm": "← Retour au Formulaire",
+        "continue": "Continuer →"
+      },
+      "confirm": {
+        "title": "Confirmer la Réservation",
+        "subtitle": "Vérifiez les détails avant de procéder au paiement",
+        "summary": {
+          "title": "Récapitulatif de Réservation",
+          "route": "Trajet",
+          "dateTime": "Date et Heure",
+          "passengers": "Passagers",
+          "passenger": "Passager",
+          "email": "Email",
+          "phone": "Téléphone",
+          "vehicle": "Véhicule Sélectionné",
+          "totalPrice": "Prix Total"
+        },
+        "paymentMethod": {
+          "title": "Mode de Paiement",
+          "change": "Changer de mode",
+          "cash": {
+            "title": "Acompte En ligne + Espèces",
+            "subtitle": "40% en ligne, reste au chauffeur",
+            "payNow": "Payez maintenant",
+            "toDriverCash": "Au chauffeur (espèces)"
+          },
+          "paypal": {
+            "title": "PayPal",
+            "subtitle": "Paiement complet sécurisé",
+            "totalToPay": "Total à payer"
+          },
+          "stripe": {
+            "title": "Carte de Crédit / Débit",
+            "subtitle": "Visa, Mastercard, Amex et autres",
+            "totalToPay": "Total à payer"
+          }
+        },
+        "importantNote": {
+          "title": "Note:",
+          "description": "Vous recevrez un email de confirmation avec tous les détails de la réservation. Le service est garanti uniquement après le paiement de l'acompte."
+        },
+        "error": "Erreur",
+        "back": "← Retour",
+        "processing": "Traitement en cours...",
+        "payButton": {
+          "cash": "Payer €{amount} et Réserver",
+          "paypal": "Payer avec PayPal €{amount}",
+          "stripe": "Payer par Carte €{amount}"
+        }
+      },
+      "validation": {
+        "fillAllFields": "Remplissez tous les champs pour calculer le prix",
+        "acceptPrivacy": "Acceptez la politique de confidentialité pour continuer"
+      }
     }
   },
   "quote": {

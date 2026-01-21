@@ -410,7 +410,103 @@
         "button": "Paga Acconto €{amount}"
       },
       "backToForm": "← Torna al form",
-      "people": "persone"
+      "people": "persone",
+      "method": {
+        "title": "Scegli il Metodo di Pagamento",
+        "subtitle": "Seleziona come preferisci pagare la tua prenotazione",
+        "quickSummary": {
+          "route": "Tratta",
+          "dateTime": "Data e Ora",
+          "total": "Totale"
+        },
+        "cash": {
+          "title": "Acconto Online + Contanti",
+          "description": "Paga solo il 40% ora e il resto in contanti all'autista",
+          "payNow": "Paghi ora",
+          "toDriver": "All'autista",
+          "badges": {
+            "guaranteed": "Prenotazione garantita",
+            "flexible": "Pagamento flessibile",
+            "popular": "Più popolare"
+          }
+        },
+        "paypal": {
+          "title": "PayPal",
+          "description": "Pagamento completo sicuro tramite il tuo account PayPal",
+          "totalToPay": "Totale da pagare",
+          "badges": {
+            "protection": "Protezione acquirente PayPal",
+            "fast": "Veloce e sicuro"
+          }
+        },
+        "stripe": {
+          "title": "Carta di Credito / Debito",
+          "description": "Paga con Visa, Mastercard, American Express o altre carte",
+          "totalToPay": "Totale da pagare",
+          "badges": {
+            "security": "Sicurezza bancaria",
+            "immediate": "Pagamento immediato",
+            "allCards": "Tutte le carte"
+          }
+        },
+        "securityInfo": {
+          "title": "Pagamenti Sicuri:",
+          "description": "Tutti i pagamenti sono protetti da crittografia SSL. I tuoi dati finanziari non vengono mai memorizzati sui nostri server."
+        },
+        "backToForm": "← Torna al Form",
+        "continue": "Continua →"
+      },
+      "confirm": {
+        "title": "Conferma Prenotazione",
+        "subtitle": "Verifica i dettagli prima di procedere al pagamento",
+        "summary": {
+          "title": "Riepilogo Prenotazione",
+          "route": "Tratta",
+          "dateTime": "Data e Ora",
+          "passengers": "Passeggeri",
+          "passenger": "Passeggero",
+          "email": "Email",
+          "phone": "Telefono",
+          "vehicle": "Veicolo Selezionato",
+          "totalPrice": "Prezzo Totale"
+        },
+        "paymentMethod": {
+          "title": "Metodo di Pagamento",
+          "change": "Cambia metodo",
+          "cash": {
+            "title": "Acconto Online + Contanti",
+            "subtitle": "40% online, resto all'autista",
+            "payNow": "Paghi ora",
+            "toDriverCash": "All'autista (contanti)"
+          },
+          "paypal": {
+            "title": "PayPal",
+            "subtitle": "Pagamento completo sicuro",
+            "totalToPay": "Totale da pagare"
+          },
+          "stripe": {
+            "title": "Carta di Credito / Debito",
+            "subtitle": "Visa, Mastercard, Amex e altre",
+            "totalToPay": "Totale da pagare"
+          }
+        },
+        "importantNote": {
+          "title": "Nota:",
+          "description": "Riceverai una email di conferma con tutti i dettagli della prenotazione. Il servizio è garantito solo dopo il pagamento dell'acconto."
+        },
+        "error": "Errore",
+        "back": "← Indietro",
+        "processing": "Elaborazione...",
+        "payButton": {
+          "cash": "Paga €{amount} e Prenota",
+          "paypal": "Paga con PayPal €{amount}",
+          "stripe": "Paga con Carta €{amount}"
+        }
+      },
+      "validation": {
+        "fillAllFields": "Compila tutti i campi per calcolare il prezzo",
+        "acceptPrivacy": "Accetta l'informativa privacy per continuare"
+      }
     }
   },
   "quote": {

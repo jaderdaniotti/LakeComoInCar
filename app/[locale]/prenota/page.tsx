@@ -7,6 +7,8 @@ import FormWrapper from '@/components/forms/FormWrapper';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import GDPRDisclaimer from '@/components/ui/GDPRDisclaimer';
+import PayPalButton from '@/components/payment/PayPalButton';
+import StripeCheckout from '@/components/payment/StripeCheckout';
 import { CheckCircle } from 'lucide-react';
 import images from '@/src/data/images';
 import Image from 'next/image';
@@ -38,6 +40,10 @@ export default function PrenotaPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showPaymentSelection, setShowPaymentSelection] = useState(false);
+  const [paymentStep, setPaymentStep] = useState<'method' | 'confirm'>('method');
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<'cash' | 'paypal' | 'stripe'>('cash');
+  const [showPayPalButton, setShowPayPalButton] = useState(false);
+  const [showStripeCheckout, setShowStripeCheckout] = useState(false);
   const [macchinaSelezionata, setMacchinaSelezionata] = useState<string | null>(null);
   const [routes, setRoutes] = useState<Route[]>([]);
   const [loadingRoutes, setLoadingRoutes] = useState(true);
@@ -117,11 +123,19 @@ export default function PrenotaPage() {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    // Mostra la schermata di selezione pagamento
+    console.log('📝 Form submitted!', {
+      calculatedPrice,
+      gdprConsent,
+      formData,
+      macchinaSelezionata
+    });
+    
+    // Mostra lo step di selezione metodo pagamento
     setShowPaymentSelection(true);
+    setPaymentStep('method');
   };
 
-  const handlePaymentSelection = async (paymentType: 'full' | 'deposit') => {
+  const handlePaymentSelection = async (paymentType: 'full' | 'deposit', paymentDetails?: any) => {
     setIsSubmitting(true);
     setError(null);
 
@@ -131,6 +145,14 @@ export default function PrenotaPage() {
       const routeDescription = selectedRoute 
         ? `${selectedRoute.origin_it} → ${selectedRoute.destination_it}`
         : 'Tratta personalizzata';
+
+      // Costruisci le note con informazioni pagamento
+      let paymentNotes = '';
+      if (paymentDetails?.paymentMethod === 'paypal') {
+        paymentNotes = `\nPagamento PayPal completato\nOrder ID: ${paymentDetails.paypalOrderId}\nCapture ID: ${paymentDetails.paypalDetails.paymentDetails?.captureId || 'N/A'}`;
+      } else if (paymentDetails?.paymentMethod === 'stripe') {
+        paymentNotes = `\nPagamento Stripe completato\nPayment Intent ID: ${paymentDetails.stripePaymentIntentId}`;
+      }
 
       // Prepara i dati da inviare all'API
       const bookingData = {
@@ -145,7 +167,7 @@ export default function PrenotaPage() {
         vehicle: macchinaSelezionata || 'Non specificato',
         totalPrice: calculatedPrice,
         paymentType: `${paymentType === 'full' ? t('payment.fullPayment.title') : t('payment.deposit.title')}`,
-        notes: `${appliedRules.length > 0 ? `\nRegole applicate: ${appliedRules.join(', ')}` : ''}`,
+        notes: `${appliedRules.length > 0 ? `\nRegole applicate: ${appliedRules.join(', ')}` : ''}${paymentNotes}`,
         language: 'it',
       };
 
@@ -229,165 +251,463 @@ export default function PrenotaPage() {
     const remainingAmount = Math.round(calculatedPrice * 0.6 * 100) / 100;
     const selectedRoute = routes.find(r => r.id === formData.tratta);
 
-    return (
-      <>
-        <SectionWrapper className="bg-black text-white pt-32">
-          <div className="text-center max-w-3xl mx-auto pt-20">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-              {t('payment.title')}
-            </h1>
-            <p className="text-xl text-gray-300">
-              {t('payment.subtitle')}
-            </p>
-          </div>
-        </SectionWrapper>
+    // STEP 1: Selezione Metodo di Pagamento
+    if (paymentStep === 'method') {
+      return (
+        <>
+          <SectionWrapper className="bg-black text-white pt-24 pb-8">
+            <div className="text-center max-w-3xl mx-auto">
+              <h1 className="text-3xl md:text-4xl font-bold mb-3 text-white">
+                {t('payment.method.title')}
+              </h1>
+              <p className="text-base md:text-lg text-gray-300">
+                {t('payment.method.subtitle')}
+              </p>
+            </div>
+          </SectionWrapper>
 
-        <SectionWrapper className="bg-white">
-          <div className="max-w-5xl mx-auto">
-            {/* Riepilogo Prenotazione */}
-            <div className="bg-gray-50 border-2 border-black p-8 mb-8">
-              <h2 className="text-2xl font-bold text-black mb-6 uppercase">
-                {t('payment.summary.title')}
-              </h2>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <p className="text-sm text-gray-600 mb-1">{t('payment.summary.route')}</p>
-                  <p className="text-xl font-semibold  text-black">
-                    {selectedRoute?.origin_it} → {selectedRoute?.destination_it}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600 mb-1">{t('payment.summary.dateTime')}</p>
-                  <p className="text-lg font-bold text-black">
-                    {new Date(formData.data).toLocaleDateString('it-IT')} alle {formData.ora}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600 mb-1">{t('payment.summary.passengers')}</p>
-                  <p className="text-lg font-bold text-black">{formData.passeggeri} {t('payment.people')}</p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-600 mb-1">{t('payment.summary.passenger')}</p>
-                  <p className="text-lg font-bold text-black">{formData.nome}</p>
+          <SectionWrapper className="bg-white py-6 md:py-8">
+            <div className="max-w-6xl mx-auto">
+              {/* Riepilogo Rapido - Più Compatto */}
+              <div className="bg-gray-50 border-2 border-black p-4 mb-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+                  <div className="text-center md:text-left">
+                    <p className="text-xs text-gray-600 mb-1">{t('payment.method.quickSummary.route')}</p>
+                    <p className="text-sm md:text-base font-bold text-black">
+                      {selectedRoute?.origin_it} → {selectedRoute?.destination_it}
+                    </p>
+                  </div>
+                  <div className="text-center md:text-left">
+                    <p className="text-xs text-gray-600 mb-1">{t('payment.method.quickSummary.dateTime')}</p>
+                    <p className="text-sm md:text-base font-bold text-black">
+                      {new Date(formData.data).toLocaleDateString('it-IT')} • {formData.ora}
+                    </p>
+                  </div>
+                  <div className="text-center md:text-left">
+                    <p className="text-xs text-gray-600 mb-1">{t('payment.method.quickSummary.total')}</p>
+                    <p className="text-xl md:text-2xl font-bold text-black">€{calculatedPrice.toFixed(2)}</p>
+                  </div>
                 </div>
               </div>
 
+              {/* Metodi di Pagamento - Layout Ottimizzato */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
+                {/* Opzione 1: Contanti + Carta (40% Online) */}
+                <div
+                  onClick={() => setSelectedPaymentMethod('cash')}
+                  className={`border-2 p-4 cursor-pointer transition-all ${
+                    selectedPaymentMethod === 'cash'
+                      ? 'border-black bg-black text-white shadow-lg scale-105'
+                      : 'border-gray-300 bg-white hover:border-black'
+                  }`}
+                >
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center gap-2 mb-3">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="cash"
+                        checked={selectedPaymentMethod === 'cash'}
+                        onChange={() => setSelectedPaymentMethod('cash')}
+                        className="w-4 h-4 cursor-pointer flex-shrink-0"
+                      />
+                      <h3 className="text-lg font-bold leading-tight">
+                        {t('payment.method.cash.title')}
+                      </h3>
+                    </div>
+                    <p className={`text-xs mb-3 ${
+                      selectedPaymentMethod === 'cash' ? 'text-gray-300' : 'text-gray-600'
+                    }`}>
+                      {t('payment.method.cash.description')}
+                    </p>
+                    <div className="grid grid-cols-2 gap-2 text-xs mb-3">
+                      <div className={`p-2 rounded ${
+                        selectedPaymentMethod === 'cash' ? 'bg-white/10' : 'bg-gray-100'
+                      }`}>
+                        <p className={selectedPaymentMethod === 'cash' ? 'text-gray-300' : 'text-gray-600'}>
+                          {t('payment.method.cash.payNow')}
+                        </p>
+                        <p className="text-lg font-bold">€{depositAmount.toFixed(2)}</p>
+                      </div>
+                      <div className={`p-2 rounded ${
+                        selectedPaymentMethod === 'cash' ? 'bg-white/10' : 'bg-gray-100'
+                      }`}>
+                        <p className={selectedPaymentMethod === 'cash' ? 'text-gray-300' : 'text-gray-600'}>
+                          {t('payment.method.cash.toDriver')}
+                        </p>
+                        <p className="text-lg font-bold">€{remainingAmount.toFixed(2)}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-              {/* Prezzo Totale */}
-              <div className="border-t-2 border-black pt-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-black">{t('payment.summary.totalPrice')}:</span>
-                  <span className="text-4xl font-bold text-black">
-                    €{calculatedPrice.toFixed(2)}
+                {/* Opzione 2: PayPal */}
+                <div
+                  onClick={() => setSelectedPaymentMethod('paypal')}
+                  className={`border-2 p-4 cursor-pointer transition-all ${
+                    selectedPaymentMethod === 'paypal'
+                      ? 'border-black bg-black text-white shadow-lg scale-105'
+                      : 'border-gray-300 bg-white hover:border-black'
+                  }`}
+                >
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center gap-2 mb-3">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="paypal"
+                        checked={selectedPaymentMethod === 'paypal'}
+                        onChange={() => setSelectedPaymentMethod('paypal')}
+                        className="w-4 h-4 cursor-pointer flex-shrink-0"
+                      />
+                      <h3 className="text-lg font-bold leading-tight">
+                        {t('payment.method.paypal.title')}
+                      </h3>
+                    </div>
+                    <p className={`text-xs mb-3 ${
+                      selectedPaymentMethod === 'paypal' ? 'text-gray-300' : 'text-gray-600'
+                    }`}>
+                      {t('payment.method.paypal.description')}
+                    </p>
+                    <div className={`p-2 rounded mb-3 ${
+                      selectedPaymentMethod === 'paypal' ? 'bg-white/10' : 'bg-gray-100'
+                    }`}>
+                      <p className={`text-xs ${
+                        selectedPaymentMethod === 'paypal' ? 'text-gray-300' : 'text-gray-600'
+                      }`}>
+                        {t('payment.method.paypal.totalToPay')}
+                      </p>
+                      <p className="text-xl font-bold">€{calculatedPrice.toFixed(2)}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Opzione 3: Stripe / Carta di Credito */}
+                <div
+                  onClick={() => setSelectedPaymentMethod('stripe')}
+                  className={`border-2 p-4 cursor-pointer transition-all ${
+                    selectedPaymentMethod === 'stripe'
+                      ? 'border-black bg-black text-white shadow-lg scale-105'
+                      : 'border-gray-300 bg-white hover:border-black'
+                  }`}
+                >
+                  <div className="flex flex-col h-full">
+                    <div className="flex items-center gap-2 mb-3">
+                      <input
+                        type="radio"
+                        name="paymentMethod"
+                        value="stripe"
+                        checked={selectedPaymentMethod === 'stripe'}
+                        onChange={() => setSelectedPaymentMethod('stripe')}
+                        className="w-4 h-4 cursor-pointer flex-shrink-0"
+                      />
+                      <h3 className="text-lg font-bold leading-tight">
+                        {t('payment.method.stripe.title')}
+                      </h3>
+                    </div>
+                    <p className={`text-xs mb-3 ${
+                      selectedPaymentMethod === 'stripe' ? 'text-gray-300' : 'text-gray-600'
+                    }`}>
+                      {t('payment.method.stripe.description')}
+                    </p>
+                    <div className={`p-2 rounded mb-3 ${
+                      selectedPaymentMethod === 'stripe' ? 'bg-white/10' : 'bg-gray-100'
+                    }`}>
+                      <p className={`text-xs ${
+                        selectedPaymentMethod === 'stripe' ? 'text-gray-300' : 'text-gray-600'
+                      }`}>
+                        {t('payment.method.stripe.totalToPay')}
+                      </p>
+                      <p className="text-xl font-bold">€{calculatedPrice.toFixed(2)}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Info Sicurezza */}
+              <div className="bg-green-50 border-2 border-green-600 p-3 mb-4">
+                <p className="text-xs text-green-800 flex items-start gap-2">
+                  <span className="text-base">🔒</span>
+                  <span>
+                    <strong>{t('payment.method.securityInfo.title')}</strong> {t('payment.method.securityInfo.description')}
                   </span>
-                </div>
+                </p>
               </div>
-            </div>
 
-            {/* Opzioni di Pagamento */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {/* Opzione 1: Pagamento Completo */}
-              <div className="border-2 border-black p-8 hover:shadow-xl transition-all bg-white">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-black mb-2">
-                    {t('payment.fullPayment.title')}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {t('payment.fullPayment.subtitle')}
-                  </p>
-                </div>
-
-                <div className="border-2 border-black p-6 mb-6">
-                  <p className="text-md text-gray-600 mb-3">{t('payment.fullPayment.amount')}</p>
-                  <hr />
-                  <p className="text-4xl font-bold pt-3 border-t border-gray-300">€{calculatedPrice.toFixed(2)}</p>
-                </div>
-
-                <div className="space-y-3 mb-6 text-sm text-gray-700">
-                  <p className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    {t('payment.fullPayment.benefits.noDriverPayment')}
-                  </p>
-                  <p className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    {t('payment.fullPayment.benefits.guaranteed')}
-                  </p>
-                  <p className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    {t('payment.fullPayment.benefits.secure')}
-                  </p>
-                </div>
-
+              {/* Pulsanti Azione */}
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  onClick={() => setShowPaymentSelection(false)}
+                  className="px-4 py-3 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all text-sm md:text-base"
+                >
+                  {t('payment.method.backToForm')}
+                </button>
                 <Button
-                  onClick={() => handlePaymentSelection('full')}
+                  onClick={() => setPaymentStep('confirm')}
                   variant="primary"
-                  className="w-full"
+                  className="text-sm md:text-base"
                 >
-                  {t('payment.fullPayment.button', { amount: calculatedPrice.toFixed(2) })}
-                </Button>
-              </div>
-
-              {/* Opzione 2: Acconto + Contanti */}
-              <div className="border-2 border-black p-8 hover:shadow-xl transition-all bg-white">
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-black mb-2">
-                    {t('payment.deposit.title')}
-                  </h3>
-                  <p className="text-gray-600 text-sm">
-                    {t('payment.deposit.subtitle')}
-                  </p>
-                </div>
-
-                <div className="bg-gray-100 border-2 border-black p-6 mb-6">
-                  <div className="flex justify-between items-center mb-3">
-                    <span className="text-sm text-gray-600">{t('payment.deposit.depositOnline')}</span>
-                    <span className="text-2xl font-bold text-black">€{depositAmount.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between items-center pt-3 border-t border-gray-300">
-                    <span className="text-sm text-gray-600">{t('payment.deposit.toDriver')}</span>
-                    <span className="text-xl font-bold text-gray-700">€{remainingAmount.toFixed(2)}</span>
-                  </div>
-                </div>
-
-                <div className="space-y-3 mb-6 text-sm text-gray-700">
-                  <p className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    {t('payment.deposit.benefits.payLess')}
-                  </p>
-                  <p className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    {t('payment.deposit.benefits.cashRemainder')}
-                  </p>
-                  <p className="flex items-start gap-2">
-                    <span className="text-green-600 font-bold">✓</span>
-                    {t('payment.deposit.benefits.guaranteed')}
-                  </p>
-                </div>
-
-                <Button
-                  onClick={() => handlePaymentSelection('deposit')}
-                  variant="outline"
-                  className="w-full"
-                >
-                  {t('payment.deposit.button', { amount: depositAmount.toFixed(2) })}
+                  {t('payment.method.continue')}
                 </Button>
               </div>
             </div>
+          </SectionWrapper>
+        </>
+      );
+    }
 
-            {/* Pulsante Indietro */}
-            <div className="text-center">
-              <button
-                onClick={() => setShowPaymentSelection(false)}
-                className="text-gray-600 hover:text-black transition-colors underline"
-              >
-                {t('payment.backToForm')}
-              </button>
+    // STEP 2: Conferma e Riepilogo Finale
+    if (paymentStep === 'confirm') {
+      return (
+        <>
+          <SectionWrapper className="bg-black text-white pt-32">
+            <div className="text-center max-w-3xl mx-auto pt-20">
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+                {t('payment.confirm.title')}
+              </h1>
+              <p className="text-xl text-gray-300">
+                {t('payment.confirm.subtitle')}
+              </p>
             </div>
-          </div>
-        </SectionWrapper>
-      </>
-    );
+          </SectionWrapper>
+
+          <SectionWrapper className="bg-white">
+            <div className="max-w-4xl mx-auto">
+              {/* Riepilogo Completo */}
+              <div className="bg-gray-50 border-2 border-black p-8 mb-8">
+                <h2 className="text-2xl font-bold text-black mb-6 uppercase flex items-center gap-2">
+                  <span>📋</span> {t('payment.confirm.summary.title')}
+                </h2>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.route')}</p>
+                    <p className="text-lg font-bold text-black">
+                      {selectedRoute?.origin_it} → {selectedRoute?.destination_it}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.dateTime')}</p>
+                    <p className="text-lg font-bold text-black">
+                      {new Date(formData.data).toLocaleDateString('it-IT')} • {formData.ora}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.passengers')}</p>
+                    <p className="text-lg font-bold text-black">{formData.passeggeri}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.passenger')}</p>
+                    <p className="text-lg font-bold text-black">{formData.nome}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.email')}</p>
+                    <p className="text-lg font-bold text-black">{formData.email}</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.phone')}</p>
+                    <p className="text-lg font-bold text-black">{formData.telefono}</p>
+                  </div>
+                  {macchinaSelezionata && (
+                    <div className="md:col-span-2">
+                      <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.vehicle')}</p>
+                      <p className="text-lg font-bold text-black">
+                        {macchine.find(m => m.value === macchinaSelezionata)?.label}
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Prezzo Totale */}
+                <div className="border-t-2 border-black pt-6">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-xl font-bold text-black">{t('payment.confirm.summary.totalPrice')}:</span>
+                    <span className="text-3xl font-bold text-black">
+                      €{calculatedPrice.toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Metodo di Pagamento Selezionato */}
+              <div className="border-2 border-black p-6 mb-8">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-bold text-black">{t('payment.confirm.paymentMethod.title')}</h3>
+                  <button
+                    onClick={() => setPaymentStep('method')}
+                    className="text-sm text-gray-600 hover:text-black underline"
+                  >
+                    {t('payment.confirm.paymentMethod.change')}
+                  </button>
+                </div>
+
+                {selectedPaymentMethod === 'cash' && (
+                  <div className="bg-white border-2 border-gray-300 p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div>
+                        <p className="text-lg font-bold">{t('payment.confirm.paymentMethod.cash.title')}</p>
+                        <p className="text-sm text-gray-600">{t('payment.confirm.paymentMethod.cash.subtitle')}</p>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-4 mt-4">
+                      <div className="bg-gray-50 p-4 rounded">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.paymentMethod.cash.payNow')}</p>
+                        <p className="text-2xl font-bold text-black">€{depositAmount.toFixed(2)}</p>
+                      </div>
+                      <div className="bg-gray-50 p-4 rounded">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.paymentMethod.cash.toDriverCash')}</p>
+                        <p className="text-2xl font-bold text-gray-700">€{remainingAmount.toFixed(2)}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {selectedPaymentMethod === 'paypal' && (
+                  <div className="bg-white border-2 border-gray-300 p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div>
+                        <p className="text-lg font-bold">{t('payment.confirm.paymentMethod.paypal.title')}</p>
+                        <p className="text-sm text-gray-600">{t('payment.confirm.paymentMethod.paypal.subtitle')}</p>
+                      </div>
+                    </div>
+                    <div className="bg-blue-50 p-4 rounded mt-4">
+                      <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.paymentMethod.paypal.totalToPay')}</p>
+                      <p className="text-2xl font-bold text-black">€{calculatedPrice.toFixed(2)}</p>
+                    </div>
+                  </div>
+                )}
+
+                {selectedPaymentMethod === 'stripe' && (
+                  <div className="bg-white border-2 border-gray-300 p-6">
+                    <div className="flex items-center gap-3 mb-3">
+                      <div>
+                        <p className="text-lg font-bold">{t('payment.confirm.paymentMethod.stripe.title')}</p>
+                        <p className="text-sm text-gray-600">{t('payment.confirm.paymentMethod.stripe.subtitle')}</p>
+                      </div>
+                    </div>
+                    <div className="bg-purple-50 p-4 rounded mt-4">
+                      <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.paymentMethod.stripe.totalToPay')}</p>
+                      <p className="text-2xl font-bold text-black">€{calculatedPrice.toFixed(2)}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Note Importanti */}
+              <div className="bg-yellow-50 border-2 border-yellow-400 p-4 mb-8">
+                <p className="text-sm text-yellow-800 flex items-start gap-2">
+                  <span className="text-lg">ℹ️</span>
+                  <span>
+                    <strong>{t('payment.confirm.importantNote.title')}</strong> {t('payment.confirm.importantNote.description')}
+                  </span>
+                </p>
+              </div>
+
+              {/* Messaggio di errore */}
+              {error && (
+                <div className="p-4 bg-red-50 border-2 border-red-500 text-red-700 mb-8">
+                  <p className="font-semibold">❌ {t('payment.confirm.error')}</p>
+                  <p className="text-sm">{error}</p>
+                </div>
+              )}
+
+              {/* Pulsanti Azione */}
+              <div className="flex gap-4">
+                <button
+                  onClick={() => {
+                    setPaymentStep('method');
+                    setShowPayPalButton(false);
+                    setShowStripeCheckout(false);
+                  }}
+                  className="flex-1 px-6 py-4 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all"
+                  disabled={isSubmitting || showPayPalButton || showStripeCheckout}
+                >
+                  {t('payment.confirm.back')}
+                </button>
+                
+                {/* Mostra pulsante PayPal se selezionato PayPal e il flag è attivo */}
+                {selectedPaymentMethod === 'paypal' && showPayPalButton ? (
+                  <div className="flex-1">
+                    <PayPalButton
+                      amount={calculatedPrice}
+                      description={`Prenotazione LakeComoInCar - ${formData.nome}`}
+                      onSuccess={async (orderId, details) => {
+                        console.log('PayPal payment successful:', orderId, details);
+                        // Invia la prenotazione con i dettagli del pagamento
+                        await handlePaymentSelection('full', {
+                          paymentMethod: 'paypal',
+                          paypalOrderId: orderId,
+                          paypalDetails: details,
+                        });
+                      }}
+                      onError={(error) => {
+                        console.error('PayPal payment error:', error);
+                        setError('Errore durante il pagamento PayPal. Riprova.');
+                        setShowPayPalButton(false);
+                      }}
+                      onCancel={() => {
+                        console.log('PayPal payment cancelled');
+                        setShowPayPalButton(false);
+                      }}
+                    />
+                  </div>
+                ) : selectedPaymentMethod === 'stripe' && showStripeCheckout ? (
+                  <div className="flex-1">
+                    <StripeCheckout
+                      amount={calculatedPrice}
+                      description={`Prenotazione LakeComoInCar - ${formData.nome}`}
+                      metadata={{
+                        customerName: formData.nome,
+                        customerEmail: formData.email,
+                        route: `${routes.find(r => r.id === formData.tratta)?.origin_it} → ${routes.find(r => r.id === formData.tratta)?.destination_it}`,
+                      }}
+                      onSuccess={async (paymentIntentId) => {
+                        console.log('Stripe payment successful:', paymentIntentId);
+                        // Invia la prenotazione con i dettagli del pagamento
+                        await handlePaymentSelection('full', {
+                          paymentMethod: 'stripe',
+                          stripePaymentIntentId: paymentIntentId,
+                        });
+                      }}
+                      onError={(error) => {
+                        console.error('Stripe payment error:', error);
+                        setError('Errore durante il pagamento con carta. Riprova.');
+                        setShowStripeCheckout(false);
+                      }}
+                    />
+                  </div>
+                ) : (
+                  <Button
+                    onClick={() => {
+                      if (selectedPaymentMethod === 'cash') {
+                        handlePaymentSelection('deposit');
+                      } else if (selectedPaymentMethod === 'paypal') {
+                        setShowPayPalButton(true);
+                      } else if (selectedPaymentMethod === 'stripe') {
+                        setShowStripeCheckout(true);
+                      }
+                    }}
+                    variant="primary"
+                    className="flex-1"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      t('payment.confirm.processing')
+                    ) : (
+                      <>
+                        {selectedPaymentMethod === 'cash' && t('payment.confirm.payButton.cash', { amount: depositAmount.toFixed(2) })}
+                        {selectedPaymentMethod === 'paypal' && t('payment.confirm.payButton.paypal', { amount: calculatedPrice.toFixed(2) })}
+                        {selectedPaymentMethod === 'stripe' && t('payment.confirm.payButton.stripe', { amount: calculatedPrice.toFixed(2) })}
+                      </>
+                    )}
+                  </Button>
+                )}
+              </div>
+            </div>
+          </SectionWrapper>
+        </>
+      );
+    }
   }
 
 
