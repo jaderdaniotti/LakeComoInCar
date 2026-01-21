@@ -282,6 +282,7 @@ interface BookingData {
   passengers: number;
   vehicle?: string;
   totalPrice?: number;
+  paymentType?: string;
   notes?: string;
   language?: string;
 }
@@ -298,6 +299,7 @@ export async function sendBookingNotification(data: BookingData) {
     passengers,
     vehicle,
     totalPrice,
+    paymentType,
     notes,
     language = 'it',
   } = data;
@@ -340,6 +342,7 @@ export async function sendBookingNotification(data: BookingData) {
         </div>
         ${vehicle ? `<div class="info-row"><span class="label">Veicolo:</span> ${vehicle}</div>` : ''}
         ${totalPrice ? `<div class="info-row"><span class="label">Prezzo Totale:</span> €${totalPrice.toFixed(2)}</div>` : ''}
+        ${paymentType ? `<div class="info-row"><span class="label">Tipo Pagamento:</span> ${paymentType}</div>` : ''}
         ${notes ? `<div class="info-row"><span class="label">Note:<br> ${notes}</span> </div>` : ''}
         
         <div style="margin-top: 30px; padding: 15px; background-color: #d4edda; border: 2px solid #28a745;">

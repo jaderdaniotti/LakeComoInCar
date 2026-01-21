@@ -969,7 +969,7 @@
 
 ### ✅ FINALE (Settimana 6-7):
 19. **Gruppo S** - Testing completo 🧪
-20. **Gruppo T** - Deploy produzione 🚢
+20. ✅ **Gruppo T** - Deploy produzione 🚢 - Fix applicati (dynamic route + env vars)
 21. **Gruppo U** - Documentazione 📖
 
 ### 📦 PARALLELO (Continuo):

@@ -142,7 +142,8 @@ export default function PrenotaPage() {
         passengers: parseInt(formData.passeggeri),
         vehicle: macchinaSelezionata || 'Non specificato',
         totalPrice: calculatedPrice,
-        notes: `Tipo pagamento: ${paymentType === 'full' ? 'Pagamento completo' : 'Acconto'}${appliedRules.length > 0 ? `\nRegole applicate: ${appliedRules.join(', ')}` : ''}`,
+        paymentType: `${paymentType === 'full' ? 'Pagamento completo' : 'Acconto'}`,
+        notes: `${appliedRules.length > 0 ? `\nRegole applicate: ${appliedRules.join(', ')}` : ''}`,
         language: 'it',
       };
 
