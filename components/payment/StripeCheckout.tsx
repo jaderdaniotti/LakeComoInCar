@@ -17,6 +17,7 @@ const stripePromise = loadStripe(
 interface StripeCheckoutFormProps {
   clientSecret: string;
   amount: number;
+  paymentMethod?: string | null;
   onSuccess: (paymentIntentId: string, details: any) => void;
   onError: (error: any) => void;
 }
@@ -25,6 +26,7 @@ interface StripeCheckoutFormProps {
 function CheckoutForm({
   clientSecret,
   amount,
+  paymentMethod,
   onSuccess,
   onError,
 }: StripeCheckoutFormProps) {
@@ -70,11 +72,30 @@ function CheckoutForm({
     }
   };
 
+  // Mappa i metodi selezionati ai tipi Stripe
+  const getPaymentMethodTypes = () => {
+    if (!paymentMethod) return undefined;
+    
+    const methodMap: Record<string, string[]> = {
+      'card': ['card'],
+      'klarna': ['klarna'],
+      'amazon_pay': ['amazon_pay'],
+      'bancontact': ['bancontact'],
+      'eps': ['eps'],
+    };
+    
+    return methodMap[paymentMethod] || ['card'];
+  };
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* Stripe Payment Element */}
       <div className="bg-white p-4 border-2 border-gray-300 rounded">
-        <PaymentElement />
+        <PaymentElement 
+          options={{
+            paymentMethodTypes: getPaymentMethodTypes(),
+          }}
+        />
       </div>
 
       {/* Error Message */}
@@ -112,6 +133,7 @@ interface StripeCheckoutProps {
   amount: number;
   description: string;
   metadata?: Record<string, string>;
+  paymentMethod?: string | null;
   onSuccess: (paymentIntentId: string, details: any) => void;
   onError: (error: any) => void;
 }
@@ -120,6 +142,7 @@ export default function StripeCheckout({
   amount,
   description,
   metadata,
+  paymentMethod,
   onSuccess,
   onError,
 }: StripeCheckoutProps) {
@@ -203,6 +226,7 @@ export default function StripeCheckout({
       <CheckoutForm
         clientSecret={clientSecret}
         amount={amount}
+        paymentMethod={paymentMethod}
         onSuccess={onSuccess}
         onError={onError}
       />
