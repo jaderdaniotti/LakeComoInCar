@@ -337,7 +337,7 @@ export default function QuotesManager() {
 
                   {/* Azioni */}
                   <div className="flex gap-2 flex-wrap pt-4 border-t-2 border-gray-200">
-                    {quote.status === 'new' && (
+                    {/* {quote.status === 'new' && (
                       <button
                         onClick={() => startEditing(quote)}
                         className="flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white hover:bg-yellow-700 transition-colors"
@@ -345,8 +345,8 @@ export default function QuotesManager() {
                         <Send size={16} />
                         Invia Preventivo
                       </button>
-                    )}
-                    {quote.status === 'quote_sent' && (
+                    )} */}
+                    {/* {quote.status === 'quote_sent' && (
                       <button
                         onClick={() => updateQuoteStatus(quote.id, 'confirmed')}
                         className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white hover:bg-green-700 transition-colors"
@@ -354,10 +354,10 @@ export default function QuotesManager() {
                         <Check size={16} />
                         Conferma
                       </button>
-                    )}
+                    )} */}
                     <button
                       onClick={() => deleteQuote(quote.id)}
-                      className="flex items-center gap-2 px-4 py-2 border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-colors ml-auto"
+                      className="flex items-center gap-2 px-4 py-2 border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white transition-colors "
                     >
                       <Trash2 size={16} />
                       Archivia
