@@ -3,6 +3,9 @@ import { redirect } from 'next/navigation';
 import { supabaseAdmin } from '@/src/lib/supabase';
 import LoginForm from '@/components/admin/LoginForm';
 
+// Forza rendering dinamico per questa route (usa cookies)
+export const dynamic = 'force-dynamic';
+
 async function getCurrentUser() {
   try {
     const cookieStore = await cookies();
