@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, FormEvent } from 'react';
+import { useTranslations } from 'next-intl';
 import SectionWrapper from '@/components/layout/SectionWrapper';
 import FormWrapper from '@/components/forms/FormWrapper';
 import Input from '@/components/ui/Input';
@@ -32,6 +33,7 @@ const macchine = [
 ];
 
 export default function PrenotaPage() {
+  const t = useTranslations('booking');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -142,7 +144,7 @@ export default function PrenotaPage() {
         passengers: parseInt(formData.passeggeri),
         vehicle: macchinaSelezionata || 'Non specificato',
         totalPrice: calculatedPrice,
-        paymentType: `${paymentType === 'full' ? 'Pagamento completo' : 'Acconto'}`,
+        paymentType: `${paymentType === 'full' ? t('payment.fullPayment.title') : t('payment.deposit.title')}`,
         notes: `${appliedRules.length > 0 ? `\nRegole applicate: ${appliedRules.join(', ')}` : ''}`,
         language: 'it',
       };
@@ -202,19 +204,19 @@ export default function PrenotaPage() {
   // Schermata conferma prenotazione inviata
   if (isSubmitted) {
     return (
-      <SectionWrapper className="bg-white min-h-screen flex items-center">
+      <SectionWrapper className="bg-white pt-20 min-h-screen flex items-center">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-8">
             <CheckCircle className="w-24 h-24 mx-auto text-black" />
           </div>
           <h1 className="text-4xl font-bold mb-6 text-black">
-            Prenotazione Confermata!
+            {t('success.title')}
           </h1>
           <p className="text-lg text-gray-600 mb-8">
-            Grazie per la tua prenotazione. Ti abbiamo inviato una email di conferma con tutti i dettagli e il link per il pagamento.
+            {t('success.message')}
           </p>
           <Button href="/" variant="primary">
-            Torna alla Home
+            {t('success.backToHome')}
           </Button>
         </div>
       </SectionWrapper>
@@ -230,12 +232,12 @@ export default function PrenotaPage() {
     return (
       <>
         <SectionWrapper className="bg-black text-white pt-32">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="text-center max-w-3xl mx-auto pt-20">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-              Scegli il Metodo di Pagamento
+              {t('payment.title')}
             </h1>
             <p className="text-xl text-gray-300">
-              Completa la tua prenotazione scegliendo come preferisci pagare
+              {t('payment.subtitle')}
             </p>
           </div>
         </SectionWrapper>
@@ -245,28 +247,28 @@ export default function PrenotaPage() {
             {/* Riepilogo Prenotazione */}
             <div className="bg-gray-50 border-2 border-black p-8 mb-8">
               <h2 className="text-2xl font-bold text-black mb-6 uppercase">
-                Riepilogo Prenotazione
+                {t('payment.summary.title')}
               </h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Tratta</p>
+                  <p className="text-sm text-gray-600 mb-1">{t('payment.summary.route')}</p>
                   <p className="text-xl font-semibold  text-black">
                     {selectedRoute?.origin_it} → {selectedRoute?.destination_it}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Data e Ora</p>
+                  <p className="text-sm text-gray-600 mb-1">{t('payment.summary.dateTime')}</p>
                   <p className="text-lg font-bold text-black">
                     {new Date(formData.data).toLocaleDateString('it-IT')} alle {formData.ora}
                   </p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Passeggeri</p>
-                  <p className="text-lg font-bold text-black">{formData.passeggeri} persone</p>
+                  <p className="text-sm text-gray-600 mb-1">{t('payment.summary.passengers')}</p>
+                  <p className="text-lg font-bold text-black">{formData.passeggeri} {t('payment.people')}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-600 mb-1">Passeggero</p>
+                  <p className="text-sm text-gray-600 mb-1">{t('payment.summary.passenger')}</p>
                   <p className="text-lg font-bold text-black">{formData.nome}</p>
                 </div>
               </div>
@@ -275,7 +277,7 @@ export default function PrenotaPage() {
               {/* Prezzo Totale */}
               <div className="border-t-2 border-black pt-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-black">Prezzo Totale:</span>
+                  <span className="text-2xl font-bold text-black">{t('payment.summary.totalPrice')}:</span>
                   <span className="text-4xl font-bold text-black">
                     €{calculatedPrice.toFixed(2)}
                   </span>
@@ -289,15 +291,15 @@ export default function PrenotaPage() {
               <div className="border-2 border-black p-8 hover:shadow-xl transition-all bg-white">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-black mb-2">
-                    Pagamento Completo
+                    {t('payment.fullPayment.title')}
                   </h3>
                   <p className="text-gray-600 text-sm">
-                    Paga il 100% ora e viaggia senza pensieri
+                    {t('payment.fullPayment.subtitle')}
                   </p>
                 </div>
 
                 <div className="border-2 border-black p-6 mb-6">
-                  <p className="text-md text-gray-600 mb-3">Importo da pagare ora:</p>
+                  <p className="text-md text-gray-600 mb-3">{t('payment.fullPayment.amount')}</p>
                   <hr />
                   <p className="text-4xl font-bold pt-3 border-t border-gray-300">€{calculatedPrice.toFixed(2)}</p>
                 </div>
@@ -305,15 +307,15 @@ export default function PrenotaPage() {
                 <div className="space-y-3 mb-6 text-sm text-gray-700">
                   <p className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    Nessun pagamento al driver
+                    {t('payment.fullPayment.benefits.noDriverPayment')}
                   </p>
                   <p className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    Prenotazione garantita
+                    {t('payment.fullPayment.benefits.guaranteed')}
                   </p>
                   <p className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    Pagamento sicuro con Stripe/PayPal
+                    {t('payment.fullPayment.benefits.secure')}
                   </p>
                 </div>
 
@@ -322,7 +324,7 @@ export default function PrenotaPage() {
                   variant="primary"
                   className="w-full"
                 >
-                  Paga €{calculatedPrice.toFixed(2)}
+                  {t('payment.fullPayment.button', { amount: calculatedPrice.toFixed(2) })}
                 </Button>
               </div>
 
@@ -330,20 +332,20 @@ export default function PrenotaPage() {
               <div className="border-2 border-black p-8 hover:shadow-xl transition-all bg-white">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold text-black mb-2">
-                    Acconto + Contanti
+                    {t('payment.deposit.title')}
                   </h3>
                   <p className="text-gray-600 text-sm">
-                    Paga il 40% ora, il resto al driver
+                    {t('payment.deposit.subtitle')}
                   </p>
                 </div>
 
                 <div className="bg-gray-100 border-2 border-black p-6 mb-6">
                   <div className="flex justify-between items-center mb-3">
-                    <span className="text-sm text-gray-600">Acconto online (40%):</span>
+                    <span className="text-sm text-gray-600">{t('payment.deposit.depositOnline')}</span>
                     <span className="text-2xl font-bold text-black">€{depositAmount.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between items-center pt-3 border-t border-gray-300">
-                    <span className="text-sm text-gray-600">Al driver (60%):</span>
+                    <span className="text-sm text-gray-600">{t('payment.deposit.toDriver')}</span>
                     <span className="text-xl font-bold text-gray-700">€{remainingAmount.toFixed(2)}</span>
                   </div>
                 </div>
@@ -351,15 +353,15 @@ export default function PrenotaPage() {
                 <div className="space-y-3 mb-6 text-sm text-gray-700">
                   <p className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    Paga meno ora
+                    {t('payment.deposit.benefits.payLess')}
                   </p>
                   <p className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    Resto in contanti al driver
+                    {t('payment.deposit.benefits.cashRemainder')}
                   </p>
                   <p className="flex items-start gap-2">
                     <span className="text-green-600 font-bold">✓</span>
-                    Prenotazione garantita
+                    {t('payment.deposit.benefits.guaranteed')}
                   </p>
                 </div>
 
@@ -368,7 +370,7 @@ export default function PrenotaPage() {
                   variant="outline"
                   className="w-full"
                 >
-                  Paga Acconto €{depositAmount.toFixed(2)}
+                  {t('payment.deposit.button', { amount: depositAmount.toFixed(2) })}
                 </Button>
               </div>
             </div>
@@ -379,7 +381,7 @@ export default function PrenotaPage() {
                 onClick={() => setShowPaymentSelection(false)}
                 className="text-gray-600 hover:text-black transition-colors underline"
               >
-                ← Torna al form
+                {t('payment.backToForm')}
               </button>
             </div>
           </div>
@@ -392,20 +394,20 @@ export default function PrenotaPage() {
   return (
     <>
       <SectionWrapper className="bg-black text-white pt-32">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto pt-20">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-            Prenota Online
+            {t('hero.title')}
           </h1>
           <p className="text-xl text-gray-300">
-            Compila il form per prenotare una tratta standard. Riceverai conferma immediata via email.
+            {t('hero.subtitle')}
           </p>
         </div>
       </SectionWrapper>
 
       <SectionWrapper className="bg-white">
         <FormWrapper
-          title="Prenotazione Trasferimento"
-          subtitle="Compila tutti i campi per completare la prenotazione"
+          title={t('form.title')}
+          subtitle={t('form.subtitle')}
           onSubmit={handleSubmit}
         >
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -439,7 +441,7 @@ export default function PrenotaPage() {
           {/* Tratta */}
           <div>
             <label className="block text-sm font-medium mb-2 text-black">
-              Tratta <span className="text-black ml-1">*</span>
+              {t('form.routeLabel')} <span className="text-black ml-1">*</span>
             </label>
             <select
               name="tratta"
@@ -450,7 +452,7 @@ export default function PrenotaPage() {
               className="w-full px-4 py-3 border-2 border-black bg-white text-black focus:outline-none focus:ring-2 focus:ring-black focus:border-black transition-all duration-200 disabled:opacity-50"
             >
               <option value="">
-                {loadingRoutes ? 'Caricamento tratte...' : 'Seleziona una tratta'}
+                {loadingRoutes ? t('form.loadingRoutes') : t('form.routePlaceholder')}
               </option>
               {routes.map((route) => (
                 <option key={route.id} value={route.id}>
@@ -465,7 +467,7 @@ export default function PrenotaPage() {
             <Input
               type="date"
               name="data"
-              label="Data"
+              label={t('form.dateLabel')}
               value={formData.data}
               onChange={handleChange}
               required
@@ -474,7 +476,7 @@ export default function PrenotaPage() {
             <Input
               type="time"
               name="ora"
-              label="Ora"
+              label={t('form.timeLabel')}
               value={formData.ora}
               onChange={handleChange}
               required
@@ -485,7 +487,7 @@ export default function PrenotaPage() {
           <Input
             type="number"
             name="passeggeri"
-            label="Numero Passeggeri"
+            label={t('form.passengersLabel')}
             value={formData.passeggeri}
             onChange={handleChange}
             required
@@ -496,13 +498,13 @@ export default function PrenotaPage() {
           {/* Dati Personali */}
           <div className="border-t-2 border-black pt-6">
             <h3 className="text-xl font-bold mb-6 text-black uppercase tracking-wider">
-              Dati Personali
+              {t('form.personalData')}
             </h3>
             <div className="space-y-6">
               <Input
                 type="text"
                 name="nome"
-                label="Nome e Cognome"
+                label={t('form.nameLabel')}
                 value={formData.nome}
                 onChange={handleChange}
                 required
@@ -510,7 +512,7 @@ export default function PrenotaPage() {
               <Input
                 type="email"
                 name="email"
-                label="Email"
+                label={t('form.emailLabel')}
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -518,7 +520,7 @@ export default function PrenotaPage() {
               <Input
                 type="tel"
                 name="telefono"
-                label="Telefono"
+                label={t('form.phoneLabel')}
                 value={formData.telefono}
                 onChange={handleChange}
                 required
@@ -530,21 +532,21 @@ export default function PrenotaPage() {
           {formData.tratta && formData.data && (
             <div className="border-2 border-black p-6 bg-gray-50">
               <h3 className="text-lg font-bold mb-4 text-black uppercase">
-                Riepilogo Prenotazione
+                {t('form.summary.title')}
               </h3>
               <div className="space-y-2 text-sm mb-4">
-                <p><strong>Tratta:</strong> {routes.find(r => r.id === formData.tratta)?.origin_it} → {routes.find(r => r.id === formData.tratta)?.destination_it}</p>
-                <p><strong>Data:</strong> {new Date(formData.data).toLocaleDateString('it-IT')}</p>
-                <p><strong>Ora:</strong> {formData.ora}</p>
-                <p><strong>Passeggeri:</strong> {formData.passeggeri}</p>
+                <p><strong>{t('form.summary.route')}:</strong> {routes.find(r => r.id === formData.tratta)?.origin_it} → {routes.find(r => r.id === formData.tratta)?.destination_it}</p>
+                <p><strong>{t('form.summary.date')}:</strong> {new Date(formData.data).toLocaleDateString('it-IT')}</p>
+                <p><strong>{t('form.summary.time')}:</strong> {formData.ora}</p>
+                <p><strong>{t('form.summary.passengers')}:</strong> {formData.passeggeri}</p>
               </div>
               
               {/* Prezzo Calcolato */}
               <div className="border-t-2 border-black pt-4 mt-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold">Prezzo Totale:</span>
+                  <span className="text-lg font-bold">{t('form.summary.totalPrice')}:</span>
                   {priceLoading ? (
-                    <span className="text-lg text-gray-500">Calcolando...</span>
+                    <span className="text-lg text-gray-500">{t('form.summary.calculating')}</span>
                   ) : calculatedPrice !== null ? (
                     <span className="text-3xl font-bold text-black">
                       €{calculatedPrice.toFixed(2)}
@@ -555,7 +557,7 @@ export default function PrenotaPage() {
                 </div>
                 {calculatedPrice !== null && !priceLoading && (
                   <p className="text-xs text-gray-600 mt-2">
-                    * Prezzo calcolato in base a passeggeri, data e orario selezionati
+                    {t('form.summary.priceNote')}
                   </p>
                 )}
               </div>
@@ -565,8 +567,7 @@ export default function PrenotaPage() {
           {/* Note Pagamento */}
           <div className="bg-black text-white p-6">
             <p className="text-sm">
-              <strong>Nota:</strong> Nel prossimo step potrai scegliere se pagare il 100% online 
-              o pagare un acconto del 40% online e il restante 60% in contanti al driver.
+              <strong>Nota:</strong> {t('form.paymentNote')}
             </p>
           </div>
 
@@ -579,9 +580,9 @@ export default function PrenotaPage() {
           {/* Messaggio di errore */}
           {error && (
             <div className="p-4 bg-red-50 border-2 border-red-500 text-red-700">
-              <p className="font-semibold">❌ Errore</p>
+              <p className="font-semibold">❌ {t('form.error')}</p>
               <p className="text-sm">{error}</p>
-              <p className="text-xs mt-2">Se il problema persiste, contattaci direttamente al +39 338 405 6027</p>
+              <p className="text-xs mt-2">{t('form.errorContact')}</p>
             </div>
           )}
 
@@ -591,7 +592,7 @@ export default function PrenotaPage() {
             className="w-full"
             disabled={!calculatedPrice || priceLoading || !gdprConsent || isSubmitting}
           >
-            {priceLoading ? 'Calcolo in corso...' : isSubmitting ? 'Invio in corso...' : 'Scegli Metodo di Pagamento →'}
+            {priceLoading ? t('form.calculating') : isSubmitting ? t('form.submitting') : t('form.submit')}
           </Button>
         </FormWrapper>
       </SectionWrapper>

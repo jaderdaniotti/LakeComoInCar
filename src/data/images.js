@@ -7,6 +7,10 @@ import carnera1 from "../assets/images/carnera.svg"
 import carnera2 from "../assets/images/carnera2.svg"
 import carnera3 from "../assets/images/carnera3.svg"
 import logo from "../assets/images/logo.webp"
+import aereo from "../assets/images/aereo.webp"
+import meeting from "../assets/images/meeting.webp"
+import wedding from "../assets/images/wedding.webp"
+
 const data = {
     videobackground,
     van,
@@ -16,7 +20,10 @@ const data = {
     carnera1,
     carnera2,
     carnera3,
-    logo
+    logo,
+    aereo,
+    meeting,
+    wedding
 };
 
 export default data;

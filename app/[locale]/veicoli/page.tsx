@@ -1,102 +1,112 @@
 import type { Metadata } from "next";
+import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import SectionWrapper from '@/components/layout/SectionWrapper';
 import Button from '@/components/ui/Button';
 import { Car, Users, Shield, Star } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'I Nostri Veicoli - LakeComoInCar | Veicoli Premium NCC',
-  description: 'Veicoli premium per il tuo trasporto: Mercedes, BMW e van di lusso. Moderni, eleganti e perfettamente manutenuti per il massimo comfort.',
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
-const vehicles = [
-  {
-    id: 1,
-    name: 'Mercedes Classe E',
-    category: 'Berlina Premium',
-    passengers: '1-4',
-    luggage: '3-4',
-    features: [
-      'Aria condizionata',
-      'Wi-Fi a bordo',
-      'Sedili in pelle',
-      'Sistema audio premium',
-    ],
-    ideal: 'Transfer aeroporti, servizi business, eventi',
-  },
-  {
-    id: 2,
-    name: 'BMW Serie 5',
-    category: 'Berlina Executive',
-    passengers: '1-4',
-    luggage: '3-4',
-    features: [
-      'Interni in pelle',
-      'Sistema audio premium',
-      'Sedili riscaldati',
-      'Climatizzatore automatico',
-    ],
-    ideal: 'Clienti business, transfer executive, occasioni speciali',
-  },
-  {
-    id: 3,
-    name: 'Mercedes Viano/Vito',
-    category: 'Van Premium',
-    passengers: '5-8',
-    luggage: '6-8',
-    features: [
-      'Ampio bagagliaio',
-      'Sedute confortevoli',
-      'Climatizzatore',
-      'Spazio per gruppi',
-    ],
-    ideal: 'Gruppi, famiglie, tour, trasferimenti aeroporti con bagagli',
-  },
-];
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'vehicles.metadata' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+  };
+}
 
 export default function VeicoliPage() {
+  const t = useTranslations('vehicles');
+  
+  // Build vehicles array from translations
+  const vehicles = [
+    {
+      id: 1,
+      name: t('vehicleList.mercedesE.name'),
+      category: t('vehicleList.mercedesE.category'),
+      passengers: t('vehicleList.mercedesE.passengers'),
+      luggage: t('vehicleList.mercedesE.luggage'),
+      features: [
+        t('vehicleList.mercedesE.features.ac'),
+        t('vehicleList.mercedesE.features.wifi'),
+        t('vehicleList.mercedesE.features.leather'),
+        t('vehicleList.mercedesE.features.audio'),
+      ],
+      ideal: t('vehicleList.mercedesE.ideal'),
+    },
+    {
+      id: 2,
+      name: t('vehicleList.bmw5.name'),
+      category: t('vehicleList.bmw5.category'),
+      passengers: t('vehicleList.bmw5.passengers'),
+      luggage: t('vehicleList.bmw5.luggage'),
+      features: [
+        t('vehicleList.bmw5.features.leather'),
+        t('vehicleList.bmw5.features.audio'),
+        t('vehicleList.bmw5.features.heated'),
+        t('vehicleList.bmw5.features.climate'),
+      ],
+      ideal: t('vehicleList.bmw5.ideal'),
+    },
+    {
+      id: 3,
+      name: t('vehicleList.viano.name'),
+      category: t('vehicleList.viano.category'),
+      passengers: t('vehicleList.viano.passengers'),
+      luggage: t('vehicleList.viano.luggage'),
+      features: [
+        t('vehicleList.viano.features.trunk'),
+        t('vehicleList.viano.features.seats'),
+        t('vehicleList.viano.features.ac'),
+        t('vehicleList.viano.features.space'),
+      ],
+      ideal: t('vehicleList.viano.ideal'),
+    },
+  ];
   return (
     <>
       {/* Hero Section */}
       <SectionWrapper className="bg-black text-white pt-32 pb-20">
-        <div className="max-w-4xl mx-auto text-center">
-          <Car className="w-16 h-16 mx-auto mb-6 text-white" />
+        <div className="max-w-4xl mx-auto pt-20 text-center">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 uppercase tracking-tight">
-            I Nostri Veicoli
+            {t('hero.title')}
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8">
-            Veicoli moderni e confortevoli per ogni esigenza di trasporto
+            {t('hero.subtitle')}
           </p>
         </div>
       </SectionWrapper>
 
       {/* Immagine Hero */}
       <div className="relative w-full h-96 bg-gray-100 border-b-4 border-black flex items-center justify-center">
-        <span className="text-gray-400 text-xl uppercase tracking-wider">Immagine Veicoli</span>
+        <span className="text-gray-400 text-xl uppercase tracking-wider">{t('imagePlaceholder')}</span>
       </div>
 
       {/* Descrizione */}
       <SectionWrapper className="bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-xl text-gray-700 leading-relaxed mb-8">
-            I nostri veicoli sono di ultima generazione, selezionati per garantire 
-            il massimo comfort, sicurezza ed eleganza in ogni viaggio. Ogni veicolo è perfettamente 
-            manutenuto e dotato di tutti i comfort moderni.
+            {t('description.text')}
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="flex flex-col items-center">
               <Shield className="w-12 h-12 mb-3" />
-              <h3 className="text-xl font-bold mb-2">Sempre Sicuri</h3>
-              <p className="text-gray-600">Manutenzione regolare e controlli costanti</p>
+              <h3 className="text-xl font-bold mb-2">{t('description.alwaysSafe.title')}</h3>
+              <p className="text-gray-600">{t('description.alwaysSafe.description')}</p>
             </div>
             <div className="flex flex-col items-center">
               <Star className="w-12 h-12 mb-3" />
-              <h3 className="text-xl font-bold mb-2">Premium Comfort</h3>
-              <p className="text-gray-600">Interni curati e dotazioni di lusso</p>
+              <h3 className="text-xl font-bold mb-2">{t('description.premiumComfort.title')}</h3>
+              <p className="text-gray-600">{t('description.premiumComfort.description')}</p>
             </div>
             <div className="flex flex-col items-center">
               <Users className="w-12 h-12 mb-3" />
-              <h3 className="text-xl font-bold mb-2">Ogni Esigenza</h3>
-              <p className="text-gray-600">Dal singolo passeggero ai gruppi numerosi</p>
+              <h3 className="text-xl font-bold mb-2">{t('description.everyNeed.title')}</h3>
+              <p className="text-gray-600">{t('description.everyNeed.description')}</p>
             </div>
           </div>
         </div>
@@ -106,7 +116,7 @@ export default function VeicoliPage() {
       <SectionWrapper className="bg-black text-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center uppercase">
-            I Nostri Veicoli
+            {t('gallery.title')}
           </h2>
           <div className="space-y-12">
             {vehicles.map((vehicle, index) => (
@@ -119,7 +129,7 @@ export default function VeicoliPage() {
                     {/* Immagine */}
                     <div className={`relative w-full h-80 bg-${index % 2 === 0 ? 'gray-800' : 'gray-100'} border-2 border-${index % 2 === 0 ? 'white' : 'black'} flex items-center justify-center order-${index % 2 === 0 ? '1' : '2'}`}>
                       <span className={`${index % 2 === 0 ? 'text-gray-500' : 'text-gray-400'} uppercase text-sm`}>
-                        Immagine {vehicle.name}
+                        {t('gallery.imagePlaceholder', { name: vehicle.name })}
                       </span>
                     </div>
 
@@ -138,19 +148,19 @@ export default function VeicoliPage() {
                       <div className="grid grid-cols-2 gap-4 mb-6">
                         <div className={`border-2 border-${index % 2 === 0 ? 'white' : 'black'} p-4`}>
                           <Users className="w-8 h-8 mb-2" />
-                          <p className="text-sm uppercase mb-1">Passeggeri</p>
+                          <p className="text-sm uppercase mb-1">{t('gallery.passengers')}</p>
                           <p className="text-2xl font-bold">{vehicle.passengers}</p>
                         </div>
                         <div className={`border-2 border-${index % 2 === 0 ? 'white' : 'black'} p-4`}>
                           <Car className="w-8 h-8 mb-2" />
-                          <p className="text-sm uppercase mb-1">Bagagli</p>
+                          <p className="text-sm uppercase mb-1">{t('gallery.luggage')}</p>
                           <p className="text-2xl font-bold">{vehicle.luggage}</p>
                         </div>
                       </div>
 
                       {/* Caratteristiche */}
                       <div className="mb-6">
-                        <h4 className="text-lg font-bold mb-3 uppercase">Caratteristiche</h4>
+                        <h4 className="text-lg font-bold mb-3 uppercase">{t('gallery.features')}</h4>
                         <div className="grid grid-cols-2 gap-2">
                           {vehicle.features.map((feature, i) => (
                             <div key={i} className="flex items-center gap-2">
@@ -163,7 +173,7 @@ export default function VeicoliPage() {
 
                       {/* Ideale per */}
                       <div>
-                        <h4 className="text-lg font-bold mb-2 uppercase">Ideale per</h4>
+                        <h4 className="text-lg font-bold mb-2 uppercase">{t('gallery.idealFor')}</h4>
                         <p className={index % 2 === 0 ? 'text-gray-300' : 'text-gray-700'}>
                           {vehicle.ideal}
                         </p>
@@ -181,24 +191,24 @@ export default function VeicoliPage() {
       <SectionWrapper className="bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center text-black uppercase">
-            Perché Scegliere i Nostri Veicoli
+            {t('whyChoose.title')}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="border-2 border-black p-6 text-center">
-              <div className="text-4xl font-bold mb-3">100%</div>
-              <p className="uppercase font-bold">Manutenzione Garantita</p>
+              <div className="text-4xl font-bold mb-3">{t('whyChoose.maintenance.value')}</div>
+              <p className="uppercase font-bold">{t('whyChoose.maintenance.label')}</p>
             </div>
             <div className="border-2 border-black p-6 text-center bg-black text-white">
-              <div className="text-4xl font-bold mb-3">2023+</div>
-              <p className="uppercase font-bold">Modelli Recenti</p>
+              <div className="text-4xl font-bold mb-3">{t('whyChoose.models.value')}</div>
+              <p className="uppercase font-bold">{t('whyChoose.models.label')}</p>
             </div>
             <div className="border-2 border-black p-6 text-center">
-              <div className="text-4xl font-bold mb-3">24/7</div>
-              <p className="uppercase font-bold">Sempre Disponibili</p>
+              <div className="text-4xl font-bold mb-3">{t('whyChoose.availability.value')}</div>
+              <p className="uppercase font-bold">{t('whyChoose.availability.label')}</p>
             </div>
             <div className="border-2 border-black p-6 text-center bg-black text-white">
-              <div className="text-4xl font-bold mb-3">TOP</div>
-              <p className="uppercase font-bold">Comfort Premium</p>
+              <div className="text-4xl font-bold mb-3">{t('whyChoose.comfort.value')}</div>
+              <p className="uppercase font-bold">{t('whyChoose.comfort.label')}</p>
             </div>
           </div>
         </div>
@@ -208,12 +218,12 @@ export default function VeicoliPage() {
       <SectionWrapper className="bg-black text-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center uppercase">
-            Galleria Veicoli
+            {t('gallerySection.title')}
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
               <div key={i} className="relative w-full h-64 bg-gray-800 border-2 border-white flex items-center justify-center">
-                <span className="text-gray-600 uppercase text-sm">Immagine {i}</span>
+                <span className="text-gray-600 uppercase text-sm">{t('gallerySection.imagePlaceholder', { number: i })}</span>
               </div>
             ))}
           </div>
@@ -223,17 +233,17 @@ export default function VeicoliPage() {
       {/* CTA */}
       <SectionWrapper className="bg-white text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-6 uppercase text-black">
-          Prenota il Tuo Viaggio
+          {t('cta.title')}
         </h2>
         <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-          Scegli il veicolo perfetto per le tue esigenze e viaggia con comfort e stile
+          {t('cta.description')}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button href="/prenota" variant="primary">
-            Prenota Online
+            {t('cta.bookOnline')}
           </Button>
           <Button href="tel:+393384056027" variant="outline">
-            Chiama Ora
+            {t('cta.callNow')}
           </Button>
         </div>
       </SectionWrapper>

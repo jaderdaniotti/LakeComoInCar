@@ -1,23 +1,35 @@
 import type { Metadata } from 'next';
+import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import SectionWrapper from '@/components/layout/SectionWrapper';
 import Button from '@/components/ui/Button';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 
-export const metadata: Metadata = {
-  title: 'Contatti - Como Lake Car | Contattaci per il Tuo Trasferimento',
-  description: 'Contatta Como Lake Car per informazioni, prenotazioni e preventivi. Telefono, email e informazioni per il servizio NCC a Como, Milano e Svizzera.',
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'contacts.metadata' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+  };
+}
+
 export default function ContattiPage() {
+  const t = useTranslations('contacts');
   return (
     <>
       <SectionWrapper className="bg-black text-white pt-32">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto pt-20">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-            Contatti
+            {t('hero.title')}
           </h1>
           <p className="text-xl text-gray-300">
-            Siamo a tua disposizione per qualsiasi informazione o richiesta
+            {t('hero.subtitle')}
           </p>
         </div>
       </SectionWrapper>
@@ -26,9 +38,9 @@ export default function ContattiPage() {
         <div className="max-w-6xl mx-auto">
           {/* Informazioni Generali */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8 text-black text-center">
-                Dati Aziendali
-              </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-black text-center">
+              {t('companyData.title')}
+            </h2>
               
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="flex flex-col items-center text-center">
@@ -36,17 +48,17 @@ export default function ContattiPage() {
                     <Phone className="w-6 h-6 text-black" />
                   </div>
                 <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
-                      Telefono
-                    </h3>
-                    <a
+                  {t('info.phone.title')}
+                </h3>
+                <a
                   href="tel:+393384056027"
-                      className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
-                    >
+                  className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
+                >
                   +39 338 405 6027
-                    </a>
-                    <p className="text-sm text-gray-500 mt-1">
-                  Disponibile 24/7
-                    </p>
+                </a>
+                <p className="text-sm text-gray-500 mt-1">
+                  {t('info.phone.available')}
+                </p>
                   </div>
 
               <div className="flex flex-col items-center text-center">
@@ -54,17 +66,17 @@ export default function ContattiPage() {
                   <Mail className="w-6 h-6 text-black" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
-                      Email
-                    </h3>
-                    <a
+                  {t('info.email.title')}
+                </h3>
+                <a
                   href="mailto:lakecomoincar@gmail.com"
-                      className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
-                    >
+                  className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
+                >
                   lakecomoincar@gmail.com
-                    </a>
-                    <p className="text-sm text-gray-500 mt-1">
-                  Risposta in 24h
-                    </p>
+                </a>
+                <p className="text-sm text-gray-500 mt-1">
+                  {t('info.email.response')}
+                </p>
                   </div>
 
               <div className="flex flex-col items-center text-center">
@@ -72,13 +84,13 @@ export default function ContattiPage() {
                   <Clock className="w-6 h-6 text-black" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
-                  Orari
+                  {t('info.hours.title')}
                 </h3>
                 <p className="text-lg text-gray-600">
-                  Servizio 24/7
+                  {t('info.hours.service')}
                 </p>
                 <p className="text-sm text-gray-500 mt-1">
-                  Ufficio: Lun-Ven 9-18
+                  {t('info.hours.office')}
                 </p>
                 </div>
 
@@ -87,13 +99,13 @@ export default function ContattiPage() {
                     <MapPin className="w-6 h-6 text-black" />
                   </div>
                 <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
-                  Area Servizio
-                    </h3>
-                    <p className="text-lg text-gray-600">
-                  Lombardia e Svizzera
-                    </p>
-                    <p className="text-sm text-gray-500 mt-1">
-                  2 sedi operative
+                  {t('info.areaService.title')}
+                </h3>
+                <p className="text-lg text-red-500">
+                  {/* {t('info.areaService.region')} */} Da mettere sedi
+                </p>
+                <p className="text-sm text-gray-500 mt-1">
+                  {t('info.areaService.offices')}
                 </p>
               </div>
             </div>
@@ -101,8 +113,8 @@ export default function ContattiPage() {
 
           {/* Le Nostre Sedi */}
           <div>
-            <h2 className="text-3xl font-bold mb-8 text-black text-center">
-              Le Nostre Sedi
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-black text-center">
+              {t('offices.title')}
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -110,13 +122,13 @@ export default function ContattiPage() {
               <div className="border-2 border-black overflow-hidden">
                 <div className="bg-black text-white p-6">
                   <h3 className="text-2xl font-bold mb-2 uppercase tracking-wider">
-                    Sede Corte Re
+                    {t('offices.corteRe.title')}
                   </h3>
                   <div className="flex items-start space-x-2">
                     <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                     <p className="text-gray-300">
-                      Località Corte del Re, 264<br />
-                      22041 Corte Re (CO)
+                      {t('offices.corteRe.address')}<br />
+                      {t('offices.corteRe.city')}
                     </p>
                   </div>
                 </div>
@@ -129,7 +141,7 @@ export default function ContattiPage() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Mappa Sede Corte Re"
+                    title={t('offices.corteRe.mapTitle')}
                   ></iframe>
                 </div>
                   </div>
@@ -138,13 +150,13 @@ export default function ContattiPage() {
               <div className="border-2 border-black overflow-hidden">
                 <div className="bg-black text-white p-6">
                   <h3 className="text-2xl font-bold mb-2 uppercase tracking-wider">
-                    Sede Como
-                    </h3>
+                    {t('offices.como.title')}
+                  </h3>
                   <div className="flex items-start space-x-2">
                     <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                     <p className="text-gray-300">
-                      Via Francesco Benzi, 14<br />
-                      22100 Como (CO)
+                      {t('offices.como.address')}<br />
+                      {t('offices.como.city')}
                     </p>
                   </div>
                 </div>
@@ -157,7 +169,7 @@ export default function ContattiPage() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Mappa Sede Como"
+                    title={t('offices.como.mapTitle')}
                   ></iframe>
                 </div>
               </div>
@@ -167,17 +179,17 @@ export default function ContattiPage() {
           {/* CTA */}
           <div className="mt-16 text-center">
             <h2 className="text-3xl font-bold mb-6 text-black">
-              Pronto a Prenotare?
+              {t('cta.title')}
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              Scegli il metodo più comodo per te
+              {t('cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button href="/prenota" variant="primary">
-                Prenota Online
+                {t('cta.bookOnline')}
               </Button>
               <Button href="/preventivo" variant="outline">
-                Richiedi Preventivo
+                {t('cta.requestQuote')}
               </Button>
             </div>
           </div>

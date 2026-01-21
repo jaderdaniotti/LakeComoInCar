@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { useTranslations } from "next-intl";
 import SectionWrapper from "@/components/layout/SectionWrapper";
 import FormWrapper from "@/components/forms/FormWrapper";
 import Input from "@/components/ui/Input";
@@ -12,6 +13,7 @@ import images from "@/src/data/images";
 import Image from "next/image";
 
 export default function PreventivoPage() {
+  const t = useTranslations('quote');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -117,24 +119,22 @@ export default function PreventivoPage() {
 
   if (isSubmitted) {
     return (
-      <SectionWrapper className="bg-white min-h-screen flex items-center">
+      <SectionWrapper className="bg-white min-h-screen pt-20 flex items-center">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-8">
             <CheckCircle className="w-24 h-24 mx-auto text-black" />
           </div>
           <h1 className="text-4xl font-bold mb-6 text-black">
-            Richiesta Inviata
+            {t('success.title')}
           </h1>
           <p className="text-lg text-gray-600 mb-4">
-            Grazie per la tua richiesta di preventivo. L'abbiamo ricevuta e la
-            stiamo elaborando.
+            {t('success.message')}
           </p>
           <p className="text-base text-gray-500 mb-8">
-            Ti invieremo il preventivo personalizzato via email entro 24 ore
-            lavorative. Per richieste urgenti, ti contatteremo telefonicamente.
+            {t('success.details')}
           </p>
           <Button href="/" variant="primary">
-            Torna alla Home
+            {t('success.backToHome')}
           </Button>
         </div>
       </SectionWrapper>
@@ -144,21 +144,20 @@ export default function PreventivoPage() {
   return (
     <>
       <SectionWrapper className="bg-black text-white pt-32">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl pt-20 mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-            Richiedi Preventivo
+            {t('hero.title')}
           </h1>
           <p className="text-xl text-gray-300">
-            Compila il form per richiedere un preventivo personalizzato per la
-            tua tratta. Ti risponderemo entro 24 ore lavorative.
+            {t('hero.subtitle')}
           </p>
         </div>
       </SectionWrapper>
 
       <SectionWrapper className="bg-white">
         <FormWrapper
-          title="Richiesta Preventivo Personalizzato"
-          subtitle="Fornisci tutti i dettagli per ricevere un preventivo su misura"
+          title={t('form.title')}
+          subtitle={t('form.subtitle')}
           onSubmit={handleSubmit}
         >
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -191,34 +190,34 @@ export default function PreventivoPage() {
           {/* Dettagli Trasferimento */}
           <div className="space-y-6">
             <h3 className="text-xl font-bold text-black uppercase tracking-wider">
-              Dettagli Trasferimento
+              {t('form.transferDetails')}
             </h3>
 
             <Input
               type="text"
               name="partenza"
-              label="Luogo di Partenza"
+              label={t('form.departureLabel')}
               value={formData.partenza}
               onChange={handleChange}
               required
-              placeholder="Es: Hotel, indirizzo, aeroporto..."
+              placeholder={t('form.departurePlaceholder')}
             />
 
             <Input
               type="text"
               name="destinazione"
-              label="Destinazione"
+              label={t('form.destinationLabel')}
               value={formData.destinazione}
               onChange={handleChange}
               required
-              placeholder="Es: Hotel, indirizzo, aeroporto..."
+              placeholder={t('form.destinationPlaceholder')}
             />
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Input
                 type="date"
                 name="data"
-                label="Data"
+                label={t('form.dateLabel')}
                 value={formData.data}
                 onChange={handleChange}
                 required
@@ -227,14 +226,14 @@ export default function PreventivoPage() {
               <Input
                 type="time"
                 name="oraPartenza"
-                label="Ora Partenza"
+                label={t('form.departureTimeLabel')}
                 value={formData.oraPartenza}
                 onChange={handleChange}
               />
               <Input
                 type="time"
                 name="oraArrivo"
-                label="Ora Arrivo Prevista"
+                label={t('form.arrivalTimeLabel')}
                 value={formData.oraArrivo}
                 onChange={handleChange}
               />
@@ -243,7 +242,7 @@ export default function PreventivoPage() {
             <Input
               type="number"
               name="passeggeri"
-              label="Numero Passeggeri"
+              label={t('form.passengersLabel')}
               value={formData.passeggeri}
               onChange={handleChange}
               required
@@ -253,24 +252,24 @@ export default function PreventivoPage() {
 
             <Textarea
               name="note"
-              label="Note Aggiuntive"
+              label={t('form.notesLabel')}
               value={formData.note}
               onChange={handleChange}
               rows={4}
-              placeholder="Eventuali richieste speciali, bagagli extra, soste intermedie..."
+              placeholder={t('form.notesPlaceholder')}
             />
           </div>
 
           {/* Dati Personali */}
           <div className="border-t-2 border-black pt-6">
             <h3 className="text-xl font-bold mb-6 text-black uppercase tracking-wider">
-              Dati Personali
+              {t('form.personalData')}
             </h3>
             <div className="space-y-6">
               <Input
                 type="text"
                 name="nome"
-                label="Nome e Cognome"
+                label={t('form.nameLabel')}
                 value={formData.nome}
                 onChange={handleChange}
                 required
@@ -278,7 +277,7 @@ export default function PreventivoPage() {
               <Input
                 type="email"
                 name="email"
-                label="Email"
+                label={t('form.emailLabel')}
                 value={formData.email}
                 onChange={handleChange}
                 required
@@ -286,7 +285,7 @@ export default function PreventivoPage() {
               <Input
                 type="tel"
                 name="telefono"
-                label="Telefono"
+                label={t('form.phoneLabel')}
                 value={formData.telefono}
                 onChange={handleChange}
                 required
@@ -297,11 +296,7 @@ export default function PreventivoPage() {
           {/* Info Preventivo */}
           <div className="bg-black text-white p-6">
             <p className="text-sm">
-              <strong>Come funziona:</strong> Riceverai il preventivo
-              personalizzato via email entro 24 ore lavorative. Il preventivo
-              includerà tutti i dettagli del servizio e il prezzo finale. Potrai
-              confermare la prenotazione rispondendo all'email o contattandoci
-              telefonicamente.
+              <strong>Come funziona:</strong> {t('form.howItWorks')}
             </p>
           </div>
 
@@ -314,9 +309,9 @@ export default function PreventivoPage() {
           {/* Messaggio di errore */}
           {error && (
             <div className="p-4 bg-red-50 border-2 border-red-500 text-red-700">
-              <p className="font-semibold">❌ Errore</p>
+              <p className="font-semibold">❌ {t('form.error')}</p>
               <p className="text-sm">{error}</p>
-              <p className="text-xs mt-2">Se il problema persiste, contattaci direttamente al +39 338 405 6027</p>
+              <p className="text-xs mt-2">{t('form.errorContact')}</p>
             </div>
           )}
 
@@ -326,7 +321,7 @@ export default function PreventivoPage() {
             className="w-full"
             disabled={!gdprConsent || isSubmitting}
           >
-            {isSubmitting ? 'Invio in corso...' : 'Invia Richiesta Preventivo'}
+            {isSubmitting ? t('form.submitting') : t('form.submit')}
           </Button>
         </FormWrapper>
       </SectionWrapper>

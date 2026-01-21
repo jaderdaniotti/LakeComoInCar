@@ -1,0 +1,556 @@
+{
+  "common": {
+    "siteName": "LakeComoInCar",
+    "companyName": "Autoservizi Pasquillo",
+    "phone": "+39 338 405 6027",
+    "email": "lakecomoincar@gmail.com",
+    "bookNow": "Réserver",
+    "requestQuote": "Demander un Devis",
+    "contactUs": "Nous Contacter",
+    "learnMore": "En Savoir Plus",
+    "readMore": "Lire Plus",
+    "seeAll": "Voir Tout",
+    "loading": "Chargement...",
+    "submit": "Envoyer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "close": "Fermer",
+    "save": "Sauvegarder",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "reset": "Réinitialiser",
+    "required": "Obligatoire",
+    "optional": "Optionnel",
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "tours": "Tours",
+    "vehicles": "Véhicules",
+    "booking": "Réserver",
+    "quote": "Devis",
+    "contacts": "Contacts",
+    "privacy": "Confidentialité",
+    "cookies": "Cookies",
+    "language": "Langue"
+  },
+  "tours": {
+    "lakeComo": "Tour du Lac de Côme",
+    "lakeComoDesc": "Découvrez les merveilles du lac",
+    "bernina": "Bernina Express",
+    "berninaDesc": "Tour panoramique en train",
+    "stMoritz": "St. Moritz",
+    "stMoritzDesc": "Élégance suisse",
+    "shopping": "Tour Shopping",
+    "shoppingDesc": "Shopping de luxe"
+  },
+  "footer": {
+    "companyInfo": "Informations sur l'Entreprise",
+    "quickLinks": "Liens Rapides",
+    "followUs": "Suivez-nous",
+    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL",
+    "vat": "TVA",
+    "poweredBy": "Propulsé Par",
+    "allRightsReserved": "Tous droits réservés"
+  },
+  "home": {
+    "metadata": {
+      "title": "LakeComoInCar | Service de Chauffeur Professionnel Côme-Milan-Suisse 24/7",
+      "description": "Autoservizi Pasquillo : service de chauffeur professionnel Côme-Milan-Suisse. Transferts aéroport Malpensa, Linate, Bergame. Connexions business Côme-Milan et Suisse (St. Moritz, Lugano). Disponible 24/7!",
+      "keywords": "Service chauffeur Côme Milan, Transfer aéroport Malpensa, Transfer Linate Côme, Côme Suisse transfer, Transfer St. Moritz, Chauffeur privé Milan"
+    },
+    "hero": {
+      "title": "LakeComoInCar",
+      "company": "Autoservizi Pasquillo",
+      "tagline": "Service de Chauffeur Professionnel • Disponible 24/7",
+      "locations": "Côme • Milan • Cernobbio • Suisse"
+    },
+    "about": {
+      "title": "Qui Sommes-Nous",
+      "description": "Autoservizi Pasquillo est le point de référence pour les transferts professionnels entre Côme, Milan et la Suisse, offrant un service de transport avec chauffeur d'excellence dans toute la Lombardie.",
+      "expertise": "Spécialisés dans les transferts aéroportuaires de Milan (Malpensa, Linate, Orio al Serio), les liaisons avec la Suisse (St. Moritz, Lugano, frontière) et les services professionnels entre Côme et Milan. Avec plus de 15 ans d'expérience, nous garantissons professionnalisme, ponctualité et confort dans chaque déplacement.",
+      "stats": {
+        "availability": "Disponibilité",
+        "experience": "Ans d'Expérience",
+        "professionalism": "Professionnalisme",
+        "offices": "Bureaux Opérationnels"
+      }
+    },
+    "whyUs": {
+      "title": "Pourquoi Nous Choisir",
+      "subtitle": "Expérience, professionnalisme et confort au service de votre mobilité",
+      "service247": {
+        "title": "Service 24/7",
+        "description": "Disponibilité continue, jour et nuit. Service ponctuel et fiable à tout moment."
+      },
+      "experiencedDrivers": {
+        "title": "Chauffeurs Expérimentés",
+        "description": "Chauffeurs professionnels du secteur, experts du territoire et toujours disponibles pour tous vos besoins."
+      },
+      "modernVehicles": {
+        "title": "Véhicules Modernes",
+        "description": "Véhicules modernes et confortables, équipés de tous les équipements pour un voyage totalement relaxant."
+      },
+      "maxSafety": {
+        "title": "Sécurité Maximale",
+        "description": "Confort et sécurité maximaux pendant le voyage. Flexibilité et personnalisation pour tous vos besoins."
+      }
+    },
+    "vehicles": {
+      "title": "Nos véhicules",
+      "subtitle": "Véhicules modernes, élégants et parfaitement entretenus pour garantir un confort maximal à chaque voyage",
+      "seeAll": "Découvrir Tous les Véhicules",
+      "contactInfo": "Contactez-nous pour plus d'infos",
+      "maintenance": "Tous nos véhicules sont soumis à un entretien régulier et une désinfection complète",
+      "imagePlaceholder": "Image Véhicule",
+      "mercedesE": {
+        "name": "Mercedes Classe E",
+        "description": "Élégance et confort pour les transferts aéroport et services professionnels. Le choix idéal pour les voyages d'affaires.",
+        "features": "Jusqu'à 4 passagers|Climatisation|Wi-Fi à bord|Espace bagages"
+      },
+      "bmw5": {
+        "name": "BMW Série 5",
+        "description": "Luxe et technologie au service de votre voyage. Parfait pour les clients professionnels et occasions spéciales.",
+        "features": "Jusqu'à 4 passagers|Intérieurs en cuir|Système audio premium|Sièges chauffants"
+      },
+      "viano": {
+        "name": "Mercedes Viano/Vito",
+        "description": "Espace et polyvalence pour les groupes et familles. Idéal pour les tours, transferts de groupe et événements.",
+        "features": "Jusqu'à 8 passagers|Grand coffre|Sièges confortables|Climatisation"
+      }
+    },
+    "services": {
+      "title": "Nos Services",
+      "subtitle": "Solutions de transport premium pour tous vos besoins",
+      "seeAll": "Découvrir Tous les Services",
+      "transfer": {
+        "title": "Transfer",
+        "description": "Service ponctuel et professionnel vers et depuis tous les principaux aéroports. Disponible 24/7 pour toute destination."
+      },
+      "business": {
+        "title": "Services Business",
+        "description": "Transferts pour réunions, salons et voyages d'affaires avec un professionnalisme et une discrétion maximum."
+      },
+      "events": {
+        "title": "Événements et Mariages",
+        "description": "Pour rendre votre jour spécial inoubliable avec élégance, style et attention aux détails."
+      }
+    },
+    "forWho": {
+      "title": "Pour Qui Nous Travaillons",
+      "subtitle": "Solutions personnalisées pour particuliers, entreprises et structures d'hébergement",
+      "individuals": {
+        "title": "Particuliers",
+        "description": "Transferts personnels, voyages de plaisance et occasions spéciales avec un confort et une attention maximum."
+      },
+      "hotels": {
+        "title": "Hôtels et Structures",
+        "description": "Services dédiés aux structures d'hébergement et tour opérateurs du territoire, avec gestion complète des invités."
+      },
+      "companies": {
+        "title": "Entreprises",
+        "description": "Solutions corporate pour transferts d'employés et clients avec facturation dédiée et gestion centralisée."
+      }
+    },
+    "cta": {
+      "title": "Réservez Votre Voyage Aujourd'hui",
+      "phone": "Appelez maintenant ! +39 338 405 6027 • Disponible 24/7",
+      "description": "Ne perdez pas de temps, réservez dès maintenant votre transfert et voyagez dans un confort et une sécurité totale avec Autoservizi Pasquillo.",
+      "bookOnline": "Réserver en Ligne",
+      "callNow": "Appeler Maintenant",
+      "requestQuote": "Demander un Devis"
+    }
+  },
+  "services": {
+    "metadata": {
+      "title": "Services - Como Lake Car | Transferts et Service de Chauffeur",
+      "description": "Découvrez tous nos services : transferts aéroportuaires, services professionnels, événements et mariages. Service de chauffeur professionnel pour Côme, Milan et la Suisse."
+    },
+    "hero": {
+      "title": "Nos Services",
+      "subtitle": "Solutions de transport premium personnalisées pour tous vos besoins"
+    },
+    "ncc": {
+      "title": "Service de Chauffeur (NCC)",
+      "paragraph1": "Notre service de chauffeur offre une expérience de transport de haut niveau, caractérisée par professionnalisme, ponctualité et confort maximum. Nos chauffeurs experts connaissent parfaitement le territoire de Côme, Milan et la Suisse, garantissant des transferts sûrs et efficaces.",
+      "paragraph2": "Nos véhicules sont premium, toujours impeccables et parfaitement entretenus, équipés de tous les équipements nécessaires pour rendre votre voyage agréable et relaxant."
+    },
+    "serviceTypes": {
+      "title": "Types de Service"
+    },
+    "airport": {
+      "title": "Transferts Aéroportuaires",
+      "description": "Service dédié pour transferts depuis et vers les principaux aéroports :",
+      "airports": {
+        "malpensa": "Aéroport de Milan Malpensa (MXP)",
+        "linate": "Aéroport de Milan Linate (LIN)",
+        "bergamo": "Aéroport de Bergame Orio al Serio (BGY)",
+        "swiss": "Aéroports suisses (Zurich, Lugano)"
+      },
+      "features": "Suivi des vols en temps réel, assistance bagages et ponctualité maximale garantie.",
+      "badge": "Service 24/7"
+    },
+    "business": {
+      "title": "Services Professionnels",
+      "description": "Solutions dédiées pour professionnels et entreprises :",
+      "features": {
+        "meetings": "Transferts pour réunions et conférences",
+        "fairs": "Services pour salons et événements d'entreprise",
+        "multistop": "Voyages d'affaires multi-étapes",
+        "billing": "Facturation dédiée et comptes courants"
+      },
+      "conclusion": "Discrétion, efficacité et professionnalisme maximum pour vos clients et collaborateurs.",
+      "badge": "Professionnalisme garanti"
+    },
+    "events": {
+      "title": "Événements et Mariages",
+      "description": "Pour rendre votre jour spécial inoubliable :",
+      "features": {
+        "ceremonies": "Transferts pour cérémonies et réceptions",
+        "celebrations": "Services pour événements et célébrations",
+        "decorated": "Véhicules décorés sur demande",
+        "packages": "Forfaits personnalisés pour les invités"
+      },
+      "conclusion": "Élégance, style et attention aux détails pour votre événement parfait.",
+      "badge": "Service sur mesure"
+    },
+    "cta": {
+      "title": "Prêt à Voyager ?",
+      "description": "Choisissez le service le plus adapté à vos besoins et réservez votre transfert",
+      "bookOnline": "Réserver en Ligne",
+      "requestQuote": "Demander un Devis"
+    }
+  },
+  "vehicles": {
+    "metadata": {
+      "title": "Nos Véhicules - LakeComoInCar | Véhicules Premium NCC",
+      "description": "Véhicules premium pour votre transport : Mercedes, BMW et vans de luxe. Modernes, élégants et parfaitement entretenus pour un confort maximal."
+    },
+    "hero": {
+      "title": "Nos Véhicules",
+      "subtitle": "Véhicules modernes et confortables pour tous vos besoins de transport"
+    },
+    "imagePlaceholder": "Image Véhicules",
+    "description": {
+      "text": "Nos véhicules sont de dernière génération, sélectionnés pour garantir un confort, une sécurité et une élégance maximum à chaque voyage. Chaque véhicule est parfaitement entretenu et équipé de tous les équipements modernes.",
+      "alwaysSafe": {
+        "title": "Toujours Sûrs",
+        "description": "Entretien régulier et contrôles constants"
+      },
+      "premiumComfort": {
+        "title": "Confort Premium",
+        "description": "Intérieurs soignés et équipements de luxe"
+      },
+      "everyNeed": {
+        "title": "Tous les Besoins",
+        "description": "Du passager unique aux grands groupes"
+      }
+    },
+    "gallery": {
+      "title": "Nos Véhicules",
+      "imagePlaceholder": "Image {name}",
+      "category": "Catégorie",
+      "passengers": "Passagers",
+      "luggage": "Bagages",
+      "features": "Caractéristiques",
+      "idealFor": "Idéal pour"
+    },
+    "vehicleList": {
+      "mercedesE": {
+        "name": "Mercedes Classe E",
+        "category": "Berline Premium",
+        "passengers": "1-4",
+        "luggage": "3-4",
+        "features": {
+          "ac": "Climatisation",
+          "wifi": "Wi-Fi à bord",
+          "leather": "Sièges en cuir",
+          "audio": "Système audio premium"
+        },
+        "ideal": "Transferts aéroport, services professionnels, événements"
+      },
+      "bmw5": {
+        "name": "BMW Série 5",
+        "category": "Berline Executive",
+        "passengers": "1-4",
+        "luggage": "3-4",
+        "features": {
+          "leather": "Intérieurs en cuir",
+          "audio": "Système audio premium",
+          "heated": "Sièges chauffants",
+          "climate": "Climatisation automatique"
+        },
+        "ideal": "Clients professionnels, transferts exécutifs, occasions spéciales"
+      },
+      "viano": {
+        "name": "Mercedes Viano/Vito",
+        "category": "Van Premium",
+        "passengers": "5-8",
+        "luggage": "6-8",
+        "features": {
+          "trunk": "Grand coffre",
+          "seats": "Sièges confortables",
+          "ac": "Climatisation",
+          "space": "Espace pour groupes"
+        },
+        "ideal": "Groupes, familles, tours, transferts aéroport avec bagages"
+      }
+    },
+    "whyChoose": {
+      "title": "Pourquoi Choisir Nos Véhicules",
+      "maintenance": {
+        "value": "100%",
+        "label": "Entretien Garanti"
+      },
+      "models": {
+        "value": "2023+",
+        "label": "Modèles Récents"
+      },
+      "availability": {
+        "value": "24/7",
+        "label": "Toujours Disponibles"
+      },
+      "comfort": {
+        "value": "TOP",
+        "label": "Confort Premium"
+      }
+    },
+    "gallerySection": {
+      "title": "Galerie Véhicules",
+      "imagePlaceholder": "Image {number}"
+    },
+    "cta": {
+      "title": "Réservez Votre Voyage",
+      "description": "Choisissez le véhicule parfait pour vos besoins et voyagez avec confort et style",
+      "bookOnline": "Réserver en Ligne",
+      "callNow": "Appeler Maintenant"
+    }
+  },
+  "booking": {
+    "metadata": {
+      "title": "Réserver - LakeComoInCar | Réservation en Ligne NCC",
+      "description": "Réservez votre service de chauffeur en ligne. Système de réservation simple et rapide avec calcul de prix automatique."
+    },
+    "hero": {
+      "title": "Réserver en Ligne",
+      "subtitle": "Remplissez le formulaire pour réserver un trajet standard. Vous recevrez une confirmation immédiate par email."
+    },
+    "form": {
+      "title": "Réservation Transfert",
+      "subtitle": "Remplissez tous les champs pour compléter la réservation",
+      "routeLabel": "Trajet",
+      "routePlaceholder": "Sélectionnez un trajet",
+      "loadingRoutes": "Chargement des trajets...",
+      "dateLabel": "Date",
+      "timeLabel": "Heure",
+      "passengersLabel": "Nombre de Passagers",
+      "personalData": "Données Personnelles",
+      "nameLabel": "Nom et Prénom",
+      "emailLabel": "Email",
+      "phoneLabel": "Téléphone",
+      "summary": {
+        "title": "Résumé de Réservation",
+        "route": "Trajet",
+        "date": "Date",
+        "time": "Heure",
+        "passengers": "Passagers",
+        "totalPrice": "Prix Total",
+        "calculating": "Calcul en cours...",
+        "priceNote": "* Prix calculé en fonction des passagers, date et heure sélectionnés"
+      },
+      "paymentNote": "Note : À l'étape suivante, vous pourrez choisir de payer 100% en ligne ou de payer un acompte de 40% en ligne et les 60% restants en espèces au chauffeur.",
+      "submit": "Choisir Méthode de Paiement →",
+      "calculating": "Calcul en cours...",
+      "submitting": "Envoi en cours...",
+      "error": "Erreur",
+      "errorMessage": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+      "errorContact": "Si le problème persiste, contactez-nous directement au +39 338 405 6027"
+    },
+    "success": {
+      "title": "Réservation Confirmée !",
+      "message": "Merci pour votre réservation. Nous vous avons envoyé un email de confirmation avec tous les détails et le lien de paiement.",
+      "backToHome": "Retour à l'Accueil"
+    },
+    "payment": {
+      "title": "Choisissez le Méthode de Paiement",
+      "subtitle": "Complétez votre réservation en choisissant comment vous préférez payer",
+      "summary": {
+        "title": "Résumé de Réservation",
+        "route": "Trajet",
+        "dateTime": "Date et Heure",
+        "passengers": "Passagers",
+        "passenger": "Passager",
+        "totalPrice": "Prix Total"
+      },
+      "fullPayment": {
+        "title": "Paiement Complet",
+        "subtitle": "Payez 100% maintenant et voyagez sans souci",
+        "amount": "Montant à payer maintenant :",
+        "benefits": {
+          "noDriverPayment": "Aucun paiement au chauffeur",
+          "guaranteed": "Réservation garantie",
+          "secure": "Paiement sécurisé avec Stripe/PayPal"
+        },
+        "button": "Payer €{amount}"
+      },
+      "deposit": {
+        "title": "Acompte + Espèces",
+        "subtitle": "Payez 40% maintenant, le reste au chauffeur",
+        "depositOnline": "Acompte en ligne (40%) :",
+        "toDriver": "Au chauffeur (60%) :",
+        "benefits": {
+          "payLess": "Payez moins maintenant",
+          "cashRemainder": "Reste en espèces au chauffeur",
+          "guaranteed": "Réservation garantie"
+        },
+        "button": "Payer Acompte €{amount}"
+      },
+      "backToForm": "← Retour au formulaire",
+      "people": "personnes"
+    }
+  },
+  "quote": {
+    "metadata": {
+      "title": "Devis - LakeComoInCar | Demander un Devis NCC",
+      "description": "Demandez un devis personnalisé pour votre service de chauffeur. Réponse rapide et tarifs compétitifs."
+    },
+    "hero": {
+      "title": "Demander un Devis",
+      "subtitle": "Remplissez le formulaire pour demander un devis personnalisé pour votre trajet. Nous vous répondrons dans les 24 heures ouvrables."
+    },
+    "form": {
+      "title": "Demande de Devis Personnalisé",
+      "subtitle": "Fournissez tous les détails pour recevoir un devis sur mesure",
+      "transferDetails": "Détails du Transfert",
+      "departureLabel": "Lieu de Départ",
+      "departurePlaceholder": "Ex. : Hôtel, adresse, aéroport...",
+      "destinationLabel": "Destination",
+      "destinationPlaceholder": "Ex. : Hôtel, adresse, aéroport...",
+      "dateLabel": "Date",
+      "departureTimeLabel": "Heure de Départ",
+      "arrivalTimeLabel": "Heure d'Arrivée Prévue",
+      "passengersLabel": "Nombre de Passagers",
+      "notesLabel": "Notes Supplémentaires",
+      "notesPlaceholder": "Toute demande spéciale, bagages supplémentaires, arrêts intermédiaires...",
+      "personalData": "Données Personnelles",
+      "nameLabel": "Nom et Prénom",
+      "emailLabel": "Email",
+      "phoneLabel": "Téléphone",
+      "howItWorks": "Comment ça fonctionne : Vous recevrez le devis personnalisé par email dans les 24 heures ouvrables. Le devis inclura tous les détails du service et le prix final. Vous pourrez confirmer la réservation en répondant à l'email ou en nous contactant par téléphone.",
+      "submit": "Envoyer la Demande de Devis",
+      "submitting": "Envoi en cours...",
+      "error": "Erreur",
+      "errorMessage": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+      "errorContact": "Si le problème persiste, contactez-nous directement au +39 338 405 6027"
+    },
+    "success": {
+      "title": "Demande Envoyée",
+      "message": "Merci pour votre demande de devis. Nous l'avons reçue et nous la traitons.",
+      "details": "Nous vous enverrons le devis personnalisé par email dans les 24 heures ouvrables. Pour les demandes urgentes, nous vous contacterons par téléphone.",
+      "backToHome": "Retour à l'Accueil"
+    }
+  },
+  "contacts": {
+    "metadata": {
+      "title": "Contacts - Como Lake Car | Contactez-nous pour votre Transfert",
+      "description": "Contactez Como Lake Car pour informations, réservations et devis. Téléphone, email et informations pour le service de chauffeur à Côme, Milan et Suisse."
+    },
+    "hero": {
+      "title": "Contacts",
+      "subtitle": "Nous sommes à votre disposition pour toute information ou demande"
+    },
+    "companyData": {
+      "title": "Informations de l'Entreprise"
+    },
+    "info": {
+      "phone": {
+        "title": "Téléphone",
+        "available": "Disponible 24/7"
+      },
+      "email": {
+        "title": "Email",
+        "response": "Réponse sous 24h"
+      },
+      "hours": {
+        "title": "Horaires",
+        "service": "Service 24/7",
+        "office": "Bureau : Lun-Ven 9-18"
+      },
+      "areaService": {
+        "title": "Zone de Service",
+        "region": "Lombardie et Suisse",
+        "offices": "2 bureaux opérationnels"
+      }
+    },
+    "offices": {
+      "title": "Nos Bureaux",
+      "corteRe": {
+        "title": "Bureau Corte Re",
+        "address": "Località Corte del Re, 264",
+        "city": "22041 Corte Re (CO)",
+        "mapTitle": "Carte Bureau Corte Re"
+      },
+      "como": {
+        "title": "Bureau Côme",
+        "address": "Via Francesco Benzi, 14",
+        "city": "22100 Côme (CO)",
+        "mapTitle": "Carte Bureau Côme"
+      }
+    },
+    "cta": {
+      "title": "Prêt à Réserver ?",
+      "subtitle": "Choisissez la méthode la plus pratique pour vous",
+      "bookOnline": "Réserver en Ligne",
+      "requestQuote": "Demander un Devis"
+    }
+  },
+  "privacy": {
+    "title": "Politique de Confidentialité",
+    "lastUpdate": "Dernière mise à jour",
+    "introduction": "Cette politique de confidentialité décrit comment nous traitons les données personnelles."
+  },
+  "cookies": {
+    "title": "Politique des Cookies",
+    "lastUpdate": "Dernière mise à jour",
+    "introduction": "Cette politique explique comment nous utilisons les cookies."
+  },
+  "gdpr": {
+    "title": "J'accepte les conditions de traitement des données personnelles",
+    "description": "En remplissant ce formulaire, vous déclarez avoir lu et accepté les conditions de la {privacyLink} et de la {cookieLink}.",
+    "privacyLink": "Politique de Confidentialité",
+    "cookieLink": "Politique des Cookies",
+    "required": "Obligatoire"
+  },
+  "cookieConsent": {
+    "title": "Ce site utilise des cookies",
+    "description": "Nous utilisons des cookies techniques et, avec votre consentement, des cookies analytiques. Pour plus d'informations, consultez notre",
+    "cookiePolicy": "Politique des Cookies",
+    "acceptAll": "Tout Accepter",
+    "acceptNecessary": "Nécessaires Seulement",
+    "customize": "Personnaliser",
+    "savePreferences": "Sauvegarder",
+    "necessary": "Cookies Nécessaires",
+    "necessaryDesc": "Essentiels pour le fonctionnement",
+    "functional": "Cookies Fonctionnels",
+    "functionalDesc": "Améliorent l'expérience",
+    "analytics": "Cookies Analytiques",
+    "analyticsDesc": "Analyse du trafic",
+    "marketing": "Cookies Marketing",
+    "marketingDesc": "Publicité personnalisée"
+  },
+  "whatsapp": {
+    "tooltip": "Contactez-nous sur WhatsApp",
+    "defaultMessage": "Bonjour! Je voudrais des informations sur vos services de chauffeur."
+  },
+  "errors": {
+    "required": "Ce champ est obligatoire",
+    "invalidEmail": "Email invalide",
+    "invalidPhone": "Numéro invalide",
+    "generic": "Une erreur s'est produite.",
+    "notFound": "Page non trouvée"
+  }
+}

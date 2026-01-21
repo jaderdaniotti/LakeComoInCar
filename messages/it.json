@@ -1,0 +1,560 @@
+{
+  "common": {
+    "siteName": "LakeComoInCar",
+    "companyName": "Autoservizi Pasquillo",
+    "phone": "+39 338 405 6027",
+    "email": "lakecomoincar@gmail.com",
+    "bookNow": "Prenota Subito",
+    "requestQuote": "Richiedi Preventivo",
+    "contactUs": "Contattaci",
+    "learnMore": "Scopri di più",
+    "readMore": "Leggi di più",
+    "seeAll": "Vedi Tutti",
+    "loading": "Caricamento...",
+    "submit": "Invia",
+    "cancel": "Annulla",
+    "confirm": "Conferma",
+    "close": "Chiudi",
+    "save": "Salva",
+    "delete": "Elimina",
+    "edit": "Modifica",
+    "search": "Cerca",
+    "filter": "Filtra",
+    "reset": "Reimposta",
+    "required": "Obbligatorio",
+    "optional": "Opzionale",
+    "yes": "Sì",
+    "no": "No"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Servizi",
+    "tours": "Tour",
+    "vehicles": "Veicoli",
+    "booking": "Prenota",
+    "quote": "Preventivo",
+    "contacts": "Contatti",
+    "privacy": "Privacy",
+    "cookies": "Cookie",
+    "language": "Lingua"
+  },
+  "tours": {
+    "lakeComo": "Tour Lago di Como",
+    "lakeComoDesc": "Scopri le meraviglie del lago",
+    "bernina": "Bernina Express",
+    "berninaDesc": "Tour panoramico in treno",
+    "stMoritz": "St. Moritz",
+    "stMoritzDesc": "Eleganza svizzera",
+    "shopping": "Shopping Tour",
+    "shoppingDesc": "Shopping di lusso"
+  },
+  "footer": {
+    "companyInfo": "Informazioni Aziendali",
+    "quickLinks": "Link Rapidi",
+    "followUs": "Seguici",
+    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL",
+    "vat": "P.IVA",
+    "poweredBy": "Powered By",
+    "allRightsReserved": "Tutti i diritti riservati"
+  },
+  "home": {
+    "metadata": {
+      "title": "LakeComoInCar | NCC Como-Milano-Svizzera 24/7 - Transfer Aeroporti Malpensa Linate",
+      "description": "Autoservizi Pasquillo: NCC professionale Como-Milano-Svizzera. Transfer aeroporti Malpensa, Linate, Bergamo. Collegamenti business Como-Milano e Svizzera (St. Moritz, Lugano). Disponibili 24/7!",
+      "keywords": "NCC Como Milano, Transfer aeroporto Malpensa, Transfer Linate Como, NCC Como Svizzera, Transfer St. Moritz, Noleggio auto con conducente Milano"
+    },
+    "hero": {
+      "title": "LakeComoInCar",
+      "company": "Autoservizi Pasquillo",
+      "tagline": "Servizio NCC Professionale • Disponibile 24/7",
+      "locations": "Como • Milano • Cernobbio • Svizzera"
+    },
+    "about": {
+      "title": "Chi Siamo",
+      "description": "Autoservizi Pasquillo è il punto di riferimento per trasferimenti professionali tra Como, Milano e Svizzera, offrendo un servizio NCC di eccellenza in tutta la Lombardia.",
+      "expertise": "Specializzati in transfer aeroportuali Milano (Malpensa, Linate, Orio al Serio), collegamenti con la Svizzera (St. Moritz, Lugano, confine) e servizi business tra Como e Milano. Con oltre 15 anni di esperienza, garantiamo professionalità, puntualità e comfort in ogni spostamento.",
+      "stats": {
+        "availability": "Disponibilità",
+        "experience": "Anni Esperienza",
+        "professionalism": "Professionalità",
+        "offices": "Sedi Operative"
+      }
+    },
+    "whyUs": {
+      "title": "Perché Sceglierci",
+      "subtitle": "Esperienza, professionalità e comfort al servizio della tua mobilità",
+      "service247": {
+        "title": "Servizio 24/7",
+        "description": "Disponibilità continua, giorno e notte. Servizio puntuale e affidabile in qualsiasi momento."
+      },
+      "experiencedDrivers": {
+        "title": "Autisti Esperti",
+        "description": "Autisti professionisti del settore, esperti del territorio e sempre disponibili per ogni esigenza."
+      },
+      "modernVehicles": {
+        "title": "Veicoli Moderni",
+        "description": "Veicoli moderni e confortevoli, dotati di ogni comfort per un viaggio in totale relax."
+      },
+      "maxSafety": {
+        "title": "Massima Sicurezza",
+        "description": "Massimo comfort e sicurezza durante il viaggio. Flessibilità e personalizzazione per ogni esigenza."
+      }
+    },
+    "vehicles": {
+      "title": "I nostri mezzi",
+      "subtitle": "Veicoli moderni, eleganti e perfettamente manutenuti per garantire il massimo comfort in ogni viaggio",
+      "seeAll": "Scopri Tutti i Veicoli",
+      "contactInfo": "Contattaci per Info",
+      "maintenance": "Tutti i nostri veicoli sono sottoposti a manutenzione regolare e sanificazione completa",
+      "imagePlaceholder": "Immagine Veicolo",
+      "mercedesE": {
+        "name": "Mercedes Classe E",
+        "description": "Eleganza e comfort per transfer aeroportuali e servizi business. La scelta ideale per viaggi di lavoro.",
+        "features": "Fino a 4 passeggeri|Aria condizionata|Wi-Fi a bordo|Spazio bagagli"
+      },
+      "bmw5": {
+        "name": "BMW Serie 5",
+        "description": "Lusso e tecnologia al servizio del tuo viaggio. Perfetto per clienti business e occasioni speciali.",
+        "features": "Fino a 4 passeggeri|Interni in pelle|Sistema audio premium|Sedili riscaldati"
+      },
+      "viano": {
+        "name": "Mercedes Viano/Vito",
+        "description": "Spazio e versatilità per gruppi e famiglie. Ideale per tour, trasferimenti di gruppo e eventi.",
+        "features": "Fino a 8 passeggeri|Ampio bagagliaio|Sedute confortevoli|Climatizzatore"
+      }
+    },
+    "services": {
+      "title": "I Nostri Servizi",
+      "subtitle": "Soluzioni di trasporto premium per ogni esigenza",
+      "seeAll": "Scopri Tutti i Servizi",
+      "transfer": {
+        "title": "Transfer",
+        "description": "Servizio puntuale e professionale da e per tutti i principali aeroporti. Disponibili 24/7 per ogni destinazione."
+      },
+      "business": {
+        "title": "Servizi Business",
+        "description": "Trasferimenti per meeting, fiere e viaggi di lavoro con massima professionalità e discrezione."
+      },
+      "events": {
+        "title": "Eventi e Matrimoni",
+        "description": "Per rendere indimenticabile il tuo giorno speciale con eleganza, stile e attenzione ai dettagli."
+      }
+    },
+    "forWho": {
+      "title": "Per Chi Lavoriamo",
+      "subtitle": "Soluzioni personalizzate per privati, aziende e strutture ricettive",
+      "individuals": {
+        "title": "Privati",
+        "description": "Trasferimenti personali, viaggi di piacere e occasioni speciali con il massimo comfort e attenzione."
+      },
+      "hotels": {
+        "title": "Hotel e Strutture",
+        "description": "Servizi dedicati per strutture ricettive e tour operator del territorio, con gestione completa degli ospiti."
+      },
+      "companies": {
+        "title": "Aziende",
+        "description": "Soluzioni corporate per trasferimenti dipendenti e clienti con fatturazione dedicata e gestione centralizzata."
+      }
+    },
+    "cta": {
+      "title": "Prenota il Tuo Viaggio Oggi",
+      "phone": "Chiama ora! +39 338 405 6027 • Disponibile 24/7",
+      "description": "Non perdere tempo, prenota subito il tuo trasferimento e viaggia in totale comfort e sicurezza con Autoservizi Pasquillo.",
+      "bookOnline": "Prenota Online",
+      "callNow": "Chiama Ora",
+      "requestQuote": "Richiedi Preventivo"
+    }
+  },
+  "services": {
+    "metadata": {
+      "title": "Servizi - Como Lake Car | Trasferimenti e Noleggio con Conducente",
+      "description": "Scopri tutti i nostri servizi: trasferimenti aeroportuali, servizi business, eventi e matrimoni. Servizio NCC professionale per Como, Milano e Svizzera."
+    },
+    "hero": {
+      "title": "I Nostri Servizi",
+      "subtitle": "Soluzioni di trasporto premium personalizzate per ogni esigenza"
+    },
+    "ncc": {
+      "title": "Servizio Noleggio con Conducente (NCC)",
+      "paragraph1": "Il nostro servizio di noleggio auto con conducente offre un'esperienza di trasporto di alto livello, caratterizzata da professionalità, puntualità e massimo comfort. I nostri autisti esperti conoscono perfettamente il territorio di Como, Milano e la Svizzera, garantendo trasferimenti sicuri ed efficienti.",
+      "paragraph2": "I nostri veicoli sono premium, sempre impeccabili e perfettamente mantenuti e dotati di tutti i comfort necessari per rendere il tuo viaggio piacevole e rilassante."
+    },
+    "serviceTypes": {
+      "title": "Tipologie di Servizio"
+    },
+    "airport": {
+      "title": "Trasferimenti Aeroportuali",
+      "description": "Servizio dedicato per trasferimenti da e verso gli aeroporti principali:",
+      "airports": {
+        "malpensa": "Aeroporto di Milano Malpensa (MXP)",
+        "linate": "Aeroporto di Milano Linate (LIN)",
+        "bergamo": "Aeroporto di Bergamo Orio al Serio (BGY)",
+        "swiss": "Aeroporti svizzeri (Zurigo, Lugano)"
+      },
+      "features": "Monitoraggio voli in tempo reale, assistenza bagagli e massima puntualità garantita.",
+      "badge": "Servizio 24/7"
+    },
+    "business": {
+      "title": "Servizi Business",
+      "description": "Soluzioni dedicate per professionisti e aziende:",
+      "features": {
+        "meetings": "Trasferimenti per meeting e conferenze",
+        "fairs": "Servizi per fiere ed eventi aziendali",
+        "multistop": "Viaggi di lavoro multi-tappa",
+        "billing": "Fatturazione dedicata e conti correnti"
+      },
+      "conclusion": "Discrezione, efficienza e massima professionalità per i tuoi clienti e collaboratori.",
+      "badge": "Professionalità garantita"
+    },
+    "events": {
+      "title": "Eventi e Matrimoni",
+      "description": "Per rendere indimenticabile il tuo giorno speciale:",
+      "features": {
+        "ceremonies": "Trasferimenti per cerimonie e ricevimenti",
+        "celebrations": "Servizi per eventi e celebrazioni",
+        "decorated": "Veicoli decorati su richiesta",
+        "packages": "Pacchetti personalizzati per gli ospiti"
+      },
+      "conclusion": "Eleganza, stile e attenzione ai dettagli per il tuo evento perfetto.",
+      "badge": "Servizio su misura"
+    },
+    "cta": {
+      "title": "Pronto a Viaggiare?",
+      "description": "Scegli il servizio più adatto alle tue esigenze e prenota il tuo trasferimento",
+      "bookOnline": "Prenota Online",
+      "requestQuote": "Richiedi Preventivo"
+    }
+  },
+  "vehicles": {
+    "metadata": {
+      "title": "I Nostri Veicoli - LakeComoInCar | Veicoli Premium NCC",
+      "description": "Veicoli premium per il tuo trasporto: Mercedes, BMW e van di lusso. Moderni, eleganti e perfettamente manutenuti per il massimo comfort."
+    },
+    "hero": {
+      "title": "I Nostri Veicoli",
+      "subtitle": "Veicoli moderni e confortevoli per ogni esigenza di trasporto"
+    },
+    "imagePlaceholder": "Immagine Veicoli",
+    "description": {
+      "text": "I nostri veicoli sono di ultima generazione, selezionati per garantire il massimo comfort, sicurezza ed eleganza in ogni viaggio. Ogni veicolo è perfettamente manutenuto e dotato di tutti i comfort moderni.",
+      "alwaysSafe": {
+        "title": "Sempre Sicuri",
+        "description": "Manutenzione regolare e controlli costanti"
+      },
+      "premiumComfort": {
+        "title": "Premium Comfort",
+        "description": "Interni curati e dotazioni di lusso"
+      },
+      "everyNeed": {
+        "title": "Ogni Esigenza",
+        "description": "Dal singolo passeggero ai gruppi numerosi"
+      }
+    },
+    "gallery": {
+      "title": "I Nostri Veicoli",
+      "imagePlaceholder": "Immagine {name}",
+      "category": "Categoria",
+      "passengers": "Passeggeri",
+      "luggage": "Bagagli",
+      "features": "Caratteristiche",
+      "idealFor": "Ideale per"
+    },
+    "vehicleList": {
+      "mercedesE": {
+        "name": "Mercedes Classe E",
+        "category": "Berlina Premium",
+        "passengers": "1-4",
+        "luggage": "3-4",
+        "features": {
+          "ac": "Aria condizionata",
+          "wifi": "Wi-Fi a bordo",
+          "leather": "Sedili in pelle",
+          "audio": "Sistema audio premium"
+        },
+        "ideal": "Transfer aeroporti, servizi business, eventi"
+      },
+      "bmw5": {
+        "name": "BMW Serie 5",
+        "category": "Berlina Executive",
+        "passengers": "1-4",
+        "luggage": "3-4",
+        "features": {
+          "leather": "Interni in pelle",
+          "audio": "Sistema audio premium",
+          "heated": "Sedili riscaldati",
+          "climate": "Climatizzatore automatico"
+        },
+        "ideal": "Clienti business, transfer executive, occasioni speciali"
+      },
+      "viano": {
+        "name": "Mercedes Viano/Vito",
+        "category": "Van Premium",
+        "passengers": "5-8",
+        "luggage": "6-8",
+        "features": {
+          "trunk": "Ampio bagagliaio",
+          "seats": "Sedute confortevoli",
+          "ac": "Climatizzatore",
+          "space": "Spazio per gruppi"
+        },
+        "ideal": "Gruppi, famiglie, tour, trasferimenti aeroporti con bagagli"
+      }
+    },
+    "whyChoose": {
+      "title": "Perché Scegliere i Nostri Veicoli",
+      "maintenance": {
+        "value": "100%",
+        "label": "Manutenzione Garantita"
+      },
+      "models": {
+        "value": "2023+",
+        "label": "Modelli Recenti"
+      },
+      "availability": {
+        "value": "24/7",
+        "label": "Sempre Disponibili"
+      },
+      "comfort": {
+        "value": "TOP",
+        "label": "Comfort Premium"
+      }
+    },
+    "gallerySection": {
+      "title": "Galleria Veicoli",
+      "imagePlaceholder": "Immagine {number}"
+    },
+    "cta": {
+      "title": "Prenota il Tuo Viaggio",
+      "description": "Scegli il veicolo perfetto per le tue esigenze e viaggia con comfort e stile",
+      "bookOnline": "Prenota Online",
+      "callNow": "Chiama Ora"
+    }
+  },
+  "booking": {
+    "metadata": {
+      "title": "Prenota - LakeComoInCar | Prenotazione NCC Online",
+      "description": "Prenota il tuo servizio NCC online. Sistema di prenotazione semplice e veloce con calcolo prezzo automatico."
+    },
+    "hero": {
+      "title": "Prenota Online",
+      "subtitle": "Compila il form per prenotare una tratta standard. Riceverai conferma immediata via email."
+    },
+    "form": {
+      "title": "Prenotazione Trasferimento",
+      "subtitle": "Compila tutti i campi per completare la prenotazione",
+      "routeLabel": "Tratta",
+      "routePlaceholder": "Seleziona una tratta",
+      "loadingRoutes": "Caricamento tratte...",
+      "dateLabel": "Data",
+      "timeLabel": "Ora",
+      "passengersLabel": "Numero Passeggeri",
+      "personalData": "Dati Personali",
+      "nameLabel": "Nome e Cognome",
+      "emailLabel": "Email",
+      "phoneLabel": "Telefono",
+      "summary": {
+        "title": "Riepilogo Prenotazione",
+        "route": "Tratta",
+        "date": "Data",
+        "time": "Ora",
+        "passengers": "Passeggeri",
+        "totalPrice": "Prezzo Totale",
+        "calculating": "Calcolando...",
+        "priceNote": "* Prezzo calcolato in base a passeggeri, data e orario selezionati"
+      },
+      "paymentNote": "Nota: Nel prossimo step potrai scegliere se pagare il 100% online o pagare un acconto del 40% online e il restante 60% in contanti al driver.",
+      "submit": "Scegli Metodo di Pagamento →",
+      "calculating": "Calcolo in corso...",
+      "submitting": "Invio in corso...",
+      "error": "Errore",
+      "errorMessage": "Si è verificato un errore. Riprova più tardi.",
+      "errorContact": "Se il problema persiste, contattaci direttamente al +39 338 405 6027"
+    },
+    "success": {
+      "title": "Prenotazione Confermata!",
+      "message": "Grazie per la tua prenotazione. Ti abbiamo inviato una email di conferma con tutti i dettagli e il link per il pagamento.",
+      "backToHome": "Torna alla Home"
+    },
+    "payment": {
+      "title": "Scegli il Metodo di Pagamento",
+      "subtitle": "Completa la tua prenotazione scegliendo come preferisci pagare",
+      "summary": {
+        "title": "Riepilogo Prenotazione",
+        "route": "Tratta",
+        "dateTime": "Data e Ora",
+        "passengers": "Passeggeri",
+        "passenger": "Passeggero",
+        "totalPrice": "Prezzo Totale"
+      },
+      "fullPayment": {
+        "title": "Pagamento Completo",
+        "subtitle": "Paga il 100% ora e viaggia senza pensieri",
+        "amount": "Importo da pagare ora:",
+        "benefits": {
+          "noDriverPayment": "Nessun pagamento al driver",
+          "guaranteed": "Prenotazione garantita",
+          "secure": "Pagamento sicuro con Stripe/PayPal"
+        },
+        "button": "Paga €{amount}"
+      },
+      "deposit": {
+        "title": "Acconto + Contanti",
+        "subtitle": "Paga il 40% ora, il resto al driver",
+        "depositOnline": "Acconto online (40%):",
+        "toDriver": "Al driver (60%):",
+        "benefits": {
+          "payLess": "Paga meno ora",
+          "cashRemainder": "Resto in contanti al driver",
+          "guaranteed": "Prenotazione garantita"
+        },
+        "button": "Paga Acconto €{amount}"
+      },
+      "backToForm": "← Torna al form",
+      "people": "persone"
+    }
+  },
+  "quote": {
+    "metadata": {
+      "title": "Preventivo - LakeComoInCar | Richiedi Preventivo NCC",
+      "description": "Richiedi un preventivo personalizzato per il tuo servizio NCC. Risposta rapida e tariffe competitive."
+    },
+    "hero": {
+      "title": "Richiedi Preventivo",
+      "subtitle": "Compila il form per richiedere un preventivo personalizzato per la tua tratta. Ti risponderemo entro 24 ore lavorative."
+    },
+    "form": {
+      "title": "Richiesta Preventivo Personalizzato",
+      "subtitle": "Fornisci tutti i dettagli per ricevere un preventivo su misura",
+      "transferDetails": "Dettagli Trasferimento",
+      "departureLabel": "Luogo di Partenza",
+      "departurePlaceholder": "Es: Hotel, indirizzo, aeroporto...",
+      "destinationLabel": "Destinazione",
+      "destinationPlaceholder": "Es: Hotel, indirizzo, aeroporto...",
+      "dateLabel": "Data",
+      "departureTimeLabel": "Ora Partenza",
+      "arrivalTimeLabel": "Ora Arrivo Prevista",
+      "passengersLabel": "Numero Passeggeri",
+      "notesLabel": "Note Aggiuntive",
+      "notesPlaceholder": "Eventuali richieste speciali, bagagli extra, soste intermedie...",
+      "personalData": "Dati Personali",
+      "nameLabel": "Nome e Cognome",
+      "emailLabel": "Email",
+      "phoneLabel": "Telefono",
+      "howItWorks": "Come funziona: Riceverai il preventivo personalizzato via email entro 24 ore lavorative. Il preventivo includerà tutti i dettagli del servizio e il prezzo finale. Potrai confermare la prenotazione rispondendo all'email o contattandoci telefonicamente.",
+      "submit": "Invia Richiesta Preventivo",
+      "submitting": "Invio in corso...",
+      "error": "Errore",
+      "errorMessage": "Si è verificato un errore. Riprova più tardi.",
+      "errorContact": "Se il problema persiste, contattaci direttamente al +39 338 405 6027"
+    },
+    "success": {
+      "title": "Richiesta Inviata",
+      "message": "Grazie per la tua richiesta di preventivo. L'abbiamo ricevuta e la stiamo elaborando.",
+      "details": "Ti invieremo il preventivo personalizzato via email entro 24 ore lavorative. Per richieste urgenti, ti contatteremo telefonicamente.",
+      "backToHome": "Torna alla Home"
+    }
+  },
+  "contacts": {
+    "metadata": {
+      "title": "Contatti - Como Lake Car | Contattaci per il Tuo Trasferimento",
+      "description": "Contatta Como Lake Car per informazioni, prenotazioni e preventivi. Telefono, email e informazioni per il servizio NCC a Como, Milano e Svizzera."
+    },
+    "hero": {
+      "title": "Contatti",
+      "subtitle": "Siamo a tua disposizione per qualsiasi informazione o richiesta"
+    },
+    "companyData": {
+      "title": "Dati Aziendali"
+    },
+    "info": {
+      "phone": {
+        "title": "Telefono",
+        "available": "Disponibile 24/7"
+      },
+      "email": {
+        "title": "Email",
+        "response": "Risposta in 24h"
+      },
+      "hours": {
+        "title": "Orari",
+        "service": "Servizio 24/7",
+        "office": "Ufficio: Lun-Ven 9-18"
+      },
+      "areaService": {
+        "title": "Area Servizio",
+        "region": "Lombardia e Svizzera",
+        "offices": "2 sedi operative"
+      }
+    },
+    "offices": {
+      "title": "Le Nostre Sedi",
+      "corteRe": {
+        "title": "Sede Corte Re",
+        "address": "Località Corte del Re, 264",
+        "city": "22041 Corte Re (CO)",
+        "mapTitle": "Mappa Sede Corte Re"
+      },
+      "como": {
+        "title": "Sede Como",
+        "address": "Via Francesco Benzi, 14",
+        "city": "22100 Como (CO)",
+        "mapTitle": "Mappa Sede Como"
+      }
+    },
+    "cta": {
+      "title": "Pronto a Prenotare?",
+      "subtitle": "Scegli il metodo più comodo per te",
+      "bookOnline": "Prenota Online",
+      "requestQuote": "Richiedi Preventivo"
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdate": "Ultimo aggiornamento",
+    "introduction": "La presente Privacy Policy descrive le modalità di trattamento dei dati personali degli utenti che consultano il sito web di LakeComoInCar (Autoservizi Pasquillo SRL)."
+  },
+  "cookies": {
+    "title": "Cookie Policy",
+    "lastUpdate": "Ultimo aggiornamento",
+    "introduction": "Questa Cookie Policy spiega cosa sono i cookie e come li utilizziamo sul nostro sito web."
+  },
+  "gdpr": {
+    "title": "Accetto le condizioni di trattamento dei dati personali",
+    "description": "Compilando e inviando questo modulo, dichiari di aver letto e accettato le condizioni generali contenute nella {privacyLink} e nella {cookieLink}. I tuoi dati saranno trattati in conformità al Regolamento UE 2016/679 (GDPR) per la gestione della prenotazione e per le comunicazioni relative al servizio richiesto.",
+    "privacyLink": "Privacy Policy",
+    "cookieLink": "Cookie Policy",
+    "required": "Obbligatorio"
+  },
+  "cookieConsent": {
+    "title": "Questo sito utilizza i cookie",
+    "description": "Utilizziamo cookie tecnici e, previo tuo consenso, cookie analitici e di profilazione di terze parti. Per maggiori informazioni consulta la nostra",
+    "cookiePolicy": "Cookie Policy",
+    "acceptAll": "Accetta Tutti",
+    "acceptNecessary": "Solo Necessari",
+    "customize": "Personalizza",
+    "savePreferences": "Salva Preferenze",
+    "necessary": "Cookie Necessari",
+    "necessaryDesc": "Essenziali per il funzionamento del sito",
+    "functional": "Cookie Funzionali",
+    "functionalDesc": "Migliorano l'esperienza utente",
+    "analytics": "Cookie Analitici",
+    "analyticsDesc": "Analisi del traffico e comportamento",
+    "marketing": "Cookie Marketing",
+    "marketingDesc": "Pubblicità personalizzata"
+  },
+  "whatsapp": {
+    "tooltip": "Contattaci su WhatsApp",
+    "defaultMessage": "Ciao! Vorrei informazioni sui vostri servizi NCC."
+  },
+  "errors": {
+    "required": "Questo campo è obbligatorio",
+    "invalidEmail": "Email non valida",
+    "invalidPhone": "Numero di telefono non valido",
+    "minLength": "Minimo {min} caratteri",
+    "maxLength": "Massimo {max} caratteri",
+    "generic": "Si è verificato un errore. Riprova più tardi.",
+    "network": "Errore di connessione. Verifica la tua connessione internet.",
+    "notFound": "Pagina non trovata",
+    "unauthorized": "Accesso non autorizzato"
+  }
+}

@@ -1,24 +1,38 @@
 import type { Metadata } from 'next';
+import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import SectionWrapper from '@/components/layout/SectionWrapper';
 import Button from '@/components/ui/Button';
-import { Plane, Briefcase, Heart, MapPin, Clock, Users } from 'lucide-react';
+import { Plane, Briefcase, Heart, Clock, Users } from 'lucide-react';
+import data from '@/src/data/images';
+import Image from 'next/image';
 
-export const metadata: Metadata = {
-  title: 'Servizi - Como Lake Car | Trasferimenti e Noleggio con Conducente',
-  description: 'Scopri tutti i nostri servizi: trasferimenti aeroportuali, servizi business, eventi e matrimoni. Servizio NCC professionale per Como, Milano e Svizzera.',
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'services.metadata' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+  };
+}
+
 export default function ServiziPage() {
+  const t = useTranslations('services');
   return (
     <>
       {/* Hero */}
       <SectionWrapper className="bg-black text-white pt-32">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl pt-20 mx-auto">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-            I Nostri Servizi
+            {t('hero.title')}
           </h1>
           <p className="text-xl text-gray-300">
-            Soluzioni di trasporto premium personalizzate per ogni esigenza
+            {t('hero.subtitle')}
           </p>
         </div>
       </SectionWrapper>
@@ -27,18 +41,13 @@ export default function ServiziPage() {
       <SectionWrapper className="bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-6 text-black">
-            Servizio Noleggio con Conducente (NCC)
+            {t('ncc.title')}
           </h2>
           <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-            Il nostro servizio di noleggio auto con conducente offre un'esperienza di trasporto 
-            di alto livello, caratterizzata da professionalità, puntualità e massimo comfort. 
-            I nostri autisti esperti conoscono perfettamente il territorio di Como, Milano e 
-            la Svizzera, garantendo trasferimenti sicuri ed efficienti.
+            {t('ncc.paragraph1')}
           </p>
           <p className="text-lg text-gray-600 leading-relaxed">
-            I nostri veicoli sono premium, sempre impeccabili e perfettamente 
-            mantenuti e dotati di tutti i comfort necessari per rendere il tuo viaggio 
-            piacevole e rilassante.
+            {t('ncc.paragraph2')}
           </p>
         </div>
       </SectionWrapper>
@@ -47,7 +56,7 @@ export default function ServiziPage() {
       <SectionWrapper className="bg-black text-white">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Tipologie di Servizio
+            {t('serviceTypes.title')}
           </h2>
         </div>
 
@@ -60,49 +69,43 @@ export default function ServiziPage() {
                   <Plane className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-3xl font-bold text-white uppercase tracking-wider">
-                  Trasferimenti Aeroportuali
+                  {t('airport.title')}
                 </h3>
               </div>
               <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                Servizio dedicato per trasferimenti da e verso gli aeroporti principali:
+                {t('airport.description')}
               </p>
               <ul className="space-y-3 text-gray-300 mb-8">
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Aeroporto di Milano Malpensa (MXP)</span>
+                  <span>{t('airport.airports.malpensa')}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Aeroporto di Milano Linate (LIN)</span>
+                  <span>{t('airport.airports.linate')}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Aeroporto di Bergamo Orio al Serio (BGY)</span>
+                  <span>{t('airport.airports.bergamo')}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Aeroporti svizzeri (Zurigo, Lugano)</span>
+                  <span>{t('airport.airports.swiss')}</span>
                 </li>
               </ul>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Monitoraggio voli in tempo reale, assistenza bagagli e massima puntualità garantita.
+                {t('airport.features')}
               </p>
             </div>
-            <div className="border-2 border-white p-8 h-full flex items-center justify-center">
-              <div className="text-center">
-                <Clock className="w-16 h-16 mx-auto mb-4 text-white" />
-                <p className="text-gray-300">Servizio 24/7</p>
-              </div>
+            <div className="border-2 border-white  h-full flex items-center justify-center">
+                <Image src={data.aereo} alt='Aereo' className='w-full h-full object-cover'/>
             </div>
           </div>
 
           {/* Servizi Business */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1 border-2 border-white p-8 h-full flex items-center justify-center">
-              <div className="text-center">
-                <Briefcase className="w-16 h-16 mx-auto mb-4 text-white" />
-                <p className="text-gray-300">Professionalità garantita</p>
-              </div>
+            <div className="order-2 md:order-1 border-2 border-white  h-full flex items-center justify-center">
+                <Image src={data.meeting} alt='Meeting' className='w-full h-full object-cover'/>
             </div>
             <div className="order-1 md:order-2">
               <div className="flex items-center mb-6">
@@ -110,32 +113,32 @@ export default function ServiziPage() {
                   <Briefcase className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-3xl font-bold text-white uppercase tracking-wider">
-                  Servizi Business
+                  {t('business.title')}
                 </h3>
               </div>
               <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                Soluzioni dedicate per professionisti e aziende:
+                {t('business.description')}
               </p>
               <ul className="space-y-3 text-gray-300 mb-8">
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Trasferimenti per meeting e conferenze</span>
+                  <span>{t('business.features.meetings')}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Servizi per fiere ed eventi aziendali</span>
+                  <span>{t('business.features.fairs')}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Viaggi di lavoro multi-tappa</span>
+                  <span>{t('business.features.multistop')}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Fatturazione dedicata e conti correnti</span>
+                  <span>{t('business.features.billing')}</span>
                 </li>
               </ul>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Discrezione, efficienza e massima professionalità per i tuoi clienti e collaboratori.
+                {t('business.conclusion')}
               </p>
             </div>
           </div>
@@ -148,39 +151,36 @@ export default function ServiziPage() {
                   <Heart className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-3xl font-bold text-white uppercase tracking-wider">
-                  Eventi e Matrimoni
+                  {t('events.title')}
                 </h3>
               </div>
               <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                Per rendere indimenticabile il tuo giorno speciale:
+                {t('events.description')}
               </p>
               <ul className="space-y-3 text-gray-300 mb-8">
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Trasferimenti per cerimonie e ricevimenti</span>
+                  <span>{t('events.features.ceremonies')}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Servizi per eventi e celebrazioni</span>
+                  <span>{t('events.features.celebrations')}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Veicoli decorati su richiesta</span>
+                  <span>{t('events.features.decorated')}</span>
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3">•</span>
-                  <span>Pacchetti personalizzati per gli ospiti</span>
+                  <span>{t('events.features.packages')}</span>
                 </li>
               </ul>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Eleganza, stile e attenzione ai dettagli per il tuo evento perfetto.
+                {t('events.conclusion')}
               </p>
             </div>
-            <div className="border-2 border-white p-8 h-full flex items-center justify-center">
-              <div className="text-center">
-                <Users className="w-16 h-16 mx-auto mb-4 text-white" />
-                <p className="text-gray-300">Servizio su misura</p>
-              </div>
+            <div className="border-2 border-white  h-full flex items-center justify-center">
+              <Image src={data.wedding} alt='Wedding' className='w-full h-full object-cover'/>
             </div>
           </div>
         </div>
@@ -190,17 +190,17 @@ export default function ServiziPage() {
       <SectionWrapper className="bg-white">
         <div className="text-center max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold mb-6 text-black">
-            Pronto a Viaggiare?
+            {t('cta.title')}
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            Scegli il servizio più adatto alle tue esigenze e prenota il tuo trasferimento
+            {t('cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/prenota" variant="primary">
-              Prenota Online
+              {t('cta.bookOnline')}
             </Button>
             <Button href="/preventivo" variant="outline">
-              Richiedi Preventivo
+              {t('cta.requestQuote')}
             </Button>
           </div>
         </div>

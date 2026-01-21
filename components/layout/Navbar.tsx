@@ -2,60 +2,72 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import data from '@/src/data/images';
-
-const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/servizi', label: 'Servizi' },
-  { href: '/veicoli', label: 'Veicoli' },
-];
-
-const tourLinks = [
-  { 
-    href: '/tour/lago-como', 
-    label: 'Tour Lago di Como',
-    description: 'Scopri le meraviglie del lago'
-  },
-  { 
-    href: '/tour/bernina-express', 
-    label: 'Bernina Express',
-    description: 'Tour panoramico in treno'
-  },
-  { 
-    href: '/tour/st-moritz', 
-    label: 'St. Moritz',
-    description: 'Eleganza svizzera'
-  },
-  { 
-    href: '/tour/shopping', 
-    label: 'Shopping Tour',
-    description: 'Shopping di lusso'
-  },
-];
-
-const otherLinks = [
-  { href: '/prenota', label: 'Prenota' },
-  { href: '/preventivo', label: 'Preventivo' },
-  { href: '/contatti', label: 'Contatti' },
-];
+import LocaleSwitcher from '@/components/ui/LocaleSwitcher';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isTourOpen, setIsTourOpen] = useState(false);
   const [isMobileTourOpen, setIsMobileTourOpen] = useState(false);
+  
+  const t = useTranslations();
+  const locale = useLocale();
+  
+  // Helper to create localized paths
+  const localePath = (path: string) => {
+    return locale === 'it' ? path : `/${locale}${path}`;
+  };
+
+  const navLinks = [
+    { href: localePath('/'), label: t('nav.home') },
+    { href: localePath('/servizi'), label: t('nav.services') },
+    { href: localePath('/veicoli'), label: t('nav.vehicles') },
+  ];
+
+  const tourLinks = [
+    { 
+      href: localePath('/tour/lago-como'), 
+      label: t('tours.lakeComo'),
+      description: t('tours.lakeComoDesc')
+    },
+    { 
+      href: localePath('/tour/bernina-express'), 
+      label: t('tours.bernina'),
+      description: t('tours.berninaDesc')
+    },
+    { 
+      href: localePath('/tour/st-moritz'), 
+      label: t('tours.stMoritz'),
+      description: t('tours.stMoritzDesc')
+    },
+    { 
+      href: localePath('/tour/shopping'), 
+      label: t('tours.shopping'),
+      description: t('tours.shoppingDesc')
+    },
+  ];
+
+  const otherLinks = [
+    { href: localePath('/prenota'), label: t('nav.booking') },
+    { href: localePath('/preventivo'), label: t('nav.quote') },
+    { href: localePath('/contatti'), label: t('nav.contacts') },
+  ];
+
+
 
   return (
     <nav className="fixed animate__animated animate__fadeInDown top-0 left-0 right-0 z-50 bg-white border-b-2 border-black">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <div className="flex items-center justify-center space-x-2 overflow-hidden">
+          <Link href={localePath('/')} className="flex items-center justify-center space-x-2 overflow-hidden">
             <Image src={data.logo} alt="Como Lake Car" height={100} width={100} className='w-full h-full object-contain'/>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -67,20 +79,20 @@ export default function Navbar() {
             ))}
             
             {/* Desktop Tour Dropdown */}
-            <div 
+            {/* <div 
               className="relative"
               onMouseEnter={() => setIsTourOpen(true)}
               onMouseLeave={() => setIsTourOpen(false)}
-            >
-              <button
+            > */}
+              {/* <button
                 className="flex items-center gap-1 text-black font-medium uppercase text-sm tracking-wider hover:text-gray-600 transition-colors duration-200"
               >
-                Tour
+                {t('nav.tours')}
                 <ChevronDown size={16} className={`transition-transform duration-200 ${isTourOpen ? 'rotate-180' : ''}`} />
-              </button>
+              </button> */}
               
-              {/* Dropdown Menu - con pt-2 per colmare il gap */}
-              {isTourOpen && (
+              {/* Dropdown Menu */}
+              {/* {isTourOpen && (
                 <div 
                   className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[600px]"
                 >
@@ -92,7 +104,6 @@ export default function Navbar() {
                           href={tour.href}
                           className="group block p-4 border-2 border-black hover:bg-black hover:text-white transition-all duration-200"
                         >
-                          {/* Placeholder per immagine futura */}
                           <div className="w-full h-32 border-2 border-dashed border-gray-300 group-hover:border-white mb-3 flex items-center justify-center bg-gray-50 group-hover:bg-gray-800 transition-colors duration-200">
                             <span className="text-xs text-gray-400 group-hover:text-gray-300 uppercase tracking-wider">Immagine</span>
                           </div>
@@ -103,8 +114,8 @@ export default function Navbar() {
                     </div>
                   </div>
                 </div>
-              )}
-            </div>
+              )} */}
+            {/* </div> */}
 
             {otherLinks.map((link) => (
               <Link
@@ -115,17 +126,22 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            
+            {/* Language Switcher */}
+            <LocaleSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-black"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-          <div className="hidden md:flex"></div>
+          <div className="md:hidden flex items-center gap-2">
+            <LocaleSwitcher />
+            <button
+              className="text-black"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -148,7 +164,7 @@ export default function Navbar() {
                 onClick={() => setIsMobileTourOpen(!isMobileTourOpen)}
                 className="flex items-center justify-between w-full py-3 text-black font-medium uppercase text-sm tracking-wider hover:text-gray-600 transition-colors duration-200"
               >
-                Tour
+                {t('nav.tours')}
                 <ChevronDown size={16} className={`transition-transform duration-200 ${isMobileTourOpen ? 'rotate-180' : ''}`} />
               </button>
               
@@ -164,7 +180,6 @@ export default function Navbar() {
                         setIsMobileTourOpen(false);
                       }}
                     >
-                      {/* Placeholder per immagine futura - Mobile */}
                       <div className="w-full h-24 border-2 border-dashed border-gray-300 mb-2 flex items-center justify-center bg-gray-50">
                         <span className="text-xs text-gray-400 uppercase tracking-wider">Immagine</span>
                       </div>

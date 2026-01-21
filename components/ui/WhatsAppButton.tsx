@@ -1,8 +1,9 @@
 'use client';
 
-import {  X } from 'lucide-react';
-import { useState, useMemo } from 'react';
+import { X } from 'lucide-react';
+import { useState } from 'react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 
 interface WhatsAppButtonProps {
   phoneNumber?: string;
@@ -25,31 +26,18 @@ const tooltipLabels = {
   es: '¡Chatea con nosotros en WhatsApp!'
 };
 
-// Helper function to detect language from pathname
-const detectLanguageFromPath = (path: string): 'it' | 'en' | 'fr' | 'es' => {
-  if (path.startsWith('/en')) return 'en';
-  if (path.startsWith('/fr')) return 'fr';
-  if (path.startsWith('/es')) return 'es';
-  return 'it';
-};
-
 export default function WhatsAppButton({ 
   phoneNumber = '393384056027',
   position = 'bottom-right'
 }: WhatsAppButtonProps) {
   const [isVisible, setIsVisible] = useState(true);
   
-  // Detect language from URL - computed once on mount without causing re-renders
-  const currentLang = useMemo(() => {
-    if (typeof window !== 'undefined') {
-      return detectLanguageFromPath(window.location.pathname);
-    }
-    return 'it';
-  }, []);
+  // Get current locale from next-intl (no hydration mismatch)
+  const locale = useLocale() as 'it' | 'en' | 'fr' | 'es';
 
   // Get message based on current language
-  const message = messages[currentLang];
-  const tooltipLabel = tooltipLabels[currentLang];
+  const message = messages[locale] || messages.it;
+  const tooltipLabel = tooltipLabels[locale] || tooltipLabels.it;
 
   // Encode message for URL
   const encodedMessage = encodeURIComponent(message);
