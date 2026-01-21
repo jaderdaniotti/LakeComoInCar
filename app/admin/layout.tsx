@@ -1,10 +1,14 @@
 import { ReactNode } from 'react';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 
-export default function AdminLayout({ children }: { children: ReactNode }) {
+export default async function AdminLayout({ children }: { children: ReactNode }) {
+  // Fornisce i messaggi per next-intl (usa la lingua di default)
+  const messages = await getMessages();
+
   return (
-    <>
-      {/* Rimuovi Navbar e Footer per l'area admin */}
+    <NextIntlClientProvider messages={messages}>
       {children}
-    </>
+    </NextIntlClientProvider>
   );
 }

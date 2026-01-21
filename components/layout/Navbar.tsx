@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
@@ -13,8 +14,12 @@ export default function Navbar() {
   const [isTourOpen, setIsTourOpen] = useState(false);
   const [isMobileTourOpen, setIsMobileTourOpen] = useState(false);
   
+  const pathname = usePathname();
   const t = useTranslations();
   const locale = useLocale();
+  
+  // Nascondi il cambio lingua nella dashboard admin
+  const isAdminRoute = pathname?.startsWith('/admin');
   
   // Helper to create localized paths
   const localePath = (path: string) => {
@@ -128,12 +133,12 @@ export default function Navbar() {
             ))}
             
             {/* Language Switcher */}
-            <LocaleSwitcher />
+            {!isAdminRoute && <LocaleSwitcher />}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-2">
-            <LocaleSwitcher />
+            {!isAdminRoute && <LocaleSwitcher />}
             <button
               className="text-black"
               onClick={() => setIsOpen(!isOpen)}
@@ -159,7 +164,7 @@ export default function Navbar() {
             ))}
             
             {/* Mobile Tour Accordion */}
-            <div>
+            {/* <div>
               <button
                 onClick={() => setIsMobileTourOpen(!isMobileTourOpen)}
                 className="flex items-center justify-between w-full py-3 text-black font-medium uppercase text-sm tracking-wider hover:text-gray-600 transition-colors duration-200"
@@ -189,7 +194,7 @@ export default function Navbar() {
                   ))}
                 </div>
               )}
-            </div>
+            </div> */}
 
             {otherLinks.map((link) => (
               <Link

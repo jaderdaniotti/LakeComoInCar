@@ -8,6 +8,8 @@ import RegisterForm from '@/components/admin/RegisterForm';
 import LogoutButton from '@/components/admin/LogoutButton';
 import BookingsManager from '@/components/admin/BookingsManager';
 import QuotesManager from '@/components/admin/QuotesManager';
+import Navbar from '@/components/layout/Navbar';
+
 
 type Tab = 'routes' | 'global-rules' | 'users' | 'bookings' | 'quotes';
 
@@ -15,6 +17,8 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<Tab>('bookings');
 
   return (
+    <>
+      <Navbar />
     <div className="min-h-screen pt-20 bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b-2 border-black">
@@ -61,5 +65,6 @@ export default function DashboardPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
