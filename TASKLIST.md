@@ -1,5 +1,5 @@
 # 📋 TASKLIST COMPLETA - Lake Como in Car
-
+**ultima modifica:** 21 Gennaio da Jader
 **Data creazione:** 20 Gennaio 2026  
 **Riferimenti:** ROADMAP.md + Riferimento sito vecchio.md
 
