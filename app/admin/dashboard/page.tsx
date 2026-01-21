@@ -6,11 +6,13 @@ import RoutesManager from '@/components/admin/RoutesManager';
 import GlobalRulesManager from '@/components/admin/GlobalRulesManager';
 import RegisterForm from '@/components/admin/RegisterForm';
 import LogoutButton from '@/components/admin/LogoutButton';
+import BookingsManager from '@/components/admin/BookingsManager';
+import QuotesManager from '@/components/admin/QuotesManager';
 
-type Tab = 'routes' | 'global-rules' | 'users' | 'bookings';
+type Tab = 'routes' | 'global-rules' | 'users' | 'bookings' | 'quotes';
 
 export default function DashboardPage() {
-  const [activeTab, setActiveTab] = useState<Tab>('routes');
+  const [activeTab, setActiveTab] = useState<Tab>('bookings');
 
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
@@ -53,37 +55,11 @@ export default function DashboardPage() {
             </div>
           )}
           
-          {activeTab === 'bookings' && (
-            <div className="text-center py-12">
-              <Calendar className="w-16 h-16 mx-auto mb-4 text-gray-400" />
-              <h2 className="text-2xl font-bold text-black mb-2">
-                Prenotazioni e Preventivi
-              </h2>
-              <p className="text-gray-600">
-                Work in Progress - Questa sezione sarà disponibile a breve
-              </p>
-            </div>
-          )}
+          {activeTab === 'bookings' && <BookingsManager />}
+          
+          {activeTab === 'quotes' && <QuotesManager />}
         </div>
       </div>
     </div>
-  );
-}
-
-function Calendar({ className }: { className?: string }) {
-  return (
-    <svg
-      className={className}
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-      />
-    </svg>
   );
 }

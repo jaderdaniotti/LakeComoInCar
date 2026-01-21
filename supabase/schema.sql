@@ -478,6 +478,9 @@ CREATE POLICY "Settings are viewable by admins" ON settings
 CREATE POLICY "Settings are editable by admins" ON settings
   FOR ALL USING (auth.role() = 'authenticated');
 
+
+
+///////////////////////DA FARE//////////////////////////////
 -- ============================================
 -- VISTE UTILI
 -- ============================================

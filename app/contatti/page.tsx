@@ -27,45 +27,45 @@ export default function ContattiPage() {
           {/* Informazioni Generali */}
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8 text-black text-center">
-              Dati Aziendali
-            </h2>
-            
+                Dati Aziendali
+              </h2>
+              
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="flex flex-col items-center text-center">
                 <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 mb-4">
-                  <Phone className="w-6 h-6 text-black" />
-                </div>
+                    <Phone className="w-6 h-6 text-black" />
+                  </div>
                 <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
-                  Telefono
-                </h3>
-                <a
+                      Telefono
+                    </h3>
+                    <a
                   href="tel:+393384056027"
-                  className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
-                >
+                      className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
+                    >
                   +39 338 405 6027
-                </a>
-                <p className="text-sm text-gray-500 mt-1">
+                    </a>
+                    <p className="text-sm text-gray-500 mt-1">
                   Disponibile 24/7
-                </p>
-              </div>
+                    </p>
+                  </div>
 
               <div className="flex flex-col items-center text-center">
                 <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 mb-4">
                   <Mail className="w-6 h-6 text-black" />
                 </div>
                 <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
-                  Email
-                </h3>
-                <a
+                      Email
+                    </h3>
+                    <a
                   href="mailto:lakecomoincar@gmail.com"
-                  className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
-                >
+                      className="text-lg text-gray-600 hover:text-black transition-colors duration-200"
+                    >
                   lakecomoincar@gmail.com
-                </a>
-                <p className="text-sm text-gray-500 mt-1">
+                    </a>
+                    <p className="text-sm text-gray-500 mt-1">
                   Risposta in 24h
-                </p>
-              </div>
+                    </p>
+                  </div>
 
               <div className="flex flex-col items-center text-center">
                 <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 mb-4">
@@ -80,19 +80,19 @@ export default function ContattiPage() {
                 <p className="text-sm text-gray-500 mt-1">
                   Ufficio: Lun-Ven 9-18
                 </p>
-              </div>
+                </div>
 
               <div className="flex flex-col items-center text-center">
                 <div className="w-12 h-12 border-2 border-black rounded-full flex items-center justify-center flex-shrink-0 mb-4">
-                  <MapPin className="w-6 h-6 text-black" />
-                </div>
+                    <MapPin className="w-6 h-6 text-black" />
+                  </div>
                 <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
                   Area Servizio
-                </h3>
-                <p className="text-lg text-gray-600">
+                    </h3>
+                    <p className="text-lg text-gray-600">
                   Lombardia e Svizzera
-                </p>
-                <p className="text-sm text-gray-500 mt-1">
+                    </p>
+                    <p className="text-sm text-gray-500 mt-1">
                   2 sedi operative
                 </p>
               </div>
@@ -132,14 +132,14 @@ export default function ContattiPage() {
                     title="Mappa Sede Corte Re"
                   ></iframe>
                 </div>
-              </div>
+                  </div>
 
               {/* Sede Como */}
               <div className="border-2 border-black overflow-hidden">
                 <div className="bg-black text-white p-6">
                   <h3 className="text-2xl font-bold mb-2 uppercase tracking-wider">
                     Sede Como
-                  </h3>
+                    </h3>
                   <div className="flex items-start space-x-2">
                     <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
                     <p className="text-gray-300">

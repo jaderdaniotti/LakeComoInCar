@@ -33,6 +33,8 @@ const macchine = [
 
 export default function PrenotaPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [showPaymentSelection, setShowPaymentSelection] = useState(false);
   const [macchinaSelezionata, setMacchinaSelezionata] = useState<string | null>(null);
   const [routes, setRoutes] = useState<Route[]>([]);
@@ -118,37 +120,75 @@ export default function PrenotaPage() {
   };
 
   const handlePaymentSelection = async (paymentType: 'full' | 'deposit') => {
-    // TODO: Integrazione backend
-    // Qui verrà implementata l'integrazione con:
-    // - Invio email di conferma
-    // - Salvataggio su database (Supabase/PostgreSQL)
-    // - Integrazione Stripe/PayPal per pagamento online
-    
-    console.log('Dati prenotazione:', formData);
-    console.log('Tipo pagamento:', paymentType);
-    console.log('Prezzo totale:', calculatedPrice);
-    console.log('Importo da pagare:', paymentType === 'full' ? calculatedPrice : (calculatedPrice || 0) * 0.4);
-    
-    // Simulazione invio
-    setIsSubmitted(true);
-    setShowPaymentSelection(false);
-    
-    // Reset form dopo 5 secondi (per demo)
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setMacchinaSelezionata(null);
-      setFormData({
-        tratta: '',
-        data: '',
-        ora: '',
-        passeggeri: '',
-        nome: '',
-        email: '',
-        telefono: '',
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // Trova la tratta selezionata per ottenere origine e destinazione
+      const selectedRoute = routes.find(r => r.id === formData.tratta);
+      const routeDescription = selectedRoute 
+        ? `${selectedRoute.origin_it} → ${selectedRoute.destination_it}`
+        : 'Tratta personalizzata';
+
+      // Prepara i dati da inviare all'API
+      const bookingData = {
+        customerName: formData.nome,
+        customerEmail: formData.email,
+        customerPhone: formData.telefono,
+        origin: selectedRoute?.origin_it || 'Non specificato',
+        destination: selectedRoute?.destination_it || 'Non specificato',
+        serviceDate: formData.data,
+        serviceTime: formData.ora,
+        passengers: parseInt(formData.passeggeri),
+        vehicle: macchinaSelezionata || 'Non specificato',
+        totalPrice: calculatedPrice,
+        notes: `Tipo pagamento: ${paymentType === 'full' ? 'Pagamento completo' : 'Acconto'}${appliedRules.length > 0 ? `\nRegole applicate: ${appliedRules.join(', ')}` : ''}`,
+        language: 'it',
+      };
+
+      // Chiama l'API per inviare le email
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingData),
       });
-      setCalculatedPrice(null);
-      setAppliedRules([]);
-    }, 5000);
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Errore durante l\'invio della prenotazione');
+      }
+
+      // Successo! Mostra la pagina di conferma
+      setIsSubmitted(true);
+      setShowPaymentSelection(false);
+      
+      // Reset form dopo 3 secondi
+      setTimeout(() => {
+        setMacchinaSelezionata(null);
+        setFormData({
+          tratta: '',
+          data: '',
+          ora: '',
+          passeggeri: '',
+          nome: '',
+          email: '',
+          telefono: '',
+        });
+        setCalculatedPrice(null);
+        setAppliedRules([]);
+        setGdprConsent(false);
+      }, 3000);
+
+    } catch (err) {
+      console.error('Errore invio prenotazione:', err);
+      setError(err instanceof Error ? err.message : 'Errore durante l\'invio. Riprova più tardi.');
+      setShowPaymentSelection(false); // Torna al form per mostrare l'errore
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -535,13 +575,22 @@ export default function PrenotaPage() {
             onChange={setGdprConsent}
           />
 
+          {/* Messaggio di errore */}
+          {error && (
+            <div className="p-4 bg-red-50 border-2 border-red-500 text-red-700">
+              <p className="font-semibold">❌ Errore</p>
+              <p className="text-sm">{error}</p>
+              <p className="text-xs mt-2">Se il problema persiste, contattaci direttamente al +39 338 405 6027</p>
+            </div>
+          )}
+
           <Button 
             type="submit" 
             variant="primary" 
             className="w-full"
-            disabled={!calculatedPrice || priceLoading || !gdprConsent}
+            disabled={!calculatedPrice || priceLoading || !gdprConsent || isSubmitting}
           >
-            {priceLoading ? 'Calcolo in corso...' : 'Scegli Metodo di Pagamento →'}
+            {priceLoading ? 'Calcolo in corso...' : isSubmitting ? 'Invio in corso...' : 'Scegli Metodo di Pagamento →'}
           </Button>
         </FormWrapper>
       </SectionWrapper>

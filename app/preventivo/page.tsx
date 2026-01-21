@@ -13,6 +13,8 @@ import Image from "next/image";
 
 export default function PreventivoPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [macchinaSelezionata, setMacchinaSelezionata] = useState<string | null>(
     null
   );
@@ -41,34 +43,67 @@ export default function PreventivoPage() {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
 
-    // TODO: Integrazione backend
-    // Qui verrà implementata l'integrazione con:
-    // - Invio email con richiesta preventivo
-    // - Salvataggio su database (Supabase/PostgreSQL)
-    // - Notifica all'amministratore per elaborazione preventivo
+    try {
+      // Prepara i dati da inviare all'API
+      const quoteData = {
+        customerName: formData.nome,
+        customerEmail: formData.email,
+        customerPhone: formData.telefono,
+        origin: formData.partenza,
+        destination: formData.destinazione,
+        serviceDate: formData.data,
+        serviceTime: formData.oraPartenza,
+        passengers: parseInt(formData.passeggeri),
+        notes: `${formData.note || ''}${formData.oraArrivo ? `\nOra arrivo prevista: ${formData.oraArrivo}` : ''}`,
+        vehicle: `${macchinaSelezionata} ? ${macchinaSelezionata} : ''`,
+        language: 'it',
+      };
 
-    console.log("Richiesta preventivo:", formData);
-
-    // Simulazione invio
-    setIsSubmitted(true);
-
-    // Reset form dopo 5 secondi (per demo)
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        partenza: "",
-        destinazione: "",
-        data: "",
-        oraPartenza: "",
-        oraArrivo: "",
-        passeggeri: "",
-        note: "",
-        nome: "",
-        email: "",
-        telefono: "",
+      // Chiama l'API per inviare le email
+      const response = await fetch('/api/quotes', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quoteData),
       });
-    }, 5000);
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Errore durante l\'invio della richiesta');
+      }
+
+      // Successo! Mostra la pagina di conferma
+      setIsSubmitted(true);
+      
+      // Reset form dopo 3 secondi
+      setTimeout(() => {
+        setFormData({
+          partenza: "",
+          destinazione: "",
+          data: "",
+          oraPartenza: "",
+          oraArrivo: "",
+          passeggeri: "",
+          note: "",
+          nome: "",
+          email: "",
+          telefono: "",
+        });
+        setMacchinaSelezionata(null);
+        setGdprConsent(false);
+      }, 3000);
+
+    } catch (err) {
+      console.error('Errore invio preventivo:', err);
+      setError(err instanceof Error ? err.message : 'Errore durante l\'invio. Riprova più tardi.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -276,13 +311,22 @@ export default function PreventivoPage() {
             onChange={setGdprConsent}
           />
 
+          {/* Messaggio di errore */}
+          {error && (
+            <div className="p-4 bg-red-50 border-2 border-red-500 text-red-700">
+              <p className="font-semibold">❌ Errore</p>
+              <p className="text-sm">{error}</p>
+              <p className="text-xs mt-2">Se il problema persiste, contattaci direttamente al +39 338 405 6027</p>
+            </div>
+          )}
+
           <Button 
             type="submit" 
             variant="primary" 
             className="w-full"
-            disabled={!gdprConsent}
+            disabled={!gdprConsent || isSubmitting}
           >
-            Invia Richiesta Preventivo
+            {isSubmitting ? 'Invio in corso...' : 'Invia Richiesta Preventivo'}
           </Button>
         </FormWrapper>
       </SectionWrapper>
