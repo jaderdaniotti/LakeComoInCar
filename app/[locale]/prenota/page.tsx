@@ -34,6 +34,18 @@ const macchine = [
   { value: 'carnera3', label: 'Car Nera 3', src: images.carnera3 },
 ];
 
+interface PaymentDetails {
+  paymentMethod: 'paypal' | 'stripe' | 'cash';
+  paypalOrderId?: string;
+  paypalDetails?: {
+    paymentDetails?: {
+      captureId?: string;
+    };
+  };
+  stripePaymentIntentId?: string;
+  stripeMethod?: string;
+}
+
 export default function PrenotaPage() {
   const t = useTranslations('booking');
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -136,23 +148,20 @@ export default function PrenotaPage() {
     setPaymentStep('method');
   };
 
-  const handlePaymentSelection = async (paymentType: 'full' | 'deposit', paymentDetails?: any) => {
+  const handlePaymentSelection = async (paymentType: 'full' | 'deposit', paymentDetails?: PaymentDetails) => {
     setIsSubmitting(true);
     setError(null);
 
     try {
       // Trova la tratta selezionata per ottenere origine e destinazione
       const selectedRoute = routes.find(r => r.id === formData.tratta);
-      const routeDescription = selectedRoute 
-        ? `${selectedRoute.origin_it} → ${selectedRoute.destination_it}`
-        : 'Tratta personalizzata';
 
       // Costruisci le note con informazioni pagamento
       let paymentNotes = '';
       if (paymentDetails?.paymentMethod === 'paypal') {
-        paymentNotes = `\nPagamento PayPal completato\nOrder ID: ${paymentDetails.paypalOrderId}\nCapture ID: ${paymentDetails.paypalDetails.paymentDetails?.captureId || 'N/A'}`;
+        paymentNotes = `\nPagamento PayPal completato\nOrder ID: ${paymentDetails.paypalOrderId || 'N/A'}\nCapture ID: ${paymentDetails.paypalDetails?.paymentDetails?.captureId || 'N/A'}`;
       } else if (paymentDetails?.paymentMethod === 'stripe') {
-        paymentNotes = `\nPagamento Stripe completato\nPayment Intent ID: ${paymentDetails.stripePaymentIntentId}`;
+        paymentNotes = `\nPagamento Stripe completato\nPayment Intent ID: ${paymentDetails.stripePaymentIntentId || 'N/A'}`;
       }
 
       // Prepara i dati da inviare all'API
@@ -254,6 +263,150 @@ export default function PrenotaPage() {
 
     // STEP 1: Selezione Metodo di Pagamento
     if (paymentStep === 'method') {
+      // Se Stripe è selezionato e showStripeCheckout è true, mostra direttamente StripeCheckout
+      if (selectedPaymentMethod === 'stripe' && showStripeCheckout) {
+        return (
+          <>
+            <SectionWrapper className="bg-black text-white pt-24 pb-8">
+              <div className="text-center max-w-3xl mx-auto">
+                <h1 className="text-3xl md:text-4xl font-bold mb-3 text-white">
+                  {t('payment.method.title')}
+                </h1>
+                <p className="text-base md:text-lg text-gray-300">
+                  Completa il pagamento con carta di credito
+                </p>
+              </div>
+            </SectionWrapper>
+
+            <SectionWrapper className="bg-white py-6 md:py-8">
+              <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                  {/* Colonna Sinistra: Tabella Riepilogo */}
+                  <div className="bg-gray-50 border-2 border-black p-6">
+                    <h2 className="text-2xl font-bold text-black mb-6 uppercase flex items-center gap-2">
+                      {t('payment.confirm.summary.title')}
+                    </h2>
+                    
+                    <div className="space-y-4">
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.route')}</p>
+                        <p className="text-lg font-semibold text-black">
+                          {selectedRoute?.origin_it} → {selectedRoute?.destination_it}
+                        </p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.dateTime')}</p>
+                        <p className="text-lg font-semibold text-black">
+                          {new Date(formData.data).toLocaleDateString('it-IT')} • {formData.ora}
+                        </p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.passengers')}</p>
+                        <p className="text-lg font-semibold text-black">{formData.passeggeri}</p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.passenger')}</p>
+                        <p className="text-lg font-semibold text-black">{formData.nome}</p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.email')}</p>
+                        <p className="text-lg font-semibold text-black">{formData.email}</p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.phone')}</p>
+                        <p className="text-lg font-semibold text-black">{formData.telefono}</p>
+                      </div>
+                      
+                      {macchinaSelezionata && (
+                        <div className="border-b border-gray-300 pb-3">
+                          <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.vehicle')}</p>
+                          <p className="text-lg font-semibold text-black">
+                            {macchine.find(m => m.value === macchinaSelezionata)?.label}
+                          </p>
+                        </div>
+                      )}
+                      
+                      <div className="pt-4 border-t-2 border-black">
+                        <div className="flex justify-between items-center">
+                          <span className="text-xl font-semibold text-black">{t('payment.confirm.summary.totalPrice')}:</span>
+                          <span className="text-3xl font-semibold text-black">
+                            €{calculatedPrice.toFixed(2)}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Colonna Destra: Stripe Checkout */}
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <h2 className="text-xl font-bold text-black">
+                        {t('payment.confirm.paymentMethod.title')}
+                      </h2>
+                      <button
+                        onClick={() => {
+                          setShowStripeCheckout(false);
+                          setSelectedStripeMethod(null);
+                        }}
+                        className="text-sm text-gray-600 hover:text-black underline"
+                      >
+                        Cambia metodo
+                      </button>
+                    </div>
+                    
+                    <div className="bg-white border-2 border-gray-300 p-6 mb-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div>
+                          <p className="text-lg flex items-center gap-2 font-bold"> <span className="size-10 flex items-center justify-center" dangerouslySetInnerHTML={{ __html: images.cb }} /> Carta di Credito / Debito</p>
+                          <p className="text-sm text-gray-600">Visa, Mastercard, Amex e altre</p>
+                        </div>
+                      </div>
+                      <div className="bg-purple-50 p-4 rounded mt-4">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.paymentMethod.stripe.totalToPay')}</p>
+                        <p className="text-2xl font-bold text-black">€{calculatedPrice.toFixed(2)}</p>
+                      </div>
+                    </div>
+
+                    <StripeCheckout
+                      amount={calculatedPrice}
+                      description={`Prenotazione LakeComoInCar - ${formData.nome}`}
+                      paymentMethod="card"
+                      metadata={{
+                        customerName: formData.nome,
+                        customerEmail: formData.email,
+                        route: `${selectedRoute?.origin_it} → ${selectedRoute?.destination_it}`,
+                        stripePaymentMethod: 'card',
+                        paymentType: 'full',
+                      }}
+                      onSuccess={async (paymentIntentId) => {
+                        console.log('Stripe payment successful:', paymentIntentId);
+                        // Invia la prenotazione con i dettagli del pagamento
+                        await handlePaymentSelection('full', {
+                          paymentMethod: 'stripe',
+                          stripePaymentIntentId: paymentIntentId,
+                          stripeMethod: 'card',
+                        });
+                      }}
+                      onError={(error) => {
+                        console.error('Stripe payment error:', error);
+                        setError('Errore durante il pagamento con carta. Riprova.');
+                        setShowStripeCheckout(false);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </SectionWrapper>
+          </>
+        );
+      }
+
+      // Altrimenti mostra la selezione del metodo di pagamento
       return (
         <>
           <SectionWrapper className="bg-black text-white pt-24 pb-8">
@@ -499,9 +652,15 @@ export default function PrenotaPage() {
                     </button>
                     <Button
                       onClick={() => {
-                        if (selectedPaymentMethod === 'stripe' || selectedPaymentMethod === 'cash') {
+                        if (selectedPaymentMethod === 'stripe') {
+                          // Per carta di credito, mostra direttamente StripeCheckout
+                          setSelectedStripeMethod('card');
+                          setShowStripeCheckout(true);
+                        } else if (selectedPaymentMethod === 'cash') {
+                          // Per acconto, va allo step di selezione metodo Stripe
                           setPaymentStep('stripe-methods');
                         } else {
+                          // Per PayPal, va alla conferma
                           setPaymentStep('confirm');
                         }
                       }}
@@ -796,11 +955,10 @@ export default function PrenotaPage() {
                       <h3 className="text-xl font-bold text-black">{t('payment.confirm.paymentMethod.title')}</h3>
                       <button
                         onClick={() => {
-                          if (selectedPaymentMethod === 'stripe') {
-                            setPaymentStep('stripe-methods');
-                          } else {
-                            setPaymentStep('method');
-                          }
+                          // Torna sempre allo step 'method' per cambiare metodo
+                          setPaymentStep('method');
+                          setShowStripeCheckout(false);
+                          setShowPayPalButton(false);
                         }}
                         className="text-sm text-gray-600 hover:text-black underline"
                       >
@@ -896,11 +1054,8 @@ export default function PrenotaPage() {
                   <div className="flex gap-4">
                     <button
                       onClick={() => {
-                        if (selectedPaymentMethod === 'stripe') {
-                          setPaymentStep('stripe-methods');
-                        } else {
-                          setPaymentStep('method');
-                        }
+                        // Torna sempre allo step 'method' per cambiare metodo
+                        setPaymentStep('method');
                         setShowPayPalButton(false);
                         setShowStripeCheckout(false);
                       }}

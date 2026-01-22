@@ -77,7 +77,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-black font-medium uppercase text-sm tracking-wider hover:text-gray-600 transition-colors duration-200"
+                className="text-black font-medium uppercase text-sm tracking-wider p-3 rounded-md hover:bg-black/10 hover:text-gray-600 transition-colors duration-300"
               >
                 {link.label}
               </Link>
@@ -126,7 +126,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-black font-medium uppercase text-sm tracking-wider hover:text-gray-600 transition-colors duration-200"
+                className="text-black font-medium uppercase text-sm tracking-wider p-3 rounded-md hover:bg-black/10 hover:text-gray-600 transition-colors duration-300"
               >
                 {link.label}
               </Link>
