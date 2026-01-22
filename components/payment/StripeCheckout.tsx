@@ -72,30 +72,11 @@ function CheckoutForm({
     }
   };
 
-  // Mappa i metodi selezionati ai tipi Stripe
-  const getPaymentMethodTypes = () => {
-    if (!paymentMethod) return undefined;
-    
-    const methodMap: Record<string, string[]> = {
-      'card': ['card'],
-      'klarna': ['klarna'],
-      'amazon_pay': ['amazon_pay'],
-      'bancontact': ['bancontact'],
-      'eps': ['eps'],
-    };
-    
-    return methodMap[paymentMethod] || ['card'];
-  };
-
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* Stripe Payment Element */}
       <div className="bg-white p-4 border-2 border-gray-300 rounded">
-        <PaymentElement 
-          options={{
-            paymentMethodTypes: getPaymentMethodTypes(),
-          }}
-        />
+        <PaymentElement />
       </div>
 
       {/* Error Message */}

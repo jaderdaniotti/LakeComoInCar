@@ -319,7 +319,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Mercedes Classe E */}
           <div className="border-2 border-white p-1">
-            <div className="border-2 border-white bg-white/5 hover:bg-white/10 transition-colors duration-300">
+            <div className="border-2 border-white bg-white/5 hover:bg-white/10 transition-colors duration-300 h-full">
               <div className="aspect-video bg-gray-800 border-2 border-white flex items-center justify-center">
                 <div className="text-center p-8">
                   <Car size={64} className="mx-auto mb-4 text-gray-600" />
@@ -346,7 +346,7 @@ export default function HomePage() {
 
           {/* BMW Serie 5 */}
           <div className="border-2 border-white p-1">
-            <div className="border-2 border-white bg-white/5 hover:bg-white/10 transition-colors duration-300">
+            <div className="border-2 border-white bg-white/5 hover:bg-white/10 transition-colors duration-300 h-full">
               <div className="aspect-video bg-gray-800 border-2 border-white flex items-center justify-center">
                 <div className="text-center p-8">
                   <Car size={64} className="mx-auto mb-4 text-gray-600" />
@@ -373,7 +373,7 @@ export default function HomePage() {
 
           {/* Mercedes Viano/Vito */}
           <div className="border-2 border-white p-1">
-            <div className="border-2 border-white bg-white/5 hover:bg-white/10 transition-colors duration-300">
+            <div className="border-2 border-white bg-white/5 hover:bg-white/10 transition-colors duration-300 h-full">
               <div className="aspect-video bg-gray-800 border-2 border-white flex items-center justify-center">
                 <div className="text-center p-8">
                   <Car size={64} className="mx-auto mb-4 text-gray-600" />

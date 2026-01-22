@@ -257,18 +257,190 @@ export default function PrenotaPage() {
 
   // Schermata selezione metodo di pagamento
   if (showPaymentSelection && calculatedPrice) {
-    const depositAmount = Math.round(calculatedPrice * 0.4 * 100) / 100;
-    const remainingAmount = Math.round(calculatedPrice * 0.6 * 100) / 100;
+    // Calcola l'acconto del 40% senza arrotondare (solo a 2 decimali)
+    const depositAmount = parseFloat((calculatedPrice * 0.4).toFixed(2));
+    const remainingAmount = parseFloat((calculatedPrice * 0.6).toFixed(2));
     const selectedRoute = routes.find(r => r.id === formData.tratta);
 
     // STEP 1: Selezione Metodo di Pagamento
     if (paymentStep === 'method') {
+      // Se Acconto Online + Contanti è selezionato e showStripeCheckout è true, mostra direttamente StripeCheckout
+      if (selectedPaymentMethod === 'cash' && showStripeCheckout) {
+        return (
+          <>
+            <SectionWrapper className="bg-black text-white pt-24 pb-8">
+              <div className="text-center max-w-3xl mx-auto">
+                <h1 className="text-3xl md:text-4xl font-bold mb-3 text-white">
+                  {t('payment.method.title')}
+                </h1>
+                <p className="text-base md:text-lg text-gray-300">
+                  Completa il pagamento dell&apos;acconto online
+                </p>
+              </div>
+            </SectionWrapper>
+
+            <SectionWrapper className="bg-white py-6 md:py-8">
+              <div className="max-w-7xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                  {/* Colonna Sinistra: Tabella Riepilogo */}
+                  <div className="bg-gray-50 border-2 border-black p-6">
+                    <h2 className="text-2xl font-bold text-black mb-6 uppercase flex items-center gap-2">
+                      {t('payment.confirm.summary.title')}
+                    </h2>
+                    
+                    <div className="space-y-4">
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.route')}</p>
+                        <p className="text-lg font-semibold text-black">
+                          {selectedRoute?.origin_it} → {selectedRoute?.destination_it}
+                        </p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.dateTime')}</p>
+                        <p className="text-lg font-semibold text-black">
+                          {new Date(formData.data).toLocaleDateString('it-IT')} • {formData.ora}
+                        </p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.passengers')}</p>
+                        <p className="text-lg font-semibold text-black">{formData.passeggeri}</p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.passenger')}</p>
+                        <p className="text-lg font-semibold text-black">{formData.nome}</p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.email')}</p>
+                        <p className="text-lg font-semibold text-black">{formData.email}</p>
+                      </div>
+                      
+                      <div className="border-b border-gray-300 pb-3">
+                        <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.phone')}</p>
+                        <p className="text-lg font-semibold text-black">{formData.telefono}</p>
+                      </div>
+                      
+                      {macchinaSelezionata && (
+                        <div className="border-b border-gray-300 pb-3">
+                          <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.summary.vehicle')}</p>
+                          <p className="text-lg font-semibold text-black">
+                            {macchine.find(m => m.value === macchinaSelezionata)?.label}
+                          </p>
+                        </div>
+                      )}
+                      
+                      <div className="pt-4 border-t-2 border-black">
+                        <div className="space-y-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-lg font-semibold text-black">Totale:</span>
+                            <span className="text-2xl font-semibold text-black">
+                              €{calculatedPrice.toFixed(2)}
+                            </span>
+                          </div>
+                          <div className="flex justify-between items-center pt-2 border-t border-gray-300">
+                            <span className="text-sm text-gray-600">Acconto (40%):</span>
+                            <span className="text-lg font-semibold text-black">
+                              €{depositAmount.toFixed(2)}
+                            </span>
+                          </div>
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm text-gray-600">Restante (60%):</span>
+                            <span className="text-lg font-semibold text-gray-700">
+                              €{remainingAmount.toFixed(2)} (in contanti)
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Colonna Destra: Stripe Checkout per Acconto */}
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <h2 className="text-xl font-bold text-black">
+                        {t('payment.confirm.paymentMethod.title')}
+                      </h2>
+                      <button
+                        onClick={() => {
+                          setShowStripeCheckout(false);
+                          setSelectedStripeMethod(null);
+                        }}
+                        className="text-sm text-gray-600 hover:text-black underline"
+                      >
+                        Cambia metodo
+                      </button>
+                    </div>
+                    
+                    <div className="bg-white border-2 border-gray-300 p-6 mb-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div>
+                          <p className="text-lg font-bold">{t('payment.method.cash.title')}</p>
+                          <p className="text-sm text-gray-600">{t('payment.method.cash.description')}</p>
+                        </div>
+                      </div>
+                      <div className="bg-blue-50 p-4 rounded mt-4 mb-4">
+                        <p className="text-sm text-gray-600 mb-1">Acconto da pagare ora</p>
+                        <p className="text-2xl font-bold text-black">€{depositAmount.toFixed(2)}</p>
+                        <p className="text-xs text-gray-600 mt-2">
+                          Restante €{remainingAmount.toFixed(2)} da pagare in contanti all&apos;autista
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Messaggio informativo */}
+                    <div className="bg-yellow-50 border-2 border-yellow-400 p-4 mb-4">
+                      <p className="text-sm text-yellow-800 flex items-start gap-2">
+                        <span className="text-lg">ℹ️</span>
+                        <span>
+                          <strong>Pagamento Parziale:</strong> Stai pagando un acconto del 40% ({depositAmount.toFixed(2)}€) online. 
+                          Il restante 60% ({remainingAmount.toFixed(2)}€) dovrà essere pagato in contanti all&apos;autista al momento del servizio.
+                        </span>
+                      </p>
+                    </div>
+
+                    <StripeCheckout
+                      amount={depositAmount}
+                      description={`Acconto Prenotazione LakeComoInCar - ${formData.nome} (40%)`}
+                      paymentMethod="card"
+                      metadata={{
+                        customerName: formData.nome,
+                        customerEmail: formData.email,
+                        route: `${selectedRoute?.origin_it} → ${selectedRoute?.destination_it}`,
+                        stripePaymentMethod: 'card',
+                        paymentType: 'deposit',
+                      }}
+                      onSuccess={async (paymentIntentId) => {
+                        console.log('Stripe deposit payment successful:', paymentIntentId);
+                        // Invia la prenotazione con i dettagli del pagamento
+                        await handlePaymentSelection('deposit', {
+                          paymentMethod: 'cash',
+                          stripePaymentIntentId: paymentIntentId,
+                          stripeMethod: 'card',
+                        });
+                      }}
+                      onError={(error) => {
+                        console.error('Stripe deposit payment error:', error);
+                        setError('Errore durante il pagamento dell\'acconto. Riprova.');
+                        setShowStripeCheckout(false);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </SectionWrapper>
+          </>
+        );
+      }
+
       // Se Stripe è selezionato e showStripeCheckout è true, mostra direttamente StripeCheckout
       if (selectedPaymentMethod === 'stripe' && showStripeCheckout) {
         return (
           <>
             <SectionWrapper className="bg-black text-white pt-24 pb-8">
-              <div className="text-center max-w-3xl mx-auto">
+              <div className="text-center max-w-3xl  mx-auto">
                 <h1 className="text-3xl md:text-4xl font-bold mb-3 text-white">
                   {t('payment.method.title')}
                 </h1>
@@ -657,8 +829,9 @@ export default function PrenotaPage() {
                           setSelectedStripeMethod('card');
                           setShowStripeCheckout(true);
                         } else if (selectedPaymentMethod === 'cash') {
-                          // Per acconto, va allo step di selezione metodo Stripe
-                          setPaymentStep('stripe-methods');
+                          // Per acconto, mostra direttamente StripeCheckout con l'acconto
+                          setSelectedStripeMethod('card');
+                          setShowStripeCheckout(true);
                         } else {
                           // Per PayPal, va alla conferma
                           setPaymentStep('confirm');
