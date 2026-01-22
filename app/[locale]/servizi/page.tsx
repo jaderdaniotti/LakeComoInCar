@@ -112,8 +112,8 @@ export default function ServiziPage() {
           {locale === 'it' && (
             <p className="text-lg text-gray-600 leading-relaxed">
               Il nostro servizio <strong>NCC Como</strong> è disponibile per <strong>transfer aeroporto Milano</strong>, 
-              servizi business e eventi. Scopri la nostra <Link href="/veicoli" className="text-black underline hover:text-gray-600 mx-1 font-semibold">
-                flotta veicoli
+              servizi business e eventi. Scopri i nostri <Link href="/veicoli" className="text-black underline hover:text-gray-600 mx-1 font-semibold">
+                veicoli
               </Link> e 
               <Link href="/prenota" className="text-black underline hover:text-gray-600 mx-1 font-semibold">
                 prenota online

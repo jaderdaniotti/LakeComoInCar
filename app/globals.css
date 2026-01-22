@@ -90,15 +90,16 @@ body {
 }
 
 .partenza{
-  transition: all 0.3s ease-in-out;
-  animation: partenza 0.5s ease-in-out;
+  transition: all 0.3s ;
+  animation: partenza 0.4s ease-in;
 }
 
 @keyframes partenza {
   from {
-    transform: translate(200px, -100px);
+    transform: translate(200px, -100px) scale(0.1);
+    
   }
   to {
-    transform: translate(0, 0);
+    transform: translate(0, 0) scale(1);
   }
 }

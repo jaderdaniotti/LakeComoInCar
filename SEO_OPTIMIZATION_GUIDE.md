@@ -794,7 +794,7 @@ Descrizione: Servizio Taxi Como e NCC Como professionale disponibile 24/7. Speci
 - [x] H1 unico per pagina con keyword ✅
   - ✅ Homepage: "Taxi Como e NCC Como | Servizio 24/7"
   - ✅ Servizi: "Servizi NCC Como | Transfer Aeroporti Milano | Business & Eventi"
-  - ✅ Veicoli: "Veicoli NCC Como | Mercedes, BMW | Flotta Premium"
+  - ✅ Veicoli: "Veicoli NCC Como | Mercedes V-Class Premium"
   - ✅ Contatti: "Contatti NCC Como | Telefono +39 338 405 6027"
   - ✅ Prenota: "Prenota NCC Como Online | Prenotazione Transfer Aeroporti"
   - ✅ Preventivo: "Preventivo NCC Como | Richiedi Preventivo Gratuito"

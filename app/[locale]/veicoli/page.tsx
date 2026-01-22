@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 import SectionWrapper from '@/components/layout/SectionWrapper';
 import Button from '@/components/ui/Button';
 import { Car, Users, Shield, Star } from 'lucide-react';
+import data from '@/src/data/images';
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -19,18 +21,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const keywords = locale === 'it'
     ? [
-        'veicoli ncc como', 'mercedes classe e', 'bmw serie 5',
-        'mercedes viano', 'ncc milano veicoli', 'auto con conducente',
-        'flotta ncc como', 'veicoli lusso como'
+        'veicoli ncc como', 'mercedes v-class', 'mercedes v-class 4matic',
+        'mercedes v-class 2wd', 'ncc milano veicoli', 'auto con conducente',
+        'veicoli lusso como', 'van premium como'
       ]
     : [];
 
   return {
     title: locale === 'it'
-      ? "Veicoli NCC Como | Mercedes, BMW | Flotta Premium | Autoservizi Pasquillo"
+      ? "Veicoli NCC Como | Mercedes V-Class 4MATIC e 2WD | Premium"
       : t('title'),
     description: locale === 'it'
-      ? "Flotta veicoli NCC Como: Mercedes Classe E, BMW Serie 5, Mercedes Viano. Veicoli moderni e confortevoli per transfer aeroporti, business ed eventi. Scopri la nostra flotta!"
+      ? "Veicoli NCC Como: Mercedes V-Class 4MATIC e V-Class 2WD. Van premium con spazio per 8 passeggeri, ideali per gruppi, famiglie e trasferimenti aeroporti. Scopri i nostri veicoli!"
       : t('description'),
     keywords,
     alternates: {
@@ -44,10 +46,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: locale === 'it'
-        ? "Veicoli NCC Como | Mercedes, BMW | Flotta Premium"
+        ? "Veicoli NCC Como | Mercedes V-Class 4MATIC e 2WD"
         : t('title'),
       description: locale === 'it'
-        ? "Flotta veicoli NCC Como: Mercedes, BMW, veicoli moderni per ogni esigenza."
+        ? "Veicoli NCC Como: Mercedes V-Class 4MATIC e 2WD. Van premium per gruppi e trasferimenti."
         : t('description'),
       url,
       siteName: 'LakeComoInCar - Autoservizi Pasquillo',
@@ -63,10 +65,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title: locale === 'it'
-        ? "Veicoli NCC Como | Mercedes, BMW | Flotta Premium"
+        ? "Veicoli NCC Como | Mercedes V-Class 4MATIC e 2WD"
         : t('title'),
       description: locale === 'it'
-        ? "Flotta veicoli NCC Como: Mercedes, BMW, veicoli moderni."
+        ? "Veicoli NCC Como: Mercedes V-Class 4MATIC e 2WD."
         : t('description'),
       images: [`${baseUrl}/og-image.jpg`],
     },
@@ -84,45 +86,31 @@ export default function VeicoliPage() {
   const vehicles = [
     {
       id: 1,
-      name: t('vehicleList.mercedesE.name'),
-      category: t('vehicleList.mercedesE.category'),
-      passengers: t('vehicleList.mercedesE.passengers'),
-      luggage: t('vehicleList.mercedesE.luggage'),
+      name: t('vehicleList.vclass4matic.name'),
+      category: t('vehicleList.vclass4matic.category'),
+      passengers: t('vehicleList.vclass4matic.passengers'),
+      luggage: t('vehicleList.vclass4matic.luggage'),
       features: [
-        t('vehicleList.mercedesE.features.ac'),
-        t('vehicleList.mercedesE.features.wifi'),
-        t('vehicleList.mercedesE.features.leather'),
-        t('vehicleList.mercedesE.features.audio'),
+        t('vehicleList.vclass4matic.features.traction'),
+        t('vehicleList.vclass4matic.features.space'),
+        t('vehicleList.vclass4matic.features.comfort'),
+        t('vehicleList.vclass4matic.features.safety'),
       ],
-      ideal: t('vehicleList.mercedesE.ideal'),
+      ideal: t('vehicleList.vclass4matic.ideal'),
     },
     {
       id: 2,
-      name: t('vehicleList.bmw5.name'),
-      category: t('vehicleList.bmw5.category'),
-      passengers: t('vehicleList.bmw5.passengers'),
-      luggage: t('vehicleList.bmw5.luggage'),
+      name: t('vehicleList.vclass2wd.name'),
+      category: t('vehicleList.vclass2wd.category'),
+      passengers: t('vehicleList.vclass2wd.passengers'),
+      luggage: t('vehicleList.vclass2wd.luggage'),
       features: [
-        t('vehicleList.bmw5.features.leather'),
-        t('vehicleList.bmw5.features.audio'),
-        t('vehicleList.bmw5.features.heated'),
-        t('vehicleList.bmw5.features.climate'),
+        t('vehicleList.vclass2wd.features.efficiency'),
+        t('vehicleList.vclass2wd.features.space'),
+        t('vehicleList.vclass2wd.features.luxury'),
+        t('vehicleList.vclass2wd.features.technology'),
       ],
-      ideal: t('vehicleList.bmw5.ideal'),
-    },
-    {
-      id: 3,
-      name: t('vehicleList.viano.name'),
-      category: t('vehicleList.viano.category'),
-      passengers: t('vehicleList.viano.passengers'),
-      luggage: t('vehicleList.viano.luggage'),
-      features: [
-        t('vehicleList.viano.features.trunk'),
-        t('vehicleList.viano.features.seats'),
-        t('vehicleList.viano.features.ac'),
-        t('vehicleList.viano.features.space'),
-      ],
-      ideal: t('vehicleList.viano.ideal'),
+      ideal: t('vehicleList.vclass2wd.ideal'),
     },
   ];
   return (
@@ -182,17 +170,21 @@ export default function VeicoliPage() {
                 key={vehicle.id}
                 className={`border-2 border-white p-1 ${index % 2 === 0 ? '' : 'bg-white'}`}
               >
-                <div className={`border-2 border-${index % 2 === 0 ? 'white' : 'black'} p-8`}>
+                <div className={index % 2 === 0 ? 'border-2 border-white p-8' : 'border-2 border-black p-8'}>
                   <div className={`grid md:grid-cols-2 gap-8 ${index % 2 === 0 ? 'text-white' : 'text-black'}`}>
                     {/* Immagine */}
-                    <div className={`relative w-full h-80 bg-${index % 2 === 0 ? 'gray-800' : 'gray-100'} border-2 border-${index % 2 === 0 ? 'white' : 'black'} flex items-center justify-center order-${index % 2 === 0 ? '1' : '2'}`}>
-                      <span className={`${index % 2 === 0 ? 'text-gray-500' : 'text-gray-400'} uppercase text-sm`}>
-                        {t('gallery.imagePlaceholder', { name: vehicle.name })}
-                      </span>
+                    <div className={`relative w-full h-80 flex items-center justify-center overflow-hidden ${index % 2 === 0 ? 'border-2 border-white order-1' : 'border-2 border-black order-2'}`}>
+                      <Image 
+                        src={data.vclass} 
+                        alt={`${vehicle.name} - ${vehicle.category} - Autoservizi Pasquillo NCC Como`}
+                        className="w-full h-full object-cover"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
                     </div>
 
                     {/* Dettagli */}
-                    <div className={`flex flex-col justify-center order-${index % 2 === 0 ? '2' : '1'}`}>
+                    <div className={`flex flex-col justify-center ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
                       <div className="mb-6">
                         <p className={`text-sm uppercase tracking-wider mb-2 ${index % 2 === 0 ? 'text-gray-400' : 'text-gray-600'}`}>
                           {vehicle.category}
@@ -204,12 +196,12 @@ export default function VeicoliPage() {
 
                       {/* Info Capacità */}
                       <div className="grid grid-cols-2 gap-4 mb-6">
-                        <div className={`border-2 border-${index % 2 === 0 ? 'white' : 'black'} p-4`}>
+                        <div className={index % 2 === 0 ? 'border-2 border-white p-4' : 'border-2 border-black p-4'}>
                           <Users className="w-8 h-8 mb-2" />
                           <p className="text-sm uppercase mb-1">{t('gallery.passengers')}</p>
                           <p className="text-2xl font-bold">{vehicle.passengers}</p>
                         </div>
-                        <div className={`border-2 border-${index % 2 === 0 ? 'white' : 'black'} p-4`}>
+                        <div className={index % 2 === 0 ? 'border-2 border-white p-4' : 'border-2 border-black p-4'}>
                           <Car className="w-8 h-8 mb-2" />
                           <p className="text-sm uppercase mb-1">{t('gallery.luggage')}</p>
                           <p className="text-2xl font-bold">{vehicle.luggage}</p>

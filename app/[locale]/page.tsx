@@ -2,6 +2,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from "next";
 import Link from 'next/link';
+import Image from 'next/image';
 import Button from "@/components/ui/Button";
 import data from "@/src/data/images";
 import SectionWrapper from "@/components/layout/SectionWrapper";
@@ -409,27 +410,28 @@ export default function HomePage() {
             {t('vehicles.subtitle')}
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Mercedes Classe E */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Mercedes V-Class 4MATIC */}
           <div className="border-2 border-white p-1">
             <div className="border-2 border-white bg-white/5 hover:bg-white/10 transition-colors duration-300 h-full">
-              <div className="aspect-video bg-gray-800 border-2 border-white flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Car size={64} className="mx-auto mb-4 text-gray-600" />
-                  <p className="text-gray-500 text-sm uppercase tracking-wider">
-                    {t('vehicles.imagePlaceholder')}
-                  </p>
-                </div>
+              <div className="aspect-video border-2 border-white relative overflow-hidden">
+                <Image 
+                  src={data.vclass} 
+                  alt="Mercedes V-Class 4MATIC nero - Autoservizi Pasquillo NCC Como"
+                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-wider">
-                  {t('vehicles.mercedesE.name')}
+                  {t('vehicles.vclass4matic.name')}
                 </h3>
                 <p className="text-gray-300 mb-4">
-                  {t('vehicles.mercedesE.description')}
+                  {t('vehicles.vclass4matic.description')}
                 </p>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  {t('vehicles.mercedesE.features').split('|').map((feature: string, idx: number) => (
+                  {t('vehicles.vclass4matic.features').split('|').map((feature: string, idx: number) => (
                     <li key={idx}>✓ {feature}</li>
                   ))}
                 </ul>
@@ -437,53 +439,27 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* BMW Serie 5 */}
+          {/* Mercedes V-Class 2WD */}
           <div className="border-2 border-white p-1">
             <div className="border-2 border-white bg-white/5 hover:bg-white/10 transition-colors duration-300 h-full">
-              <div className="aspect-video bg-gray-800 border-2 border-white flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Car size={64} className="mx-auto mb-4 text-gray-600" />
-                  <p className="text-gray-500 text-sm uppercase tracking-wider">
-                    {t('vehicles.imagePlaceholder')}
-                  </p>
-                </div>
+              <div className="aspect-video border-2 border-white relative overflow-hidden">
+                <Image 
+                  src={data.vclass} 
+                  alt="Mercedes V-Class 2WD nero - Autoservizi Pasquillo NCC Como"
+                  className="w-full h-full object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-wider">
-                  {t('vehicles.bmw5.name')}
+                  {t('vehicles.vclass2wd.name')}
                 </h3>
                 <p className="text-gray-300 mb-4">
-                  {t('vehicles.bmw5.description')}
+                  {t('vehicles.vclass2wd.description')}
                 </p>
                 <ul className="space-y-2 text-sm text-gray-400">
-                  {t('vehicles.bmw5.features').split('|').map((feature: string, idx: number) => (
-                    <li key={idx}>✓ {feature}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Mercedes Viano/Vito */}
-          <div className="border-2 border-white p-1">
-            <div className="border-2 border-white bg-white/5 hover:bg-white/10 transition-colors duration-300 h-full">
-              <div className="aspect-video bg-gray-800 border-2 border-white flex items-center justify-center">
-                <div className="text-center p-8">
-                  <Car size={64} className="mx-auto mb-4 text-gray-600" />
-                  <p className="text-gray-500 text-sm uppercase tracking-wider">
-                    {t('vehicles.imagePlaceholder')}
-                  </p>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-white uppercase tracking-wider">
-                  {t('vehicles.viano.name')}
-                </h3>
-                <p className="text-gray-300 mb-4">
-                  {t('vehicles.viano.description')}
-                </p>
-                <ul className="space-y-2 text-sm text-gray-400">
-                  {t('vehicles.viano.features').split('|').map((feature: string, idx: number) => (
+                  {t('vehicles.vclass2wd.features').split('|').map((feature: string, idx: number) => (
                     <li key={idx}>✓ {feature}</li>
                   ))}
                 </ul>

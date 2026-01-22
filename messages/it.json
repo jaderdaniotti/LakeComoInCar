@@ -107,20 +107,15 @@
       "contactInfo": "Contattaci per Info",
       "maintenance": "Tutti i nostri veicoli sono sottoposti a manutenzione regolare e sanificazione completa",
       "imagePlaceholder": "Immagine Veicolo",
-      "mercedesE": {
-        "name": "Mercedes Classe E",
-        "description": "Eleganza e comfort per transfer aeroportuali e servizi business. La scelta ideale per viaggi di lavoro.",
-        "features": "Fino a 4 passeggeri|Aria condizionata|Wi-Fi a bordo|Spazio bagagli"
+      "vclass4matic": {
+        "name": "Mercedes V-Class 4MATIC",
+        "description": "Van premium con trazione integrale 4MATIC. Perfetto per gruppi numerosi, condizioni invernali e massima sicurezza su ogni terreno.",
+        "features": "Fino a 8 passeggeri|Trazione integrale 4MATIC|Interni di lusso|Spazio generoso"
       },
-      "bmw5": {
-        "name": "BMW Serie 5",
-        "description": "Lusso e tecnologia al servizio del tuo viaggio. Perfetto per clienti business e occasioni speciali.",
-        "features": "Fino a 4 passeggeri|Interni in pelle|Sistema audio premium|Sedili riscaldati"
-      },
-      "viano": {
-        "name": "Mercedes Viano/Vito",
-        "description": "Spazio e versatilità per gruppi e famiglie. Ideale per tour, trasferimenti di gruppo e eventi.",
-        "features": "Fino a 8 passeggeri|Ampio bagagliaio|Sedute confortevoli|Climatizzatore"
+      "vclass2wd": {
+        "name": "Mercedes V-Class 2WD",
+        "description": "Van premium Mercedes con trazione posteriore. Eleganza, comfort e spazio per gruppi, famiglie e trasferimenti.",
+        "features": "Fino a 8 passeggeri|Trazione posteriore|Interni premium|Ampio bagagliaio"
       }
     },
     "services": {
@@ -227,11 +222,11 @@
   },
   "vehicles": {
     "metadata": {
-      "title": "I Nostri Veicoli - LakeComoInCar | Veicoli Premium NCC",
-      "description": "Veicoli premium per il tuo trasporto: Mercedes, BMW e van di lusso. Moderni, eleganti e perfettamente manutenuti per il massimo comfort."
+      "title": "I Nostri Veicoli - LakeComoInCar | Mercedes V-Class Premium NCC",
+      "description": "Mercedes V-Class premium: V-Class 4MATIC e V-Class 2WD. Van di lusso con spazio per 8 passeggeri, ideali per gruppi, famiglie e trasferimenti aeroporti."
     },
     "hero": {
-      "title": "Veicoli NCC Como | Mercedes, BMW | Flotta Premium",
+      "title": "Veicoli NCC Como | Mercedes V-Class Premium",
       "subtitle": "Veicoli moderni e confortevoli per ogni esigenza di trasporto"
     },
     "imagePlaceholder": "Immagine Veicoli",
@@ -260,44 +255,31 @@
       "idealFor": "Ideale per"
     },
     "vehicleList": {
-      "mercedesE": {
-        "name": "Mercedes Classe E",
-        "category": "Berlina Premium",
-        "passengers": "1-4",
-        "luggage": "3-4",
+      "vclass4matic": {
+        "name": "Mercedes V-Class 4MATIC",
+        "category": "Van Premium Trazione Integrale",
+        "passengers": "Fino a 8",
+        "luggage": "Ampio spazio",
         "features": {
-          "ac": "Aria condizionata",
-          "wifi": "Wi-Fi a bordo",
-          "leather": "Sedili in pelle",
-          "audio": "Sistema audio premium"
+          "traction": "Trazione integrale 4MATIC",
+          "space": "Spazio generoso per passeggeri e bagagli",
+          "comfort": "Interni di lusso e confortevoli",
+          "safety": "Sistemi di sicurezza avanzati"
         },
-        "ideal": "Transfer aeroporti, servizi business, eventi"
+        "ideal": "Gruppi numerosi, famiglie, tour, trasferimenti aeroporti con bagagli, condizioni invernali"
       },
-      "bmw5": {
-        "name": "BMW Serie 5",
-        "category": "Berlina Executive",
-        "passengers": "1-4",
-        "luggage": "3-4",
+      "vclass2wd": {
+        "name": "Mercedes V-Class 2WD",
+        "category": "Van Premium Trazione Posteriore",
+        "passengers": "Fino a 8",
+        "luggage": "Ampio spazio",
         "features": {
-          "leather": "Interni in pelle",
-          "audio": "Sistema audio premium",
-          "heated": "Sedili riscaldati",
-          "climate": "Climatizzatore automatico"
+          "efficiency": "Efficienza e comfort ottimali",
+          "space": "Spazio generoso per passeggeri e bagagli",
+          "luxury": "Interni di lusso Mercedes",
+          "technology": "Tecnologia e comfort premium"
         },
-        "ideal": "Clienti business, transfer executive, occasioni speciali"
-      },
-      "viano": {
-        "name": "Mercedes Viano/Vito",
-        "category": "Van Premium",
-        "passengers": "5-8",
-        "luggage": "6-8",
-        "features": {
-          "trunk": "Ampio bagagliaio",
-          "seats": "Sedute confortevoli",
-          "ac": "Climatizzatore",
-          "space": "Spazio per gruppi"
-        },
-        "ideal": "Gruppi, famiglie, tour, trasferimenti aeroporti con bagagli"
+        "ideal": "Gruppi, famiglie, tour, trasferimenti aeroporti, eventi, servizi business"
       }
     },
     "whyChoose": {

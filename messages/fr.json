@@ -107,20 +107,15 @@
       "contactInfo": "Contactez-nous pour plus d'infos",
       "maintenance": "Tous nos véhicules sont soumis à un entretien régulier et une désinfection complète",
       "imagePlaceholder": "Image Véhicule",
-      "mercedesE": {
-        "name": "Mercedes Classe E",
-        "description": "Élégance et confort pour les transferts aéroport et services professionnels. Le choix idéal pour les voyages d'affaires.",
-        "features": "Jusqu'à 4 passagers|Climatisation|Wi-Fi à bord|Espace bagages"
+      "vclass4matic": {
+        "name": "Mercedes V-Class 4MATIC",
+        "description": "Van premium avec transmission intégrale 4MATIC. Parfait pour les grands groupes, conditions hivernales et sécurité maximale sur tous les terrains.",
+        "features": "Jusqu'à 8 passagers|Transmission intégrale 4MATIC|Intérieurs de luxe|Espace généreux"
       },
-      "bmw5": {
-        "name": "BMW Série 5",
-        "description": "Luxe et technologie au service de votre voyage. Parfait pour les clients professionnels et occasions spéciales.",
-        "features": "Jusqu'à 4 passagers|Intérieurs en cuir|Système audio premium|Sièges chauffants"
-      },
-      "viano": {
-        "name": "Mercedes Viano/Vito",
-        "description": "Espace et polyvalence pour les groupes et familles. Idéal pour les tours, transferts de groupe et événements.",
-        "features": "Jusqu'à 8 passagers|Grand coffre|Sièges confortables|Climatisation"
+      "vclass2wd": {
+        "name": "Mercedes V-Class 2WD",
+        "description": "Van premium Mercedes à traction arrière. Élégance, confort et espace pour les groupes, familles et transferts.",
+        "features": "Jusqu'à 8 passagers|Traction arrière|Intérieurs premium|Grand coffre"
       }
     },
     "services": {
@@ -260,44 +255,31 @@
       "idealFor": "Idéal pour"
     },
     "vehicleList": {
-      "mercedesE": {
-        "name": "Mercedes Classe E",
-        "category": "Berline Premium",
-        "passengers": "1-4",
-        "luggage": "3-4",
+      "vclass4matic": {
+        "name": "Mercedes V-Class 4MATIC",
+        "category": "Van Premium Transmission Intégrale",
+        "passengers": "Jusqu'à 8",
+        "luggage": "Espace généreux",
         "features": {
-          "ac": "Climatisation",
-          "wifi": "Wi-Fi à bord",
-          "leather": "Sièges en cuir",
-          "audio": "Système audio premium"
+          "traction": "Transmission intégrale 4MATIC",
+          "space": "Espace généreux pour passagers et bagages",
+          "comfort": "Intérieurs de luxe et confortables",
+          "safety": "Systèmes de sécurité avancés"
         },
-        "ideal": "Transferts aéroport, services professionnels, événements"
+        "ideal": "Grands groupes, familles, tours, transferts aéroport avec bagages, conditions hivernales"
       },
-      "bmw5": {
-        "name": "BMW Série 5",
-        "category": "Berline Executive",
-        "passengers": "1-4",
-        "luggage": "3-4",
+      "vclass2wd": {
+        "name": "Mercedes V-Class 2WD",
+        "category": "Van Premium Traction Arrière",
+        "passengers": "Jusqu'à 8",
+        "luggage": "Espace généreux",
         "features": {
-          "leather": "Intérieurs en cuir",
-          "audio": "Système audio premium",
-          "heated": "Sièges chauffants",
-          "climate": "Climatisation automatique"
+          "efficiency": "Efficacité et confort optimaux",
+          "space": "Espace généreux pour passagers et bagages",
+          "luxury": "Intérieurs de luxe Mercedes",
+          "technology": "Technologie et confort premium"
         },
-        "ideal": "Clients professionnels, transferts exécutifs, occasions spéciales"
-      },
-      "viano": {
-        "name": "Mercedes Viano/Vito",
-        "category": "Van Premium",
-        "passengers": "5-8",
-        "luggage": "6-8",
-        "features": {
-          "trunk": "Grand coffre",
-          "seats": "Sièges confortables",
-          "ac": "Climatisation",
-          "space": "Espace pour groupes"
-        },
-        "ideal": "Groupes, familles, tours, transferts aéroport avec bagages"
+        "ideal": "Groupes, familles, tours, transferts aéroport, événements, services business"
       }
     },
     "whyChoose": {

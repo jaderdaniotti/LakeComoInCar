@@ -107,20 +107,15 @@
       "contactInfo": "Contact Us for Info",
       "maintenance": "All our vehicles undergo regular maintenance and complete sanitization",
       "imagePlaceholder": "Vehicle Image",
-      "mercedesE": {
-        "name": "Mercedes E-Class",
-        "description": "Elegance and comfort for airport transfers and business services. The ideal choice for business trips.",
-        "features": "Up to 4 passengers|Air conditioning|On-board Wi-Fi|Luggage space"
+      "vclass4matic": {
+        "name": "Mercedes V-Class 4MATIC",
+        "description": "Premium van with 4MATIC all-wheel drive. Perfect for large groups, winter conditions and maximum safety on any terrain.",
+        "features": "Up to 8 passengers|4MATIC all-wheel drive|Luxury interiors|Generous space"
       },
-      "bmw5": {
-        "name": "BMW 5 Series",
-        "description": "Luxury and technology at the service of your journey. Perfect for business clients and special occasions.",
-        "features": "Up to 4 passengers|Leather interiors|Premium audio system|Heated seats"
-      },
-      "viano": {
-        "name": "Mercedes Viano/Vito",
-        "description": "Space and versatility for groups and families. Ideal for tours, group transfers and events.",
-        "features": "Up to 8 passengers|Large luggage compartment|Comfortable seats|Air conditioning"
+      "vclass2wd": {
+        "name": "Mercedes V-Class 2WD",
+        "description": "Premium Mercedes van with rear-wheel drive. Elegance, comfort and space for groups, families and transfers.",
+        "features": "Up to 8 passengers|Rear-wheel drive|Premium interiors|Large trunk"
       }
     },
     "services": {
@@ -260,44 +255,31 @@
       "idealFor": "Ideal for"
     },
     "vehicleList": {
-      "mercedesE": {
-        "name": "Mercedes E-Class",
-        "category": "Premium Sedan",
-        "passengers": "1-4",
-        "luggage": "3-4",
+      "vclass4matic": {
+        "name": "Mercedes V-Class 4MATIC",
+        "category": "Premium All-Wheel Drive Van",
+        "passengers": "Up to 8",
+        "luggage": "Generous space",
         "features": {
-          "ac": "Air conditioning",
-          "wifi": "On-board Wi-Fi",
-          "leather": "Leather seats",
-          "audio": "Premium audio system"
+          "traction": "4MATIC all-wheel drive",
+          "space": "Generous space for passengers and luggage",
+          "comfort": "Luxury and comfortable interiors",
+          "safety": "Advanced safety systems"
         },
-        "ideal": "Airport transfers, business services, events"
+        "ideal": "Large groups, families, tours, airport transfers with luggage, winter conditions"
       },
-      "bmw5": {
-        "name": "BMW 5 Series",
-        "category": "Executive Sedan",
-        "passengers": "1-4",
-        "luggage": "3-4",
+      "vclass2wd": {
+        "name": "Mercedes V-Class 2WD",
+        "category": "Premium Rear-Wheel Drive Van",
+        "passengers": "Up to 8",
+        "luggage": "Generous space",
         "features": {
-          "leather": "Leather interiors",
-          "audio": "Premium audio system",
-          "heated": "Heated seats",
-          "climate": "Automatic climate control"
+          "efficiency": "Optimal efficiency and comfort",
+          "space": "Generous space for passengers and luggage",
+          "luxury": "Mercedes luxury interiors",
+          "technology": "Premium technology and comfort"
         },
-        "ideal": "Business clients, executive transfers, special occasions"
-      },
-      "viano": {
-        "name": "Mercedes Viano/Vito",
-        "category": "Premium Van",
-        "passengers": "5-8",
-        "luggage": "6-8",
-        "features": {
-          "trunk": "Large luggage compartment",
-          "seats": "Comfortable seats",
-          "ac": "Air conditioning",
-          "space": "Space for groups"
-        },
-        "ideal": "Groups, families, tours, airport transfers with luggage"
+        "ideal": "Groups, families, tours, airport transfers, events, business services"
       }
     },
     "whyChoose": {
