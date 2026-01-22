@@ -96,7 +96,7 @@ body {
 
 @keyframes partenza {
   from {
-    transform: translate(-200px, -100px);
+    transform: translate(200px, -100px);
   }
   to {
     transform: translate(0, 0);

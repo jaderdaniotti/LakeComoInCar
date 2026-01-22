@@ -13,9 +13,67 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'vehicles.metadata' });
 
+  const baseUrl = 'https://lakecomoincar.com';
+  const localePrefix = locale === 'it' ? '' : `/${locale}`;
+  const url = `${baseUrl}${localePrefix}/veicoli`;
+
+  const keywords = locale === 'it'
+    ? [
+        'veicoli ncc como', 'mercedes classe e', 'bmw serie 5',
+        'mercedes viano', 'ncc milano veicoli', 'auto con conducente',
+        'flotta ncc como', 'veicoli lusso como'
+      ]
+    : [];
+
   return {
-    title: t('title'),
-    description: t('description'),
+    title: locale === 'it'
+      ? "Veicoli NCC Como | Mercedes, BMW | Flotta Premium | Autoservizi Pasquillo"
+      : t('title'),
+    description: locale === 'it'
+      ? "Flotta veicoli NCC Como: Mercedes Classe E, BMW Serie 5, Mercedes Viano. Veicoli moderni e confortevoli per transfer aeroporti, business ed eventi. Scopri la nostra flotta!"
+      : t('description'),
+    keywords,
+    alternates: {
+      canonical: url,
+      languages: {
+        'it': `${baseUrl}/veicoli`,
+        'en': `${baseUrl}/en/veicoli`,
+        'fr': `${baseUrl}/fr/veicoli`,
+        'es': `${baseUrl}/es/veicoli`,
+      },
+    },
+    openGraph: {
+      title: locale === 'it'
+        ? "Veicoli NCC Como | Mercedes, BMW | Flotta Premium"
+        : t('title'),
+      description: locale === 'it'
+        ? "Flotta veicoli NCC Como: Mercedes, BMW, veicoli moderni per ogni esigenza."
+        : t('description'),
+      url,
+      siteName: 'LakeComoInCar - Autoservizi Pasquillo',
+      locale: locale,
+      type: 'website',
+      images: [{
+        url: `${baseUrl}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Veicoli NCC Como - Autoservizi Pasquillo',
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: locale === 'it'
+        ? "Veicoli NCC Como | Mercedes, BMW | Flotta Premium"
+        : t('title'),
+      description: locale === 'it'
+        ? "Flotta veicoli NCC Como: Mercedes, BMW, veicoli moderni."
+        : t('description'),
+      images: [`${baseUrl}/og-image.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 

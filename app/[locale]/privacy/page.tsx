@@ -1,12 +1,62 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import SectionWrapper from '@/components/layout/SectionWrapper';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy - Como Lake Car',
-  description: 'Informativa sulla privacy di Como Lake Car - Trattamento dei dati personali.',
+type Props = {
+  params: Promise<{ locale: string }>;
 };
 
-export default function PrivacyPage() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params;
+  
+  const baseUrl = 'https://lakecomoincar.com';
+  const localePrefix = locale === 'it' ? '' : `/${locale}`;
+  const url = `${baseUrl}${localePrefix}/privacy`;
+
+  const title = locale === 'it'
+    ? "Privacy Policy | Informativa Privacy | Autoservizi Pasquillo"
+    : "Privacy Policy | LakeComoInCar";
+  
+  const description = locale === 'it'
+    ? "Informativa sulla privacy di Autoservizi Pasquillo - LakeComoInCar. Trattamento dei dati personali conforme al GDPR. Scopri come proteggiamo i tuoi dati."
+    : "Privacy Policy - LakeComoInCar. Personal data treatment information.";
+
+  return {
+    title,
+    description,
+    keywords: locale === 'it'
+      ? ['privacy policy', 'informativa privacy', 'gdpr', 'protezione dati', 'autoservizi pasquillo privacy']
+      : [],
+    alternates: {
+      canonical: url,
+      languages: {
+        'it': `${baseUrl}/privacy`,
+        'en': `${baseUrl}/en/privacy`,
+        'fr': `${baseUrl}/fr/privacy`,
+        'es': `${baseUrl}/es/privacy`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      siteName: 'LakeComoInCar - Autoservizi Pasquillo',
+      locale: locale,
+      type: 'website',
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+type PrivacyPageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function PrivacyPage({ params }: PrivacyPageProps) {
+  const { locale } = await params;
   return (
     <>
       <SectionWrapper className="bg-black text-white pt-32">

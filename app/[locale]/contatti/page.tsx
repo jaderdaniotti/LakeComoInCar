@@ -13,9 +13,66 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contacts.metadata' });
 
+  const baseUrl = 'https://lakecomoincar.com';
+  const localePrefix = locale === 'it' ? '' : `/${locale}`;
+  const url = `${baseUrl}${localePrefix}/contatti`;
+
+  const keywords = locale === 'it'
+    ? [
+        'contatti ncc como', 'telefono ncc como', 'ncc como indirizzo',
+        'autoservizi pasquillo contatti', 'ncc como email', 'prenota ncc como'
+      ]
+    : [];
+
   return {
-    title: t('title'),
-    description: t('description'),
+    title: locale === 'it'
+      ? "Contatti NCC Como | Autoservizi Pasquillo"
+      : t('title'),
+    description: locale === 'it'
+      ? "Contatti Autoservizi Pasquillo - NCC Como. Telefono: +39 338 405 6027. Email: lakecomoincar@gmail.com. Disponibili 24/7 per prenotazioni e informazioni."
+      : t('description'),
+    keywords,
+    alternates: {
+      canonical: url,
+      languages: {
+        'it': `${baseUrl}/contatti`,
+        'en': `${baseUrl}/en/contatti`,
+        'fr': `${baseUrl}/fr/contatti`,
+        'es': `${baseUrl}/es/contatti`,
+      },
+    },
+    openGraph: {
+      title: locale === 'it'
+        ? "Contatti NCC Como | Autoservizi Pasquillo"
+        : t('title'),
+      description: locale === 'it'
+        ? "Contatti Autoservizi Pasquillo - NCC Como. Disponibili 24/7."
+        : t('description'),
+      url,
+      siteName: 'LakeComoInCar - Autoservizi Pasquillo',
+      locale: locale,
+      type: 'website',
+      images: [{
+        url: `${baseUrl}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Contatti NCC Como - Autoservizi Pasquillo',
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: locale === 'it'
+        ? "Contatti NCC Como | Autoservizi Pasquillo"
+        : t('title'),
+      description: locale === 'it'
+        ? "Contatti Autoservizi Pasquillo - NCC Como. Disponibili 24/7."
+        : t('description'),
+      images: [`${baseUrl}/og-image.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
   };
 }
 

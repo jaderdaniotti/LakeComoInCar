@@ -26,12 +26,8 @@ interface Route {
 }
 
 const macchine = [
-  { value: 'carbianca1', label: 'Car Bianca 1', src: images.carbianca1 },
-  { value: 'carbianca2', label: 'Car Bianca 2', src: images.carbianca2 },
-  { value: 'carbianca3', label: 'Car Bianca 3', src: images.carbianca3 },
-  { value: 'carnera1', label: 'Car Nera 1', src: images.carnera1 },
-  { value: 'carnera2', label: 'Car Nera 2', src: images.carnera2 },
-  { value: 'carnera3', label: 'Car Nera 3', src: images.carnera3 },
+  { value: 'Vclass2Matic', label: 'V-Class 2Matic', src: images.vclass },
+  { value: 'VclassMatic', label: 'V-Class 4Matic', src: images.vclass },
 ];
 
 interface PaymentDetails {

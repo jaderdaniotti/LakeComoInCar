@@ -1,6 +1,7 @@
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from "next";
+import Link from 'next/link';
 import Button from "@/components/ui/Button";
 import data from "@/src/data/images";
 import SectionWrapper from "@/components/layout/SectionWrapper";
@@ -24,17 +25,75 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'home.metadata' });
 
+  const baseUrl = 'https://lakecomoincar.com';
+  const localePrefix = locale === 'it' ? '' : `/${locale}`;
+  const url = `${baseUrl}${localePrefix}`;
+
+  // Keywords ottimizzate per SEO
+  const keywords = locale === 'it'
+    ? [
+        'taxi como', 'ncc como', 'ncc milano', 'taxi milano',
+        'transfer aeroporto milano', 'taxi privato como',
+        'ncc cernobbio', 'transfer como svizzera', 'taxi lago di como',
+        'ncc milano malpensa', 'taxi como 24 ore', 'autoservizi pasquillo',
+        'transfer malpensa como', 'transfer linate como', 'ncc como milano'
+      ]
+    : t('keywords').split(', ');
+
   return {
-    title: t('title'),
-    description: t('description'),
-    keywords: t('keywords').split(', '),
+    title: locale === 'it'
+      ? "Taxi Como 24/7 | NCC Como Milano | Transfer Aeroporti | Autoservizi Pasquillo"
+      : t('title'),
+    description: locale === 'it'
+      ? "Servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano (Malpensa, Linate), taxi privato Cernobbio, collegamenti Como-Milano-Svizzera. Disponibili 24/7. Prenota ora!"
+      : t('description'),
+    keywords,
     alternates: {
-      canonical: `https://lakecomoincar.com/${locale === 'it' ? '' : locale}`,
+      canonical: url,
       languages: {
-        'it': 'https://lakecomoincar.com',
-        'en': 'https://lakecomoincar.com/en',
-        'fr': 'https://lakecomoincar.com/fr',
-        'es': 'https://lakecomoincar.com/es',
+        'it': `${baseUrl}`,
+        'en': `${baseUrl}/en`,
+        'fr': `${baseUrl}/fr`,
+        'es': `${baseUrl}/es`,
+      },
+    },
+    openGraph: {
+      title: locale === 'it'
+        ? "Taxi Como | NCC Como Milano | Transfer Aeroporti 24/7"
+        : t('title'),
+      description: locale === 'it'
+        ? "Servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano, taxi privato Cernobbio, collegamenti Como-Milano-Svizzera."
+        : t('description'),
+      url,
+      siteName: 'LakeComoInCar - Autoservizi Pasquillo',
+      locale: locale,
+      type: 'website',
+      images: [{
+        url: `${baseUrl}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'LakeComoInCar - Taxi Como NCC Como',
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: locale === 'it'
+        ? "Taxi Como | NCC Como Milano | Transfer Aeroporti 24/7"
+        : t('title'),
+      description: locale === 'it'
+        ? "Servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano, taxi privato Cernobbio."
+        : t('description'),
+      images: [`${baseUrl}/og-image.jpg`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
     },
   };
@@ -43,6 +102,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default function HomePage() {
   const t = useTranslations('home');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
 
   return (
     <>
@@ -93,6 +153,39 @@ export default function HomePage() {
           <p className="text-lg text-gray-400 mb-8 leading-relaxed">
             {t('about.expertise')}
           </p>
+          
+          {/* SEO Content Section - Taxi Como e NCC Como */}
+          {locale === 'it' && (
+            <div className="mt-12 text-left bg-white/5 p-8 border-2 border-white">
+              <h3 className="text-2xl font-bold mb-4 text-white">
+                Taxi Como e NCC Como: Il Tuo Servizio di Trasporto Professionale
+              </h3>
+              <p className="text-lg text-gray-300 mb-4 leading-relaxed">
+                Cerchi un <strong>taxi Como</strong> affidabile o un servizio <strong>NCC Como</strong> professionale? 
+                Autoservizi Pasquillo offre servizi di <strong>taxi privato Como</strong> e <strong>NCC Como </strong> 
+                disponibili 24 ore su 24, 7 giorni su 7. Il nostro servizio <strong>NCC Milano</strong> garantisce 
+                collegamenti rapidi e confortevoli tra Como, Milano e la Svizzera.
+              </p>
+              <p className="text-lg text-gray-300 mb-4 leading-relaxed">
+                Specializzati in <strong>transfer aeroporto Milano</strong> (Malpensa, Linate, Bergamo), 
+                offriamo collegamenti efficienti per <strong>taxi Como</strong>, <strong>NCC Como</strong> e 
+                <strong>taxi Milano</strong>. Per prenotazioni e informazioni, visita la nostra pagina 
+                <Link href="/servizi" className="text-white underline hover:text-gray-300 mx-1 font-semibold">
+                  servizi NCC
+                </Link> o 
+                <Link href="/contatti" className="text-white underline hover:text-gray-300 mx-1 font-semibold">
+                  contattaci
+                </Link> direttamente.
+              </p>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Per <strong>taxi Como</strong>, <strong>NCC Como</strong> o <strong>taxi Milano</strong>, 
+                contattaci al +39 338 405 6027 o 
+                <Link href="/prenota" className="text-white underline hover:text-gray-300 mx-1 font-semibold">
+                  prenota online
+                </Link> il tuo servizio.
+              </p>
+            </div>
+          )}
           
           {/* Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
