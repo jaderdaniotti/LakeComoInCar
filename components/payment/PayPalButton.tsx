@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js';
+import { useState } from 'react';
 
 interface PayPalButtonProps {
   amount: number;
@@ -11,13 +12,6 @@ interface PayPalButtonProps {
   onCancel?: () => void;
 }
 
-// Definizione tipo PayPal
-declare global {
-  interface Window {
-    paypal?: any;
-  }
-}
-
 export default function PayPalButton({
   amount,
   currency = 'EUR',
@@ -26,66 +20,48 @@ export default function PayPalButton({
   onError,
   onCancel,
 }: PayPalButtonProps) {
-  const paypalRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [sdkReady, setSdkReady] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  useEffect(() => {
-    // Verifica se PayPal SDK è già caricato
-    const checkPayPalSdk = () => {
-      if (window.paypal) {
-        setSdkReady(true);
-        setIsLoading(false);
-        return true;
-      }
-      return false;
-    };
+  const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 
-    // Controlla immediatamente
-    if (!checkPayPalSdk()) {
-      // Se non è pronto, controlla ogni 100ms per max 5 secondi
-      const interval = setInterval(() => {
-        if (checkPayPalSdk()) {
-          clearInterval(interval);
-        }
-      }, 100);
+  if (!clientId) {
+    return (
+      <div className="text-center py-8 text-red-600">
+        <p className="font-medium">Errore configurazione PayPal</p>
+        <p className="text-sm mt-2">Client ID mancante</p>
+      </div>
+    );
+  }
 
-      // Timeout dopo 5 secondi
-      setTimeout(() => {
-        clearInterval(interval);
-        if (!window.paypal) {
-          setIsLoading(false);
-          onError(new Error('PayPal SDK failed to load'));
-        }
-      }, 5000);
-
-      return () => clearInterval(interval);
-    }
-  }, [onError]);
-
-  useEffect(() => {
-    if (!sdkReady || !paypalRef.current || !window.paypal) {
-      return;
-    }
-
-    // Pulisci il container prima di renderizzare
-    if (paypalRef.current) {
-      paypalRef.current.innerHTML = '';
-    }
-
-    try {
-      window.paypal
-        .Buttons({
-          style: {
+  return (
+    <PayPalScriptProvider
+      options={{
+        clientId: clientId,
+        currency: currency,
+        intent: 'capture',
+      }}
+    >
+      <div className="max-w-md mx-auto">
+        {isProcessing && (
+          <div className="text-center py-4 mb-4">
+            <div className="inline-block animate-spin rounded-full h-6 w-6 border-4 border-gray-300 border-t-black"></div>
+            <p className="mt-2 text-sm text-gray-600">Elaborazione pagamento...</p>
+          </div>
+        )}
+        
+        <PayPalButtons
+          style={{
             layout: 'vertical',
             color: 'black',
             shape: 'rect',
             label: 'pay',
             height: 48,
-          },
-          createOrder: async () => {
+          }}
+          disabled={isProcessing}
+          createOrder={async () => {
             try {
-              // Chiama l'API per creare l'ordine PayPal
+              setIsProcessing(true);
+              
               const response = await fetch('/api/paypal/create-order', {
                 method: 'POST',
                 headers: {
@@ -104,16 +80,17 @@ export default function PayPalButton({
                 throw new Error(data.error || 'Failed to create order');
               }
 
+              console.log('✅ PayPal order created:', data.orderId);
               return data.orderId;
             } catch (error) {
-              console.error('Error creating PayPal order:', error);
+              console.error('❌ Error creating PayPal order:', error);
+              setIsProcessing(false);
               onError(error);
               throw error;
             }
-          },
-          onApprove: async (data: any) => {
+          }}
+          onApprove={async (data) => {
             try {
-              // Cattura il pagamento
               const response = await fetch('/api/paypal/capture-order', {
                 method: 'POST',
                 headers: {
@@ -130,47 +107,29 @@ export default function PayPalButton({
                 throw new Error(captureData.error || 'Failed to capture payment');
               }
 
-              // Successo!
+              console.log('✅ PayPal payment captured:', captureData);
+              setIsProcessing(false);
               onSuccess(data.orderID, captureData);
             } catch (error) {
-              console.error('Error capturing PayPal payment:', error);
+              console.error('❌ Error capturing PayPal payment:', error);
+              setIsProcessing(false);
               onError(error);
             }
-          },
-          onError: (err: any) => {
-            console.error('PayPal Button Error:', err);
+          }}
+          onError={(err) => {
+            console.error('❌ PayPal Button Error:', err);
+            setIsProcessing(false);
             onError(err);
-          },
-          onCancel: () => {
-            console.log('PayPal payment cancelled by user');
+          }}
+          onCancel={() => {
+            console.log('ℹ️ PayPal payment cancelled by user');
+            setIsProcessing(false);
             if (onCancel) {
               onCancel();
             }
-          },
-        })
-        .render(paypalRef.current);
-    } catch (error) {
-      console.error('Error rendering PayPal buttons:', error);
-      onError(error);
-    }
-  }, [sdkReady, amount, currency, description, onSuccess, onError, onCancel]);
-
-  if (isLoading) {
-    return (
-      <div className="text-center py-8">
-        <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-black"></div>
-        <p className="mt-2 text-sm text-gray-600">Caricamento PayPal...</p>
+          }}
+        />
       </div>
-    );
-  }
-
-  if (!sdkReady) {
-    return (
-      <div className="text-center py-8 text-red-600">
-        <p>Errore nel caricamento di PayPal. Riprova più tardi.</p>
-      </div>
-    );
-  }
-
-  return <div ref={paypalRef} className="paypal-button-container" />;
+    </PayPalScriptProvider>
+  );
 }
