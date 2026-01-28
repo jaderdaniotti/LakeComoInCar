@@ -170,7 +170,7 @@ export default function HomePage() {
               <p className="text-lg text-gray-300 mb-4 leading-relaxed">
                 Specializzati in <strong>transfer aeroporto Milano</strong> (Malpensa, Linate, Bergamo), 
                 offriamo collegamenti efficienti per <strong>taxi Como</strong>, <strong>NCC Como</strong> e 
-                <strong>taxi Milano</strong>. Per prenotazioni e informazioni, visita la nostra pagina 
+                <strong> taxi Milano</strong>. Per prenotazioni e informazioni, visita la nostra pagina 
                 <Link href="/servizi" className="text-white underline hover:text-gray-300 mx-1 font-semibold">
                   servizi NCC
                 </Link> o 

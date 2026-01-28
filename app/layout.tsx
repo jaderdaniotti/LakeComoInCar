@@ -24,6 +24,11 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "LakeComoInCar - NCC Como | Transfer Aeroporti | Taxi Privato Cernobbio",
   description: "Autoservizi Pasquillo: servizio NCC Como 24/7. Transfer aeroporti Milano, taxi privato Cernobbio, noleggio auto con conducente. Tour Lago di Como e Svizzera. Prenota ora!",
+  icons: {
+    icon: "/favicon.webp",
+    shortcut: "/favicon.webp",
+    apple: "/favicon.webp",
+  },
 };
 
 export default function RootLayout({
