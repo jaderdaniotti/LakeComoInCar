@@ -812,21 +812,16 @@ export default function PrenotaPage() {
                   </div>
 
                   {/* Pulsanti Azione */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      onClick={() => setShowPaymentSelection(false)}
-                      className="px-4 py-3 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all text-sm md:text-base"
-                    >
-                      {t('payment.method.backToForm')}
-                    </button>
+                  <div className="grid grid-cols-1 gap-3">
                     <Button
                       onClick={() => {
                         if (selectedPaymentMethod === 'cash') {
                           // Per contanti, mostra scelta tra PayPal e Stripe per l'acconto
                           setPaymentStep('deposit-provider');
                         } else if (selectedPaymentMethod === 'stripe') {
-                          // Per carta di credito, mostra selezione metodi Stripe
-                          setPaymentStep('stripe-methods');
+                          // Per carta di credito, va direttamente alla conferma e mostra Stripe
+                          setShowStripeCheckout(true);
+                          setPaymentStep('confirm');
                         } else {
                           // Per PayPal completo, va alla conferma
                           setPaymentStep('confirm');
@@ -838,6 +833,12 @@ export default function PrenotaPage() {
                     >
                       {t('payment.method.continue')}
                     </Button>
+                    <button
+                      onClick={() => setShowPaymentSelection(false)}
+                      className="px-4 py-3 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all text-sm md:text-base"
+                    >
+                      {t('payment.method.backToForm')}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -868,7 +869,7 @@ export default function PrenotaPage() {
                 {/* Colonna Sinistra: Riepilogo */}
                 <div className="bg-gray-50 border-2 border-black p-6">
                   <h2 className="text-2xl font-bold text-black mb-6 uppercase">
-                    💼 Riepilogo Prenotazione
+                    Riepilogo Prenotazione
                   </h2>
                   
                   <div className="space-y-4">
@@ -884,9 +885,9 @@ export default function PrenotaPage() {
                       <p className="text-2xl font-bold text-black">€{calculatedPrice.toFixed(2)}</p>
                     </div>
                     
-                    <div className="bg-yellow-50 border-2 border-yellow-400 p-4 rounded">
+                    <div className=" border-2 border-black p-4 rounded">
                       <div className="flex items-start gap-2 mb-3">
-                        <span className="text-xl">💳</span>
+                        <span className="text-xl"></span>
                         <div className="flex-1">
                           <p className="font-bold text-black">Acconto Online (40%)</p>
                           <p className="text-2xl font-bold text-black mt-1">€{depositAmount.toFixed(2)}</p>
@@ -894,12 +895,12 @@ export default function PrenotaPage() {
                       </div>
                     </div>
                     
-                    <div className="bg-green-50 border-2 border-green-500 p-4 rounded">
+                    <div className=" border-2 border-black p-4 rounded">
                       <div className="flex items-start gap-2">
-                        <span className="text-xl">💵</span>
+                        <span className="text-xl"></span>
                         <div className="flex-1">
-                          <p className="font-bold text-gray-700">Resto all'Autista (60%)</p>
-                          <p className="text-2xl font-bold text-gray-700 mt-1">€{remainingAmount.toFixed(2)}</p>
+                          <p className="font-bold text-black">Resto all'Autista (60%)</p>
+                          <p className="text-2xl font-bold text-black mt-1">€{remainingAmount.toFixed(2)}</p>
                         </div>
                       </div>
                     </div>
@@ -1007,23 +1008,16 @@ export default function PrenotaPage() {
                   </div>
 
                   {/* Pulsanti Azione */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      onClick={() => {
-                        setPaymentStep('method');
-                        setSelectedDepositProvider(null);
-                      }}
-                      className="px-4 py-3 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all text-sm md:text-base"
-                    >
-                      ← Indietro
-                    </button>
+                  <div className="grid grid-cols-1 gap-3">
                     <Button
                       onClick={() => {
+                        // Vai alla conferma e attiva il componente appropriato
                         if (selectedDepositProvider === 'stripe') {
-                          setPaymentStep('stripe-methods');
+                          setShowStripeCheckout(true);
                         } else if (selectedDepositProvider === 'paypal') {
-                          setPaymentStep('confirm');
+                          // PayPal non ha bisogno di essere attivato qui, viene gestito nel confirm
                         }
+                        setPaymentStep('confirm');
                       }}
                       variant="primary"
                       className="text-sm md:text-base"
@@ -1031,6 +1025,15 @@ export default function PrenotaPage() {
                     >
                       Continua →
                     </Button>
+                    <button
+                      onClick={() => {
+                        setSelectedDepositProvider(null);
+                        setPaymentStep('method');
+                      }}
+                      className="px-4 py-3 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all text-sm md:text-base"
+                    >
+                      Torna Indietro
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1203,20 +1206,7 @@ export default function PrenotaPage() {
                   </div>
 
                   {/* Pulsanti Azione */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      onClick={() => {
-                        // Se viene dall'acconto, torna a deposit-provider, altrimenti a method
-                        if (selectedPaymentMethod === 'cash') {
-                          setPaymentStep('deposit-provider');
-                        } else {
-                          setPaymentStep('method');
-                        }
-                      }}
-                      className="px-4 py-3 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all text-sm md:text-base"
-                    >
-                      ← Indietro
-                    </button>
+                  <div className="grid grid-cols-1 gap-3">
                     <Button
                       onClick={() => {
                         setPaymentStep('confirm');
@@ -1228,6 +1218,15 @@ export default function PrenotaPage() {
                     >
                       {t('payment.method.continue')}
                     </Button>
+                    <button
+                      onClick={() => {
+                        setSelectedStripeMethod(null);
+                        setPaymentStep('method');
+                      }}
+                      className="px-4 py-3 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all text-sm md:text-base"
+                    >
+                      Torna Indietro
+                    </button>
                   </div>
                 </div>
               </div>
@@ -1255,10 +1254,10 @@ export default function PrenotaPage() {
           <SectionWrapper className="bg-white">
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-                {/* Colonna Sinistra: Tabella Riepilogo */}
+                {/* Colonna Sinistra: Riepilogo Completo con Metodo di Pagamento */}
                 <div className="bg-gray-50 border-2 border-black p-6">
                   <h2 className="text-2xl font-bold text-black mb-6 uppercase flex items-center gap-2">
-                    <span>📋</span> {t('payment.confirm.summary.title')}
+                    <span></span> {t('payment.confirm.summary.title')}
                   </h2>
                   
                   <div className="space-y-4">
@@ -1304,6 +1303,101 @@ export default function PrenotaPage() {
                         </p>
                       </div>
                     )}
+
+                    {/* Metodo di Pagamento nel Riepilogo */}
+                    <div className="border-b border-gray-300 pb-3">
+                      <div className="flex items-center justify-between mb-1">
+                        <p className="text-sm text-gray-600">{t('payment.confirm.paymentMethod.title')}</p>
+                        <button
+                          onClick={() => {
+                            setPaymentStep('method');
+                            setShowStripeCheckout(false);
+                            setShowPayPalButton(false);
+                            setSelectedDepositProvider(null);
+                            setSelectedStripeMethod(null);
+                          }}
+                          className="text-xs text-gray-600 hover:text-black underline"
+                        >
+                          {t('payment.confirm.paymentMethod.change')}
+                        </button>
+                      </div>
+                      
+                      {selectedPaymentMethod === 'cash' && selectedDepositProvider === 'stripe' && (
+                        <div className="bg-white border border-gray-300 p-3 mt-2">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span 
+                              className="size-8 flex items-center justify-center"
+                              dangerouslySetInnerHTML={{ __html: images.cb }}
+                            />
+                            <p className="text-base font-bold text-black">
+                              Acconto Online + Contanti
+                            </p>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-2">40% online, resto all'autista</p>
+                          <div className="bg-blue-50 border border-blue-200 p-2">
+                            <p className="text-xs font-semibold text-blue-900">
+                              Acconto pagato con: Carta di Credito
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {selectedPaymentMethod === 'cash' && selectedDepositProvider === 'paypal' && (
+                        <div className="bg-white border border-gray-300 p-3 mt-2">
+                          <div className="flex items-center gap-2 mb-2">
+                            <span 
+                              className="size-8 flex items-center justify-center"
+                              dangerouslySetInnerHTML={{ __html: images.paypal }}
+                            />
+                            <p className="text-base font-bold text-black">
+                              Acconto Online + Contanti
+                            </p>
+                          </div>
+                          <p className="text-xs text-gray-600 mb-2">40% online, resto all'autista</p>
+                          <div className="bg-blue-50 border border-blue-200 p-2">
+                            <p className="text-xs font-semibold text-blue-900">
+                              Acconto pagato con: PayPal
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {selectedPaymentMethod === 'stripe' && (
+                        <div className="bg-white border border-gray-300 p-3 mt-2">
+                          <div className="flex items-center gap-2">
+                            <span 
+                              className="size-8 flex items-center justify-center"
+                              dangerouslySetInnerHTML={{ __html: images.cb }}
+                            />
+                            <div>
+                              <p className="text-base font-bold text-black">
+                                Carta di Credito / Debito
+                              </p>
+                              <p className="text-xs text-gray-600">
+                                Visa, Mastercard, Amex e altre
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {selectedPaymentMethod === 'paypal' && (
+                        <div className="bg-white border border-gray-300 p-3 mt-2">
+                          <div className="flex items-center gap-2">
+                            <span 
+                              className="size-8 flex items-center justify-center"
+                              dangerouslySetInnerHTML={{ __html: images.paypal }}
+                            />
+                            <div>
+                              <p className="text-base font-bold text-black">PayPal</p>
+                              <p className="text-xs text-gray-600">
+                                Pagamento completo sicuro tramite PayPal
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                     
                     <div className="pt-4 border-t-2 border-black">
                       <div className="flex justify-between items-center">
@@ -1316,116 +1410,14 @@ export default function PrenotaPage() {
                   </div>
                 </div>
 
-                {/* Colonna Destra: Metodo di Pagamento Selezionato */}
+                {/* Colonna Destra: Checkout Stripe o PayPal */}
                 <div>
-                  <div className="border-2 border-black p-6 mb-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-xl font-bold text-black">{t('payment.confirm.paymentMethod.title')}</h3>
-                      <button
-                        onClick={() => {
-                          // Reset completo e torna alla selezione metodo principale
-                          setPaymentStep('method');
-                          setShowStripeCheckout(false);
-                          setShowPayPalButton(false);
-                          setSelectedDepositProvider(null);
-                          setSelectedStripeMethod(null);
-                        }}
-                        className="text-sm text-gray-600 hover:text-black underline"
-                      >
-                        {t('payment.confirm.paymentMethod.change')}
-                      </button>
-                    </div>
-
-                {selectedPaymentMethod === 'cash' && (
-                  <div className="bg-white border-2 border-gray-300 p-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="flex-1">
-                        <p className="text-lg font-bold">{t('payment.confirm.paymentMethod.cash.title')}</p>
-                        <p className="text-sm text-gray-600">{t('payment.confirm.paymentMethod.cash.subtitle')}</p>
-                      </div>
-                      {selectedDepositProvider === 'paypal' && (
-                        <span 
-                          className="size-12 flex items-center justify-center"
-                          dangerouslySetInnerHTML={{ __html: images.paypal }}
-                        />
-                      )}
-                      {selectedDepositProvider === 'stripe' && (
-                        <span 
-                          className="size-12 flex items-center justify-center"
-                          dangerouslySetInnerHTML={{ __html: images.cb }}
-                        />
-                      )}
-                    </div>
-                    
-                    {/* Mostra provider scelto per acconto */}
-                    {selectedDepositProvider && (
-                      <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded">
-                        <p className="text-sm font-semibold text-blue-900">
-                          Acconto pagato con: {selectedDepositProvider === 'paypal' ? 'PayPal' : 'Carta di Credito'}
-                        </p>
-                      </div>
-                    )}
-                    
-                    <div className="grid grid-cols-2 gap-4 mt-4">
-                      <div className="bg-yellow-50 border-2 border-yellow-400 p-4 rounded">
-                        <p className="text-sm text-gray-700 mb-1 font-medium">{t('payment.confirm.paymentMethod.cash.payNow')}</p>
-                        <p className="text-2xl font-bold text-black">€{depositAmount.toFixed(2)}</p>
-                      </div>
-                      <div className="bg-green-50 border-2 border-green-500 p-4 rounded">
-                        <p className="text-sm text-gray-700 mb-1 font-medium">{t('payment.confirm.paymentMethod.cash.toDriverCash')}</p>
-                        <p className="text-2xl font-bold text-gray-700">€{remainingAmount.toFixed(2)}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {selectedPaymentMethod === 'paypal' && (
-                  <div className="bg-white border-2 border-gray-300 p-6">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div>
-                        <p className="text-lg font-bold">{t('payment.confirm.paymentMethod.paypal.title')}</p>
-                        <p className="text-sm text-gray-600">{t('payment.confirm.paymentMethod.paypal.subtitle')}</p>
-                      </div>
-                    </div>
-                    <div className="bg-blue-50 p-4 rounded mt-4">
-                      <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.paymentMethod.paypal.totalToPay')}</p>
-                      <p className="text-2xl font-bold text-black">€{calculatedPrice.toFixed(2)}</p>
-                    </div>
-                  </div>
-                )}
-
-                    {selectedPaymentMethod === 'stripe' && (
-                      <div className="bg-white border-2 border-gray-300 p-6">
-                        <div className="flex items-center gap-3 mb-3">
-                          <div>
-                            <p className="text-lg font-bold">
-                              {selectedStripeMethod === 'card' && '💳 Carta di Credito / Debito'}
-                              {selectedStripeMethod === 'klarna' && '🛒 Klarna'}
-                              {selectedStripeMethod === 'amazon_pay' && '📦 Amazon Pay'}
-                              {selectedStripeMethod === 'bancontact' && '🏦 Bancontact'}
-                              {selectedStripeMethod === 'eps' && '🏛️ EPS'}
-                              {!selectedStripeMethod && t('payment.confirm.paymentMethod.stripe.title')}
-                            </p>
-                            <p className="text-sm text-gray-600">
-                              {selectedStripeMethod === 'card' && t('payment.confirm.paymentMethod.stripe.subtitle')}
-                              {selectedStripeMethod === 'klarna' && 'Paga a rate o più tardi'}
-                              {selectedStripeMethod === 'amazon_pay' && 'Paga con il tuo account Amazon'}
-                              {selectedStripeMethod === 'bancontact' && 'Pagamento diretto online'}
-                              {selectedStripeMethod === 'eps' && 'Pagamento bancario online'}
-                              {!selectedStripeMethod && t('payment.confirm.paymentMethod.stripe.subtitle')}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="bg-purple-50 p-4 rounded mt-4">
-                          <p className="text-sm text-gray-600 mb-1">{t('payment.confirm.paymentMethod.stripe.totalToPay')}</p>
-                          <p className="text-2xl font-bold text-black">€{calculatedPrice.toFixed(2)}</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
+                  <h2 className="text-xl font-bold text-black mb-4">
+                    {t('payment.confirm.paymentMethod.title')}
+                  </h2>
 
                   {/* Note Importanti */}
-                  <div className="bg-yellow-50 border-2 border-yellow-400 p-4 mb-6">
+                  <div className="bg-yellow-50 border-2 border-yellow-400 p-4 mb-4">
                     <p className="text-sm text-yellow-800 flex items-start gap-2">
                       <span className="text-lg">ℹ️</span>
                       <span>
@@ -1436,136 +1428,120 @@ export default function PrenotaPage() {
 
                   {/* Messaggio di errore */}
                   {error && (
-                    <div className="p-4 bg-red-50 border-2 border-red-500 text-red-700 mb-6">
+                    <div className="p-4 bg-red-50 border-2 border-red-500 text-red-700 mb-4">
                       <p className="font-semibold">❌ {t('payment.confirm.error')}</p>
                       <p className="text-sm">{error}</p>
                     </div>
                   )}
 
-                  {/* Pulsanti Azione */}
-                  <div className="flex gap-4">
-                    <button
-                      onClick={() => {
-                        // Reset degli stati e torna allo step appropriato
-                        setShowPayPalButton(false);
-                        setShowStripeCheckout(false);
-                        
-                        if (selectedPaymentMethod === 'cash' && selectedDepositProvider) {
-                          // Se è acconto, torna alla selezione del provider
-                          setPaymentStep('deposit-provider');
-                        } else if (selectedPaymentMethod === 'stripe' && selectedStripeMethod) {
-                          // Se è stripe con metodo selezionato, torna alla selezione metodi
-                          setPaymentStep('stripe-methods');
-                        } else {
-                          // Altrimenti torna alla selezione del metodo principale
-                          setPaymentStep('method');
-                        }
-                      }}
-                      className="flex-1 px-6 py-4 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all"
-                      disabled={isSubmitting || showPayPalButton || showStripeCheckout}
-                    >
-                      {t('payment.confirm.back')}
-                    </button>
-                
-                {/* Mostra pulsante PayPal se selezionato PayPal (completo O acconto) e il flag è attivo */}
-                {(selectedPaymentMethod === 'paypal' || (selectedPaymentMethod === 'cash' && selectedDepositProvider === 'paypal')) && showPayPalButton ? (
-                  <div className="flex-1">
-                    <PayPalButton
-                      amount={selectedPaymentMethod === 'cash' ? depositAmount : calculatedPrice}
-                      description={`Prenotazione LakeComoInCar - ${formData.nome}${selectedPaymentMethod === 'cash' ? ' (Acconto 40%)' : ''}`}
-                      onSuccess={async (orderId, details) => {
-                        console.log('PayPal payment successful:', orderId, details);
-                        // Invia la prenotazione con i dettagli del pagamento
-                        await handlePaymentSelection(
-                          selectedPaymentMethod === 'cash' ? 'deposit' : 'full',
-                          {
-                            paymentMethod: selectedPaymentMethod === 'cash' ? 'cash' : 'paypal',
-                            paypalOrderId: orderId,
-                            paypalDetails: details,
-                          }
-                        );
-                      }}
-                      onError={(error) => {
-                        console.error('PayPal payment error:', error);
-                        setError('Errore durante il pagamento PayPal. Riprova.');
-                        setShowPayPalButton(false);
-                      }}
-                      onCancel={() => {
-                        console.log('PayPal payment cancelled');
-                        setShowPayPalButton(false);
-                      }}
-                    />
-                  </div>
-                ) : ((selectedPaymentMethod === 'stripe') || (selectedPaymentMethod === 'cash' && selectedDepositProvider === 'stripe')) && showStripeCheckout ? (
-                  <div className="flex-1">
-                    <StripeCheckout
-                      amount={selectedPaymentMethod === 'cash' ? depositAmount : calculatedPrice}
-                      description={`Prenotazione LakeComoInCar - ${formData.nome}${selectedPaymentMethod === 'cash' ? ' (Acconto 40%)' : ''}`}
-                      paymentMethod={selectedStripeMethod || 'card'}
-                      metadata={{
-                        customerName: formData.nome,
-                        customerEmail: formData.email,
-                        route: `${routes.find(r => r.id === formData.tratta)?.origin_it} → ${routes.find(r => r.id === formData.tratta)?.destination_it}`,
-                        stripePaymentMethod: selectedStripeMethod || 'card',
-                        paymentType: selectedPaymentMethod === 'cash' ? 'deposit' : 'full',
-                      }}
-                      onSuccess={async (paymentIntentId) => {
-                        console.log('Stripe payment successful:', paymentIntentId);
-                        // Invia la prenotazione con i dettagli del pagamento
-                        await handlePaymentSelection(selectedPaymentMethod === 'cash' ? 'deposit' : 'full', {
-                          paymentMethod: selectedPaymentMethod === 'cash' ? 'cash' : 'stripe',
-                          stripePaymentIntentId: paymentIntentId,
-                          stripeMethod: selectedStripeMethod || 'card',
-                        });
-                      }}
-                      onError={(error) => {
-                        console.error('Stripe payment error:', error);
-                        setError('Errore durante il pagamento con carta. Riprova.');
-                        setShowStripeCheckout(false);
-                      }}
-                    />
-                  </div>
-                    ) : (
-                    <Button
-                      onClick={() => {
-                        if (selectedPaymentMethod === 'cash') {
-                          // Per l'acconto, controlla quale provider è stato scelto
-                          if (selectedDepositProvider === 'paypal') {
-                            setShowPayPalButton(true);
-                          } else if (selectedDepositProvider === 'stripe') {
-                            if (!selectedStripeMethod) {
-                              setPaymentStep('stripe-methods');
-                            } else {
+                  {/* Checkout Area */}
+                  {(selectedPaymentMethod === 'paypal' || (selectedPaymentMethod === 'cash' && selectedDepositProvider === 'paypal')) && showPayPalButton ? (
+                    <div className="mb-4">
+                      <PayPalButton
+                        amount={selectedPaymentMethod === 'cash' ? depositAmount : calculatedPrice}
+                        description={`Prenotazione LakeComoInCar - ${formData.nome}${selectedPaymentMethod === 'cash' ? ' (Acconto 40%)' : ''}`}
+                        onSuccess={async (orderId, details) => {
+                          console.log('PayPal payment successful:', orderId, details);
+                          await handlePaymentSelection(
+                            selectedPaymentMethod === 'cash' ? 'deposit' : 'full',
+                            {
+                              paymentMethod: selectedPaymentMethod === 'cash' ? 'cash' : 'paypal',
+                              paypalOrderId: orderId,
+                              paypalDetails: details,
+                            }
+                          );
+                        }}
+                        onError={(error) => {
+                          console.error('PayPal payment error:', error);
+                          setError('Errore durante il pagamento PayPal. Riprova.');
+                          setShowPayPalButton(false);
+                        }}
+                        onCancel={() => {
+                          console.log('PayPal payment cancelled');
+                          setShowPayPalButton(false);
+                        }}
+                      />
+                    </div>
+                  ) : ((selectedPaymentMethod === 'stripe') || (selectedPaymentMethod === 'cash' && selectedDepositProvider === 'stripe')) && showStripeCheckout ? (
+                    <div className="mb-4">
+                      <StripeCheckout
+                        amount={selectedPaymentMethod === 'cash' ? depositAmount : calculatedPrice}
+                        description={`Prenotazione LakeComoInCar - ${formData.nome}${selectedPaymentMethod === 'cash' ? ' (Acconto 40%)' : ''}`}
+                        paymentMethod="card"
+                        metadata={{
+                          customerName: formData.nome,
+                          customerEmail: formData.email,
+                          route: `${routes.find(r => r.id === formData.tratta)?.origin_it} → ${routes.find(r => r.id === formData.tratta)?.destination_it}`,
+                          stripePaymentMethod: 'card',
+                          paymentType: selectedPaymentMethod === 'cash' ? 'deposit' : 'full',
+                        }}
+                        onSuccess={async (paymentIntentId) => {
+                          console.log('Stripe payment successful:', paymentIntentId);
+                          await handlePaymentSelection(selectedPaymentMethod === 'cash' ? 'deposit' : 'full', {
+                            paymentMethod: selectedPaymentMethod === 'cash' ? 'cash' : 'stripe',
+                            stripePaymentIntentId: paymentIntentId,
+                            stripeMethod: 'card',
+                          });
+                        }}
+                        onError={(error) => {
+                          console.error('Stripe payment error:', error);
+                          setError('Errore durante il pagamento con carta. Riprova.');
+                          setShowStripeCheckout(false);
+                        }}
+                      />
+                    </div>
+                  ) : (
+                    <div className="border-2 border-gray-300 p-6 mb-4 text-center">
+                      <p className="text-gray-600 mb-4">Clicca il pulsante per procedere con il pagamento</p>
+                      <Button
+                        onClick={() => {
+                          if (selectedPaymentMethod === 'cash') {
+                            if (selectedDepositProvider === 'paypal') {
+                              setShowPayPalButton(true);
+                            } else if (selectedDepositProvider === 'stripe') {
                               setShowStripeCheckout(true);
                             }
-                          }
-                        } else if (selectedPaymentMethod === 'paypal') {
-                          setShowPayPalButton(true);
-                        } else if (selectedPaymentMethod === 'stripe') {
-                          if (!selectedStripeMethod) {
-                            setPaymentStep('stripe-methods');
-                          } else {
+                          } else if (selectedPaymentMethod === 'paypal') {
+                            setShowPayPalButton(true);
+                          } else if (selectedPaymentMethod === 'stripe') {
                             setShowStripeCheckout(true);
                           }
-                        }
-                      }}
-                      variant="primary"
-                      className="flex-1"
-                      disabled={isSubmitting}
-                    >
+                        }}
+                        variant="primary"
+                        className="w-full"
+                        disabled={isSubmitting}
+                      >
                         {isSubmitting ? (
                           t('payment.confirm.processing')
                         ) : (
                           <>
-                        {selectedPaymentMethod === 'cash' && selectedDepositProvider === 'paypal' && `Paga Acconto €${depositAmount.toFixed(2)} con PayPal`}
-                        {selectedPaymentMethod === 'cash' && selectedDepositProvider === 'stripe' && (selectedStripeMethod ? `Paga Acconto €${depositAmount.toFixed(2)}` : t('payment.method.continue'))}
-                        {selectedPaymentMethod === 'paypal' && t('payment.confirm.payButton.paypal', { amount: calculatedPrice.toFixed(2) })}
-                        {selectedPaymentMethod === 'stripe' && (selectedStripeMethod ? t('payment.confirm.payButton.stripe', { amount: calculatedPrice.toFixed(2) }) : t('payment.method.continue'))}
+                            {selectedPaymentMethod === 'cash' && selectedDepositProvider === 'paypal' && `Paga Acconto €${depositAmount.toFixed(2)} con PayPal`}
+                            {selectedPaymentMethod === 'cash' && selectedDepositProvider === 'stripe' && `Paga Acconto €${depositAmount.toFixed(2)}`}
+                            {selectedPaymentMethod === 'paypal' && t('payment.confirm.payButton.paypal', { amount: calculatedPrice.toFixed(2) })}
+                            {selectedPaymentMethod === 'stripe' && t('payment.confirm.payButton.stripe', { amount: calculatedPrice.toFixed(2) })}
                           </>
                         )}
                       </Button>
-                    )}
-                  </div>
+                    </div>
+                  )}
+
+                  {/* Pulsante Indietro */}
+                  <button
+                    onClick={() => {
+                      setShowPayPalButton(false);
+                      setShowStripeCheckout(false);
+                      
+                      if (selectedPaymentMethod === 'cash' && selectedDepositProvider) {
+                        setPaymentStep('deposit-provider');
+                      } else {
+                        setPaymentStep('method');
+                      }
+                    }}
+                    className="w-full px-6 py-4 border-2 border-black bg-white text-black font-bold hover:bg-gray-50 transition-all"
+                    disabled={isSubmitting}
+                  >
+                    {t('payment.confirm.back')}
+                  </button>
                 </div>
               </div>
             </div>
