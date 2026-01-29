@@ -158,8 +158,8 @@ export default function ContattiPage() {
                 <h3 className="text-lg font-bold mb-2 text-black uppercase tracking-wider">
                   {t('info.areaService.title')}
                 </h3>
-                <p className="text-lg text-red-500">
-                  {/* {t('info.areaService.region')} */} Da mettere sedi
+                <p className="text-lg text-gray-600">
+                   {t('info.areaService.region')}  
                 </p>
                 <p className="text-sm text-gray-500 mt-1">
                   {t('info.areaService.offices')}
@@ -174,7 +174,7 @@ export default function ContattiPage() {
               {t('offices.title')}
             </h2>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1  gap-8">
               {/* Sede Corte Re */}
               <div className="border-2 border-black overflow-hidden">
                 <div className="bg-black text-white p-6">
@@ -203,33 +203,6 @@ export default function ContattiPage() {
                 </div>
                   </div>
 
-              {/* Sede Como */}
-              <div className="border-2 border-black overflow-hidden">
-                <div className="bg-black text-white p-6">
-                  <h3 className="text-2xl font-bold mb-2 uppercase tracking-wider">
-                    {t('offices.como.title')}
-                  </h3>
-                  <div className="flex items-start space-x-2">
-                    <MapPin className="w-5 h-5 mt-1 flex-shrink-0" />
-                    <p className="text-gray-300">
-                      {t('offices.como.address')}<br />
-                      {t('offices.como.city')}
-                    </p>
-                  </div>
-                </div>
-                <div className="relative w-full h-96">
-                  <iframe
-                    src="https://maps.google.com/maps?q=Via%20Francesco%20Benzi%2C%2014%2C%2022100%20Como%20CO&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={t('offices.como.mapTitle')}
-                  ></iframe>
-                </div>
-              </div>
             </div>
           </div>
 

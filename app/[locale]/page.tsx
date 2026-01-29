@@ -189,7 +189,7 @@ export default function HomePage() {
           )}
           
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mt-12">
             <div className="border-2 border-white h-full p-6">
               <div className="text-4xl font-bold text-white mb-2">24/7</div>
               <div className="text-sm text-gray-300 uppercase tracking-wider">
@@ -206,12 +206,6 @@ export default function HomePage() {
               <div className="text-4xl font-bold text-white mb-2">100%</div>
               <div className="text-sm text-gray-300 uppercase tracking-wider">
                 {t('about.stats.professionalism')}
-              </div>
-            </div>
-            <div className="border-2 border-white h-full p-6">
-              <div className="text-4xl font-bold text-white mb-2">2</div>
-              <div className="text-sm text-gray-300 uppercase tracking-wider">
-                {t('about.stats.offices')}
               </div>
             </div>
           </div>
