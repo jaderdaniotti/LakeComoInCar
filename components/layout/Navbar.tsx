@@ -29,7 +29,7 @@ export default function Navbar() {
   const navLinks = [
     { href: localePath('/'), label: t('nav.home') },
     { href: localePath('/servizi'), label: t('nav.services') },
-    { href: localePath('/veicoli'), label: t('nav.vehicles') },
+    // { href: localePath('/veicoli'), label: t('nav.vehicles') },
   ];
 
   const tourLinks = [

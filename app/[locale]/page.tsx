@@ -110,14 +110,14 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
         <video
-          src={data.videobackground}
+          src={data.videobg}
           autoPlay
           muted
           loop
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         ></video>
-        <div className="absolute inset-0 bg-white/60 z-10"></div>
+        <div className="absolute inset-0 bg-white/20 z-10"></div>
         <div className="pt-20 relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
           <h1 className="text-4xl md:text-7xl lg:text-8xl poppins tracking-tight font-bold text-black mb-6 animate__animated animate__fadeIn">
             {t('hero.title')}
@@ -471,14 +471,14 @@ export default function HomePage() {
           <p className="text-gray-400 mb-6">
             {t('vehicles.maintenance')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/veicoli" variant="secondary">
               {t('vehicles.seeAll')}
             </Button>
             <Button href="/contatti" variant="secondary">
               {t('vehicles.contactInfo')}
             </Button>
-          </div>
+          </div> */}
         </div>
       </SectionWrapper>
 
