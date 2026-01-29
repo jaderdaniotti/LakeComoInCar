@@ -8,6 +8,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import CookieConsent from '@/components/ui/CookieConsent';
+import StructuredData from '@/components/seo/StructuredData';
 
 type Props = {
   children: ReactNode;
@@ -36,6 +37,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
+      <StructuredData />
       <Navbar />
       <main className="bg-white">
         {children}
