@@ -5,11 +5,11 @@ export default function StructuredData() {
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://lakecomoincar.eu/#business",
+    "@id": "https://www.lakecomoincar.eu/#business",
     "name": "LakeComoInCar - Autoservizi Pasquillo",
     "alternateName": "Autoservizi Pasquillo",
     "description": "Servizio NCC Como 24/7. Transfer aeroporti Milano, taxi privato Lombardia e Svizzera. Noleggio con conducente professionale.",
-    "url": "https://lakecomoincar.eu",
+    "url": "https://www.lakecomoincar.eu",
     "telephone": "+39-3384056027",
     "email": "lakecomoincar@gmail.com",
     "address": {
@@ -102,11 +102,11 @@ export default function StructuredData() {
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://lakecomoincar.eu/#organization",
+    "@id": "https://www.lakecomoincar.eu/#organization",
     "name": "LakeComoInCar",
     "legalName": "Autoservizi Pasquillo",
-    "url": "https://lakecomoincar.eu",
-    "logo": "https://lakecomoincar.eu/favicon.webp",
+    "url": "https://www.lakecomoincar.eu",
+    "logo": "https://www.lakecomoincar.eu/favicon.webp",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+39-3384056027",
@@ -121,18 +121,18 @@ export default function StructuredData() {
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://lakecomoincar.eu/#website",
-    "url": "https://lakecomoincar.eu",
+    "@id": "https://www.lakecomoincar.eu/#website",
+    "url": "https://www.lakecomoincar.eu",
     "name": "LakeComoInCar",
     "description": "NCC Como - Noleggio con Conducente Lombardia e Svizzera",
     "publisher": {
-      "@id": "https://lakecomoincar.eu/#organization"
+      "@id": "https://www.lakecomoincar.eu/#organization"
     },
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://lakecomoincar.eu/it/servizi?search={search_term_string}"
+        "urlTemplate": "https://www.lakecomoincar.eu/it/servizi?search={search_term_string}"
       },
       "query-input": "required name=search_term_string"
     },
@@ -148,25 +148,25 @@ export default function StructuredData() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://lakecomoincar.eu/it"
+        "item": "https://www.lakecomoincar.eu/it"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Servizi NCC",
-        "item": "https://lakecomoincar.eu/it/servizi"
+        "item": "https://www.lakecomoincar.eu/it/servizi"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": "Veicoli",
-        "item": "https://lakecomoincar.eu/it/veicoli"
+        "item": "https://www.lakecomoincar.eu/it/veicoli"
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": "Prenota",
-        "item": "https://lakecomoincar.eu/it/prenota"
+        "item": "https://www.lakecomoincar.eu/it/prenota"
       }
     ]
   };

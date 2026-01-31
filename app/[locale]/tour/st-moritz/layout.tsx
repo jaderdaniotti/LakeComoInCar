@@ -8,7 +8,7 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   
-  const baseUrl = 'https://lakecomoincar.com';
+  const baseUrl = 'https://www.lakecomoincar.eu';
   const localePrefix = locale === 'it' ? '' : `/${locale}`;
   const url = `${baseUrl}${localePrefix}/tour/st-moritz`;
 

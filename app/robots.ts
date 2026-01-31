@@ -19,6 +19,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/admin/'],
       },
     ],
-    sitemap: 'https://lakecomoincar.eu/sitemap.xml',
+    sitemap: 'https://www.lakecomoincar.eu/sitemap.xml',
   };
 }

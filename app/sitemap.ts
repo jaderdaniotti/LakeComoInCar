@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const baseUrl = 'https://lakecomoincar.eu';
+const baseUrl = 'https://www.lakecomoincar.eu';
 const locales = ['it', 'en', 'fr', 'es'];
 
 // Definizione di tutte le route del sito

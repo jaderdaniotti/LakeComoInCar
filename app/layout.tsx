@@ -22,7 +22,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://lakecomoincar.eu'),
+  metadataBase: new URL('https://www.lakecomoincar.eu'),
   title: {
     default: "LakeComoInCar - NCC Como | Taxi Como | Noleggio con Conducente Lombardia",
     template: "%s | LakeComoInCar - NCC Como"
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "it_IT",
     alternateLocale: ["en_US", "fr_FR", "es_ES"],
-    url: "https://lakecomoincar.eu",
+    url: "https://www.lakecomoincar.eu",
     siteName: "LakeComoInCar",
     title: "LakeComoInCar - NCC Como | Taxi Como | Noleggio con Conducente",
     description: "Servizio NCC Como 24/7. Transfer aeroporti Milano, taxi privato Lombardia e Svizzera. Noleggio con conducente professionale. Prenota ora!",
@@ -97,8 +97,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Aggiungerai questi dopo aver verificato su Google Search Console
-    google: 'your-google-verification-code',
+    google: 'E-enLeorDhInGXjBkcvgjYpiKywKCdqeCS2xm6VMrxQ',
     // yandex: 'your-yandex-verification-code',
     // bing: 'your-bing-verification-code',
   },
