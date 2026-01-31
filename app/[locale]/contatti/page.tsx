@@ -215,9 +215,9 @@ export default function ContattiPage() {
               {t('cta.subtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button href="/prenota" variant="primary">
+              {/* <Button href="/prenota" variant="primary">
                 {t('cta.bookOnline')}
-              </Button>
+              </Button> */}
               <Button href="/preventivo" variant="outline">
                 {t('cta.requestQuote')}
               </Button>

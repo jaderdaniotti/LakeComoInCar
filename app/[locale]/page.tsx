@@ -129,9 +129,9 @@ export default function HomePage() {
             {t('hero.tagline')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate__animated animate__fadeIn animate__delay-1s">
-            <Button href="/prenota" variant="primary" className="min-w-[200px]">
+            {/* <Button href="/prenota" variant="primary" className="min-w-[200px]">
               {tCommon('bookNow')}
-            </Button>
+            </Button> */}
             <Button href="/preventivo" variant="secondary" className="min-w-[200px]">
               {tCommon('requestQuote')}
             </Button>
@@ -181,7 +181,8 @@ export default function HomePage() {
               <p className="text-lg text-gray-300 leading-relaxed">
                 Per <strong>taxi Como</strong>, <strong>NCC Como</strong> o <strong>taxi Milano</strong>, 
                 contattaci al +39 338 405 6027 o 
-                <Link href="/prenota" className="text-white underline hover:text-gray-300 mx-1 font-semibold">
+                {/* da rimettere rotta prenota */}
+                <Link href="/" className="text-white underline hover:text-gray-300 mx-1 font-semibold">
                   prenota online
                 </Link> il tuo servizio.
               </p>
@@ -489,9 +490,9 @@ export default function HomePage() {
             {t('cta.description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button href="/prenota" variant="outline" className="min-w-[200px]">
+            {/* <Button href="/prenota" variant="outline" className="min-w-[200px]">
               {t('cta.bookOnline')}
-            </Button>
+            </Button> */}
             <Button href="tel:+393384056027" variant="primary" className="min-w-[200px]">
               {t('cta.callNow')}
             </Button>

@@ -289,9 +289,9 @@ export default function VeicoliPage() {
           {t('cta.description')}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/prenota" variant="primary">
+          {/* <Button href="/prenota" variant="primary">
             {t('cta.bookOnline')}
-          </Button>
+          </Button> */}
           <Button href="tel:+393384056027" variant="outline">
             {t('cta.callNow')}
           </Button>

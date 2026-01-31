@@ -42,12 +42,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                {/* <Link
                   href={localePath('/prenota')}
                   className="text-gray-300 hover:text-white transition-colors duration-200"
                 >
                   {t('nav.booking')}
-                </Link>
+                </Link> */}
               </li>
               <li>
                 <Link
