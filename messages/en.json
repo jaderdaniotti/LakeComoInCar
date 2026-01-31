@@ -1,7 +1,7 @@
 {
   "common": {
     "siteName": "LakeComoInCar",
-    "companyName": "Autoservizi Pasquillo",
+    "companyName": "Autoservizi Pasquillo SRL",
     "phone": "+39 338 405 6027",
     "email": "lakecomoincar@gmail.com",
     "bookNow": "Book Now",
@@ -52,7 +52,7 @@
     "companyInfo": "Company Information",
     "quickLinks": "Quick Links",
     "followUs": "Follow Us",
-    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL",
+    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL SRL",
     "vat": "VAT",
     "poweredBy": "Powered By",
     "allRightsReserved": "All rights reserved"
@@ -60,18 +60,18 @@
   "home": {
     "metadata": {
       "title": "LakeComoInCar | Professional Chauffeur Service Como-Milan-Switzerland 24/7",
-      "description": "Autoservizi Pasquillo: Professional chauffeur service Como-Milan-Switzerland. Airport transfers Malpensa, Linate, Bergamo. Business connections Como-Milan and Switzerland (St. Moritz, Lugano). Available 24/7!",
+      "description": "Autoservizi Pasquillo SRL: Professional chauffeur service Como-Milan-Switzerland. Airport transfers Malpensa, Linate, Bergamo. Business connections Como-Milan and Switzerland (St. Moritz, Lugano). Available 24/7!",
       "keywords": "Chauffeur service Como Milan, Malpensa airport transfer, Linate transfer Como, Como Switzerland transfer, St. Moritz transfer, Private driver Milan, Bergamo Orio transfer"
     },
     "hero": {
       "title": "LakeComoInCar",
-      "company": "Autoservizi Pasquillo",
+      "company": "Autoservizi Pasquillo SRL",
       "tagline": "Professional Chauffeur Service • Available 24/7",
-      "locations": "Como • Milan • Cernobbio • Switzerland"
+      "locations": "Como • Milan • Florence • Venice • Rome • Cernobbio • Varese • Switzerland • All of Italy"
     },
     "about": {
       "title": "About Us",
-      "description": "Autoservizi Pasquillo is the reference point for professional transfers between Como, Milan and Switzerland, offering an excellent chauffeur service throughout Lombardy.",
+      "description": "Autoservizi Pasquillo SRL is the reference point for professional transfers between Como, Milan and Switzerland, offering an excellent chauffeur service throughout Lombardy.",
       "expertise": "Specialized in Milan airport transfers (Malpensa, Linate, Orio al Serio), connections with Switzerland (St. Moritz, Lugano, border) and business services between Como and Milan. With over 15 years of experience, we guarantee professionalism, punctuality and comfort in every journey.",
       "stats": {
         "availability": "Availability",
@@ -154,7 +154,7 @@
     "cta": {
       "title": "Book Your Trip Today",
       "phone": "Call now! +39 338 405 6027 • Available 24/7",
-      "description": "Don't waste time, book your transfer now and travel in total comfort and safety with Autoservizi Pasquillo.",
+      "description": "Don't waste time, book your transfer now and travel in total comfort and safety with Autoservizi Pasquillo SRL.",
       "bookOnline": "Book Online",
       "callNow": "Call Now",
       "requestQuote": "Request Quote"
@@ -589,7 +589,7 @@
   "privacy": {
     "title": "Privacy Policy",
     "lastUpdate": "Last update",
-    "introduction": "This Privacy Policy describes how we process personal data of users who visit the LakeComoInCar website (Autoservizi Pasquillo SRL)."
+    "introduction": "This Privacy Policy describes how we process personal data of users who visit the LakeComoInCar website (Autoservizi Pasquillo SRL SRL)."
   },
   "cookies": {
     "title": "Cookie Policy",

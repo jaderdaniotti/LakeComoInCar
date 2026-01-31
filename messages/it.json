@@ -1,7 +1,7 @@
 {
   "common": {
     "siteName": "LakeComoInCar",
-    "companyName": "Autoservizi Pasquillo",
+    "companyName": "Autoservizi Pasquillo SRL",
     "phone": "+39 338 405 6027",
     "email": "lakecomoincar@gmail.com",
     "bookNow": "Prenota Subito",
@@ -52,7 +52,7 @@
     "companyInfo": "Informazioni Aziendali",
     "quickLinks": "Link Rapidi",
     "followUs": "Seguici",
-    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL",
+    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL SRL",
     "vat": "P.IVA",
     "poweredBy": "Powered By",
     "allRightsReserved": "Tutti i diritti riservati"
@@ -60,18 +60,18 @@
   "home": {
     "metadata": {
       "title": "LakeComoInCar | NCC Como-Milano-Svizzera 24/7 - Transfer Aeroporti Malpensa Linate",
-      "description": "Autoservizi Pasquillo: NCC professionale Como-Milano-Svizzera. Transfer aeroporti Malpensa, Linate, Bergamo. Collegamenti business Como-Milano e Svizzera (St. Moritz, Lugano). Disponibili 24/7!",
+      "description": "Autoservizi Pasquillo SRL: NCC professionale Como-Milano-Svizzera. Transfer aeroporti Malpensa, Linate, Bergamo. Collegamenti business Como-Milano e Svizzera (St. Moritz, Lugano). Disponibili 24/7!",
       "keywords": "NCC Como Milano, Transfer aeroporto Malpensa, Transfer Linate Como, NCC Como Svizzera, Transfer St. Moritz, Noleggio auto con conducente Milano"
     },
     "hero": {
       "title": "Taxi Como e NCC Como | Servizio 24/7",
-      "company": "Autoservizi Pasquillo",
+      "company": "Autoservizi Pasquillo SRL",
       "tagline": "Servizio NCC Professionale • Disponibile 24/7",
-      "locations": "Como • Milano • Cernobbio • Svizzera"
+      "locations": "Como • Milano • Firenze • Venezia • Roma • Cernobbio • Varese • Svizzera • Tutta Italia"
     },
     "about": {
       "title": "Chi Siamo",
-      "description": "Autoservizi Pasquillo è il punto di riferimento per trasferimenti professionali tra Como, Milano e Svizzera, offrendo un servizio NCC di eccellenza in tutta la Lombardia.",
+      "description": "Autoservizi Pasquillo SRL è il punto di riferimento per trasferimenti professionali tra Como, Milano e Svizzera, offrendo un servizio NCC di eccellenza in tutta la Lombardia.",
       "expertise": "Specializzati in transfer aeroportuali Milano (Malpensa, Linate, Orio al Serio), collegamenti con la Svizzera (St. Moritz, Lugano, confine) e servizi business tra Como e Milano. Con oltre 15 anni di esperienza, garantiamo professionalità, puntualità e comfort in ogni spostamento.",
       "stats": {
         "availability": "Disponibilità",
@@ -154,7 +154,7 @@
     "cta": {
       "title": "Prenota il Tuo Viaggio Oggi",
       "phone": "Chiama ora! +39 338 405 6027 • Disponibile 24/7",
-      "description": "Non perdere tempo, prenota subito il tuo trasferimento e viaggia in totale comfort e sicurezza con Autoservizi Pasquillo.",
+      "description": "Non perdere tempo, prenota subito il tuo trasferimento e viaggia in totale comfort e sicurezza con Autoservizi Pasquillo SRL.",
       "bookOnline": "Prenota Online",
       "callNow": "Chiama Ora",
       "requestQuote": "Richiedi Preventivo"
@@ -589,7 +589,7 @@
   "privacy": {
     "title": "Privacy Policy",
     "lastUpdate": "Ultimo aggiornamento",
-    "introduction": "La presente Privacy Policy descrive le modalità di trattamento dei dati personali degli utenti che consultano il sito web di LakeComoInCar (Autoservizi Pasquillo SRL)."
+    "introduction": "La presente Privacy Policy descrive le modalità di trattamento dei dati personali degli utenti che consultano il sito web di LakeComoInCar (Autoservizi Pasquillo SRL SRL)."
   },
   "cookies": {
     "title": "Cookie Policy",

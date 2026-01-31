@@ -108,7 +108,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black">
+      <section className="relative h-screen flex items-center justify-center overflow-hidden bg-black border-b border-white">
         <video
           src={data.videobg}
           autoPlay
@@ -117,15 +117,15 @@ export default function HomePage() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         ></video>
-        <div className="absolute inset-0 bg-white/20 z-10"></div>
+        <div className="absolute inset-0 bg-black/50 z-10"></div>
         <div className="pt-20 relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-          <h1 className="text-4xl md:text-7xl lg:text-8xl poppins tracking-tight font-bold text-black mb-6 animate__animated animate__fadeIn">
-            {t('hero.title')}
-          </h1>
-          <p className="text-2xl md:text-5xl lg:text-6xl poppins tracking-tight font-semibold text-black mb-6 animate__animated animate__fadeIn">
+          <p className="text-3xl md:text-6xl lg:text-7xl poppins italic underline tracking-tight font-semibold text-white mb-6 animate__animated animate__fadeIn">
             {t('hero.company')}
           </p>
-          <p className="text-lg md:text-2xl lg:text-3xl poppins tracking-tight font-semibold text-black mb-6 animate__animated animate__fadeIn">
+          <h1 className="text-4xl md:text-7xl lg:text-8xl poppins tracking-tight font-bold text-white mb-6 animate__animated animate__fadeIn">
+            {t('hero.title')}
+          </h1>
+          <p className="text-lg md:text-2xl lg:text-3xl poppins tracking-tight font-semibold text-white mb-6 animate__animated animate__fadeIn">
             {t('hero.tagline')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate__animated animate__fadeIn animate__delay-1s">
@@ -136,7 +136,7 @@ export default function HomePage() {
               {tCommon('requestQuote')}
             </Button>
           </div>
-          <p className="text-sm md:text-base text-black mt-6 font-semibold animate__animated animate__fadeIn animate__delay-3s">
+          <p className="text-sm md:text-base text-white mt-6 font-semibold animate__animated animate__fadeIn animate__delay-3s">
             {t('hero.locations')}
           </p>
         </div>

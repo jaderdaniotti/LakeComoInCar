@@ -1,7 +1,7 @@
 {
   "common": {
     "siteName": "LakeComoInCar",
-    "companyName": "Autoservizi Pasquillo",
+    "companyName": "Autoservizi Pasquillo SRL",
     "phone": "+39 338 405 6027",
     "email": "lakecomoincar@gmail.com",
     "bookNow": "Réserver",
@@ -52,7 +52,7 @@
     "companyInfo": "Informations sur l'Entreprise",
     "quickLinks": "Liens Rapides",
     "followUs": "Suivez-nous",
-    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL",
+    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL SRL",
     "vat": "TVA",
     "poweredBy": "Propulsé Par",
     "allRightsReserved": "Tous droits réservés"
@@ -60,18 +60,18 @@
   "home": {
     "metadata": {
       "title": "LakeComoInCar | Service de Chauffeur Professionnel Côme-Milan-Suisse 24/7",
-      "description": "Autoservizi Pasquillo : service de chauffeur professionnel Côme-Milan-Suisse. Transferts aéroport Malpensa, Linate, Bergame. Connexions business Côme-Milan et Suisse (St. Moritz, Lugano). Disponible 24/7!",
+      "description": "Autoservizi Pasquillo SRL : service de chauffeur professionnel Côme-Milan-Suisse. Transferts aéroport Malpensa, Linate, Bergame. Connexions business Côme-Milan et Suisse (St. Moritz, Lugano). Disponible 24/7!",
       "keywords": "Service chauffeur Côme Milan, Transfer aéroport Malpensa, Transfer Linate Côme, Côme Suisse transfer, Transfer St. Moritz, Chauffeur privé Milan"
     },
     "hero": {
       "title": "LakeComoInCar",
-      "company": "Autoservizi Pasquillo",
+      "company": "Autoservizi Pasquillo SRL",
       "tagline": "Service de Chauffeur Professionnel • Disponible 24/7",
-      "locations": "Côme • Milan • Cernobbio • Suisse"
+      "locations": "Côme • Milan • Florence • Venise • Rome • Cernobbio • Varese • Suisse • Toute l'Italie"
     },
     "about": {
       "title": "Qui Sommes-Nous",
-      "description": "Autoservizi Pasquillo est le point de référence pour les transferts professionnels entre Côme, Milan et la Suisse, offrant un service de transport avec chauffeur d'excellence dans toute la Lombardie.",
+      "description": "Autoservizi Pasquillo SRL est le point de référence pour les transferts professionnels entre Côme, Milan et la Suisse, offrant un service de transport avec chauffeur d'excellence dans toute la Lombardie.",
       "expertise": "Spécialisés dans les transferts aéroportuaires de Milan (Malpensa, Linate, Orio al Serio), les liaisons avec la Suisse (St. Moritz, Lugano, frontière) et les services professionnels entre Côme et Milan. Avec plus de 15 ans d'expérience, nous garantissons professionnalisme, ponctualité et confort dans chaque déplacement.",
       "stats": {
         "availability": "Disponibilité",
@@ -154,7 +154,7 @@
     "cta": {
       "title": "Réservez Votre Voyage Aujourd'hui",
       "phone": "Appelez maintenant ! +39 338 405 6027 • Disponible 24/7",
-      "description": "Ne perdez pas de temps, réservez dès maintenant votre transfert et voyagez dans un confort et une sécurité totale avec Autoservizi Pasquillo.",
+      "description": "Ne perdez pas de temps, réservez dès maintenant votre transfert et voyagez dans un confort et une sécurité totale avec Autoservizi Pasquillo SRL.",
       "bookOnline": "Réserver en Ligne",
       "callNow": "Appeler Maintenant",
       "requestQuote": "Demander un Devis"

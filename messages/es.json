@@ -1,7 +1,7 @@
 {
   "common": {
     "siteName": "LakeComoInCar",
-    "companyName": "Autoservizi Pasquillo",
+    "companyName": "Autoservizi Pasquillo SRL",
     "phone": "+39 338 405 6027",
     "email": "lakecomoincar@gmail.com",
     "bookNow": "Reservar Ahora",
@@ -52,7 +52,7 @@
     "companyInfo": "Información de la Empresa",
     "quickLinks": "Enlaces Rápidos",
     "followUs": "Síguenos",
-    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL",
+    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL SRL",
     "vat": "NIF",
     "poweredBy": "Desarrollado Por",
     "allRightsReserved": "Todos los derechos reservados"
@@ -60,18 +60,18 @@
   "home": {
     "metadata": {
       "title": "LakeComoInCar | Servicio de Chofer Profesional Como-Milán-Suiza 24/7",
-      "description": "Autoservizi Pasquillo: servicio de chofer profesional Como-Milán-Suiza. Traslados aeropuerto Malpensa, Linate, Bérgamo. Conexiones business Como-Milán y Suiza (St. Moritz, Lugano). ¡Disponible 24/7!",
+      "description": "Autoservizi Pasquillo SRL: servicio de chofer profesional Como-Milán-Suiza. Traslados aeropuerto Malpensa, Linate, Bérgamo. Conexiones business Como-Milán y Suiza (St. Moritz, Lugano). ¡Disponible 24/7!",
       "keywords": "Servicio chofer Como Milán, Transfer aeropuerto Malpensa, Transfer Linate Como, Como Suiza transfer, Transfer St. Moritz, Chofer privado Milán"
     },
     "hero": {
       "title": "LakeComoInCar",
-      "company": "Autoservizi Pasquillo",
+      "company": "Autoservizi Pasquillo SRL",
       "tagline": "Servicio de Chofer Profesional • Disponible 24/7",
-      "locations": "Como • Milán • Cernobbio • Suiza"
+      "locations": "Como • Milán • Florencia • Venecia • Roma • Cernobbio • Varese • Suiza • Toda Italia"
     },
     "about": {
       "title": "Quiénes Somos",
-      "description": "Autoservizi Pasquillo es el punto de referencia para traslados profesionales entre Como, Milán y Suiza, ofreciendo un servicio de chofer de excelencia en toda Lombardía.",
+      "description": "Autoservizi Pasquillo SRL es el punto de referencia para traslados profesionales entre Como, Milán y Suiza, ofreciendo un servicio de chofer de excelencia en toda Lombardía.",
       "expertise": "Especializados en traslados aeroportuarios de Milán (Malpensa, Linate, Orio al Serio), conexiones con Suiza (St. Moritz, Lugano, frontera) y servicios empresariales entre Como y Milán. Con más de 15 años de experiencia, garantizamos profesionalidad, puntualidad y confort en cada desplazamiento.",
       "stats": {
         "availability": "Disponibilidad",
@@ -154,7 +154,7 @@
     "cta": {
       "title": "Reserve Su Viaje Hoy",
       "phone": "¡Llame ahora! +39 338 405 6027 • Disponible 24/7",
-      "description": "No pierda tiempo, reserve ahora mismo su traslado y viaje con total confort y seguridad con Autoservizi Pasquillo.",
+      "description": "No pierda tiempo, reserve ahora mismo su traslado y viaje con total confort y seguridad con Autoservizi Pasquillo SRL.",
       "bookOnline": "Reservar en Línea",
       "callNow": "Llamar Ahora",
       "requestQuote": "Solicitar Presupuesto"
