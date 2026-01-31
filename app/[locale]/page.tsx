@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'home.metadata' });
 
-  const baseUrl = 'https://www.lakecomoincar.eu';
+  const baseUrl = 'https://lakecomoincar.eu';
   const localePrefix = `/${locale}`;
   const url = `${baseUrl}${localePrefix}`;
 

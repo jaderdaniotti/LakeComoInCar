@@ -1,63 +1,13 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import SectionWrapper from '@/components/layout/SectionWrapper';
 import Link from 'next/link';
 
-type Props = {
-  params: Promise<{ locale: string }>;
+export const metadata: Metadata = {
+  title: 'Cookie Policy - LakeComoInCar',
+  description: 'Informativa sui cookie utilizzati da LakeComoInCar - Autoservizi Pasquillo SRL.',
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
-  
-  const baseUrl = 'https://www.lakecomoincar.eu';
-  const localePrefix = locale === 'it' ? '' : `/${locale}`;
-  const url = `${baseUrl}${localePrefix}/cookie`;
-
-  const title = locale === 'it'
-    ? "Cookie Policy | Informativa Cookie | Autoservizi Pasquillo"
-    : "Cookie Policy | LakeComoInCar";
-  
-  const description = locale === 'it'
-    ? "Informativa sui cookie utilizzati da Autoservizi Pasquillo - LakeComoInCar. Scopri quali cookie utilizziamo e come gestirli."
-    : "Cookie Policy - LakeComoInCar. Information about cookies used on our website.";
-
-  return {
-    title,
-    description,
-    keywords: locale === 'it'
-      ? ['cookie policy', 'informativa cookie', 'cookie sito web', 'gestione cookie', 'autoservizi pasquillo cookie']
-      : [],
-    alternates: {
-      canonical: url,
-      languages: {
-        'it': `${baseUrl}/cookie`,
-        'en': `${baseUrl}/en/cookie`,
-        'fr': `${baseUrl}/fr/cookie`,
-        'es': `${baseUrl}/es/cookie`,
-      },
-    },
-    openGraph: {
-      title,
-      description,
-      url,
-      siteName: 'LakeComoInCar - Autoservizi Pasquillo',
-      locale: locale,
-      type: 'website',
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-  };
-}
-
-type CookiePageProps = {
-  params: Promise<{ locale: string }>;
-};
-
-export default async function CookiePage({ params }: CookiePageProps) {
-  const { locale } = await params;
+export default function CookiePage() {
   return (
     <>
       <SectionWrapper className="bg-black text-white pt-32">
