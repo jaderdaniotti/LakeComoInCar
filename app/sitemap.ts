@@ -30,11 +30,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(),
         changeFrequency: route === '' || route === '/prenota' ? 'daily' : 'weekly',
         priority: route === '' ? 1.0 : route === '/prenota' || route === '/preventivo' ? 0.9 : 0.8,
-        alternates: {
-          languages: Object.fromEntries(
-            locales.map((loc) => [loc, `${baseUrl}/${loc}${route}`])
-          ),
-        },
       });
     });
   });
