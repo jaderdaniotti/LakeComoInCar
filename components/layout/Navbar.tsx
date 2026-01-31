@@ -56,7 +56,7 @@ export default function Navbar() {
   ];
 
   const otherLinks = [
-    { href: localePath('/prenota'), label: t('nav.booking') },
+    // { href: localePath('/prenota'), label: t('nav.booking') },
     { href: localePath('/preventivo'), label: t('nav.quote') },
     { href: localePath('/contatti'), label: t('nav.contacts') },
   ];
