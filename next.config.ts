@@ -4,6 +4,14 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./i18n.ts');
 
 const nextConfig: NextConfig = {
+  async headers() {
+    return [
+      {
+        source: '/sitemap.xml',
+        headers: [{ key: 'Content-Type', value: 'application/xml; charset=utf-8' }],
+      },
+    ];
+  },
   webpack: (config) => {
     config.module.rules.push({
       test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)$/,

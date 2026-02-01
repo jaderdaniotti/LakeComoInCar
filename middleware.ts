@@ -16,11 +16,9 @@ export default createMiddleware({
 });
 
 export const config = {
-  // Matcher: applica middleware a tutte le route TRANNE admin e api
+  // Matcher: applica middleware a tutte le route TRANNE api, admin, file statici e SEO (sitemap, robots)
   matcher: [
-    // Includi tutte le route pubbliche
-    '/((?!api|admin|_next|_vercel|.*\\..*).*)',
-    // Includi root
+    '/((?!api|admin|_next|_vercel|favicon\\.ico|robots\\.txt|sitemap\\.xml|.*\\..*).*)',
     '/',
   ],
 };
