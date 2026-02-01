@@ -75,13 +75,20 @@ export async function PUT(
   }
 }
 
-// DELETE - Elimina route
+// DELETE - Elimina route (prima le pricing_rules collegate per evitare violazione FK)
 export async function DELETE(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
+
+    // Elimina prima le pricing_rules collegate (il DB potrebbe non avere ON DELETE CASCADE)
+    await supabaseAdmin
+      .from('pricing_rules')
+      .delete()
+      .eq('route_id', id);
+
     const { error } = await supabaseAdmin
       .from('routes')
       .delete()
@@ -90,7 +97,11 @@ export async function DELETE(
     if (error) {
       console.error('Error deleting route:', error);
       return NextResponse.json(
-        { error: 'Errore durante l\'eliminazione' },
+        {
+          error: 'Errore durante l\'eliminazione',
+          details: error.message,
+          code: error.code,
+        },
         { status: 500 }
       );
     }
@@ -102,7 +113,10 @@ export async function DELETE(
   } catch (error) {
     console.error('Error deleting route:', error);
     return NextResponse.json(
-      { error: 'Errore durante l\'eliminazione' },
+      {
+        error: 'Errore durante l\'eliminazione',
+        details: error instanceof Error ? error.message : 'Unknown error',
+      },
       { status: 500 }
     );
   }

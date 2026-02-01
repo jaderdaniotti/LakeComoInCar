@@ -71,11 +71,14 @@ export default function RoutesManager() {
       const response = await fetch(`/api/admin/routes/${id}`, {
         method: 'DELETE',
       });
+      const data = await response.json().catch(() => ({}));
 
       if (response.ok) {
         loadRoutes();
       } else {
-        alert('Errore durante l\'eliminazione');
+        const details = data.details ? `\n\nDettaglio: ${data.details}` : '';
+        const code = data.code ? ` (codice: ${data.code})` : '';
+        alert(`Errore durante l'eliminazione${code}${details}`);
       }
     } catch (error) {
       console.error('Error deleting route:', error);
