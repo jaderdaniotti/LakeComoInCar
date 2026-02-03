@@ -26,14 +26,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'home.metadata' });
 
-  const baseUrl = 'https://lakecomoincar.eu';
+  const baseUrl = 'https://www.lakecomoincar.eu';
   const localePrefix = `/${locale}`;
   const url = `${baseUrl}${localePrefix}`;
 
-  // Keywords ottimizzate per SEO
+  // Keywords ottimizzate per SEO (taxi como, ncc como, lake como in car)
   const keywords = locale === 'it'
     ? [
-        'taxi como', 'ncc como', 'ncc milano', 'taxi milano',
+        'lake como in car', 'lakecomoincar', 'taxi como', 'ncc como', 'ncc milano', 'taxi milano',
         'transfer aeroporto milano', 'taxi privato como',
         'ncc cernobbio', 'transfer como svizzera', 'taxi lago di como',
         'ncc milano malpensa', 'taxi como 24 ore', 'autoservizi pasquillo',
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: locale === 'it'
-      ? "Taxi Como 24/7 | NCC Como Milano | Transfer Aeroporti | Autoservizi Pasquillo"
+      ? "LakeComoInCar | Taxi Como 24/7 | NCC Como Milano | Transfer Aeroporti | Autoservizi Pasquillo"
       : t('title'),
     description: locale === 'it'
       ? "Servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano (Malpensa, Linate), taxi privato Cernobbio, collegamenti Como-Milano-Svizzera. Disponibili 24/7. Prenota ora!"
