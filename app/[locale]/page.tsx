@@ -30,29 +30,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const localePrefix = `/${locale}`;
   const url = `${baseUrl}${localePrefix}`;
 
-  // Keywords ottimizzate per SEO (taxi como, ncc como, lake como in car)
+  // Keywords ottimizzate per SEO: Pasquillo e autoservizi pasquillo in evidenza per ricerca brand
   const keywords = locale === 'it'
     ? [
-        'lake como in car', 'lakecomoincar', 'taxi como', 'ncc como', 'ncc milano', 'taxi milano',
+        'pasquillo', 'autoservizi pasquillo', 'lake como in car', 'lakecomoincar', 'taxi como', 'ncc como', 'ncc milano', 'taxi milano',
         'transfer aeroporto milano', 'taxi privato como',
         'ncc cernobbio', 'transfer como svizzera', 'taxi lago di como',
-        'ncc milano malpensa', 'taxi como 24 ore', 'autoservizi pasquillo',
+        'ncc milano malpensa', 'taxi como 24 ore',
         'transfer malpensa como', 'transfer linate como', 'ncc como milano'
       ]
     : t('keywords').split(', ');
 
   return {
     title: locale === 'it'
-      ? "LakeComoInCar | Taxi Como 24/7 | NCC Como Milano | Transfer Aeroporti | Autoservizi Pasquillo"
+      ? "Autoservizi Pasquillo | Taxi Como 24/7 | NCC Como Milano | Transfer Aeroporti | LakeComoInCar"
       : t('title'),
     description: locale === 'it'
-      ? "Servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano (Malpensa, Linate), taxi privato Cernobbio, collegamenti Como-Milano-Svizzera. Disponibili 24/7. Prenota ora!"
+      ? "Autoservizi Pasquillo: servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano (Malpensa, Linate), taxi privato Cernobbio, collegamenti Como-Milano-Svizzera. Disponibili 24/7. Prenota ora!"
       : t('description'),
     keywords,
     alternates: {
       canonical: url,
       languages: {
-        'it': `${baseUrl}`,
+        'x-default': `${baseUrl}/it`,
+        'it': `${baseUrl}/it`,
         'en': `${baseUrl}/en`,
         'fr': `${baseUrl}/fr`,
         'es': `${baseUrl}/es`,
@@ -60,29 +61,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: locale === 'it'
-        ? "Taxi Como | NCC Como Milano | Transfer Aeroporti 24/7"
+        ? "Autoservizi Pasquillo | Taxi Como | NCC Como Milano | Transfer Aeroporti 24/7"
         : t('title'),
       description: locale === 'it'
-        ? "Servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano, taxi privato Cernobbio, collegamenti Como-Milano-Svizzera."
+        ? "Autoservizi Pasquillo: servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano, taxi privato Cernobbio, collegamenti Como-Milano-Svizzera."
         : t('description'),
       url,
-      siteName: 'LakeComoInCar - Autoservizi Pasquillo',
+      siteName: 'Autoservizi Pasquillo - LakeComoInCar',
       locale: locale,
       type: 'website',
       images: [{
         url: `${baseUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: 'LakeComoInCar - Taxi Como NCC Como',
+        alt: 'Autoservizi Pasquillo - LakeComoInCar Taxi Como NCC Como',
       }],
     },
     twitter: {
       card: 'summary_large_image',
       title: locale === 'it'
-        ? "Taxi Como | NCC Como Milano | Transfer Aeroporti 24/7"
+        ? "Autoservizi Pasquillo | Taxi Como | NCC Como Milano | Transfer Aeroporti 24/7"
         : t('title'),
       description: locale === 'it'
-        ? "Servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano, taxi privato Cernobbio."
+        ? "Autoservizi Pasquillo: servizio Taxi Como e NCC Como professionale. Transfer aeroporti Milano, taxi privato Cernobbio."
         : t('description'),
       images: [`${baseUrl}/og-image.jpg`],
     },
@@ -155,15 +156,15 @@ export default function HomePage() {
             {t('about.expertise')}
           </p>
           
-          {/* SEO Content Section - Taxi Como e NCC Como */}
+          {/* SEO Content Section - Pasquillo, Taxi Como e NCC Como */}
           {locale === 'it' && (
             <div className="mt-12 text-left bg-white/5 p-8 border-2 border-white">
               <h3 className="text-2xl font-bold mb-4 text-white">
-                Taxi Como e NCC Como: Il Tuo Servizio di Trasporto Professionale
+                Pasquillo – Autoservizi Pasquillo: Taxi Como e NCC Como
               </h3>
               <p className="text-lg text-gray-300 mb-4 leading-relaxed">
-                Cerchi un <strong>taxi Como</strong> affidabile o un servizio <strong>NCC Como</strong> professionale? 
-                Autoservizi Pasquillo offre servizi di <strong>taxi privato Como</strong> e <strong>NCC Como </strong> 
+                <strong>Pasquillo</strong> – Autoservizi Pasquillo: cerchi un <strong>taxi Como</strong> affidabile o un servizio <strong>NCC Como</strong> professionale? 
+                Offriamo servizi di <strong>taxi privato Como</strong> e <strong>NCC Como </strong> 
                 disponibili 24 ore su 24, 7 giorni su 7. Il nostro servizio <strong>NCC Milano</strong> garantisce 
                 collegamenti rapidi e confortevoli tra Como, Milano e la Svizzera.
               </p>

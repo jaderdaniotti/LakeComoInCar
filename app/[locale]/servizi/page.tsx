@@ -14,10 +14,29 @@ type Props = {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'services.metadata' });
+  const baseUrl = 'https://www.lakecomoincar.eu';
+  const url = `${baseUrl}/${locale}/servizi`;
 
   return {
     title: t('title'),
     description: t('description'),
+    alternates: {
+      canonical: url,
+      languages: {
+        'it': `${baseUrl}/it/servizi`,
+        'en': `${baseUrl}/en/servizi`,
+        'fr': `${baseUrl}/fr/servizi`,
+        'es': `${baseUrl}/es/servizi`,
+      },
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url,
+      siteName: 'Autoservizi Pasquillo - LakeComoInCar',
+      type: 'website',
+    },
+    robots: { index: true, follow: true },
   };
 }
 

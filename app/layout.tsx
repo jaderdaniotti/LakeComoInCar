@@ -24,11 +24,13 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.lakecomoincar.eu'),
   title: {
-    default: "LakeComoInCar - NCC Como | Taxi Como | Noleggio con Conducente Lombardia",
-    template: "%s | LakeComoInCar - NCC Como"
+    default: "Autoservizi Pasquillo | NCC Como | Taxi Como | LakeComoInCar",
+    template: "%s | Autoservizi Pasquillo - LakeComoInCar"
   },
-  description: "Autoservizi Pasquillo: NCC Como, taxi privato Lombardia e Svizzera. Transfer aeroporti Milano Malpensa, Linate, Bergamo. Noleggio con conducente 24/7. Prenota il tuo taxi Como ora!",
+  description: "Autoservizi Pasquillo: NCC Como e taxi privato Lombardia e Svizzera. Transfer aeroporti Milano Malpensa, Linate, Bergamo. Noleggio con conducente 24/7. Pasquillo - LakeComoInCar. Prenota il tuo taxi Como ora!",
   keywords: [
+    "pasquillo",
+    "autoservizi pasquillo",
     "ncc como",
     "taxi como",
     "ncc lombardia", 
@@ -44,14 +46,13 @@ export const metadata: Metadata = {
     "taxi lago di como",
     "ncc cernobbio",
     "taxi cernobbio",
-    "autoservizi pasquillo",
     "transfer milano como",
     "taxi aeroporto como",
     "servizio ncc como"
   ],
   authors: [{ name: "Autoservizi Pasquillo" }],
   creator: "Autoservizi Pasquillo",
-  publisher: "LakeComoInCar",
+  publisher: "Autoservizi Pasquillo - LakeComoInCar",
   formatDetection: {
     email: false,
     address: false,
@@ -67,22 +68,22 @@ export const metadata: Metadata = {
     locale: "it_IT",
     alternateLocale: ["en_US", "fr_FR", "es_ES"],
     url: "https://www.lakecomoincar.eu",
-    siteName: "LakeComoInCar",
-    title: "LakeComoInCar - NCC Como | Taxi Como | Noleggio con Conducente",
-    description: "Servizio NCC Como 24/7. Transfer aeroporti Milano, taxi privato Lombardia e Svizzera. Noleggio con conducente professionale. Prenota ora!",
+    siteName: "Autoservizi Pasquillo - LakeComoInCar",
+    title: "Autoservizi Pasquillo | NCC Como | Taxi Como | LakeComoInCar",
+    description: "Autoservizi Pasquillo: servizio NCC Como 24/7. Transfer aeroporti Milano, taxi privato Lombardia e Svizzera. Noleggio con conducente professionale. Prenota ora!",
     images: [
       {
         url: "/favicon.webp",
         width: 1200,
         height: 630,
-        alt: "LakeComoInCar - NCC Como",
+        alt: "Autoservizi Pasquillo - LakeComoInCar NCC Como",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "LakeComoInCar - NCC Como | Taxi Como",
-    description: "Servizio NCC Como 24/7. Transfer aeroporti, taxi privato Lombardia e Svizzera.",
+    title: "Autoservizi Pasquillo | NCC Como | Taxi Como | LakeComoInCar",
+    description: "Autoservizi Pasquillo: servizio NCC Como 24/7. Transfer aeroporti, taxi privato Lombardia e Svizzera.",
     images: ["/favicon.webp"],
   },
   robots: {

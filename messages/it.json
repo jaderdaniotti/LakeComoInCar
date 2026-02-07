@@ -52,16 +52,16 @@
     "companyInfo": "Informazioni Aziendali",
     "quickLinks": "Link Rapidi",
     "followUs": "Seguici",
-    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL SRL",
+    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL",
     "vat": "P.IVA",
     "poweredBy": "Powered By",
     "allRightsReserved": "Tutti i diritti riservati"
   },
   "home": {
     "metadata": {
-      "title": "LakeComoInCar | NCC Como-Milano-Svizzera 24/7 - Transfer Aeroporti Malpensa Linate",
-      "description": "Autoservizi Pasquillo SRL: NCC professionale Como-Milano-Svizzera. Transfer aeroporti Malpensa, Linate, Bergamo. Collegamenti business Como-Milano e Svizzera (St. Moritz, Lugano). Disponibili 24/7!",
-      "keywords": "NCC Como Milano, Transfer aeroporto Malpensa, Transfer Linate Como, NCC Como Svizzera, Transfer St. Moritz, Noleggio auto con conducente Milano"
+      "title": "Autoservizi Pasquillo | NCC Como-Milano-Svizzera 24/7 - Transfer Aeroporti Malpensa Linate",
+      "description": "Autoservizi Pasquillo: NCC professionale Como-Milano-Svizzera. Transfer aeroporti Malpensa, Linate, Bergamo. Collegamenti business Como-Milano e Svizzera (St. Moritz, Lugano). Pasquillo - LakeComoInCar. Disponibili 24/7!",
+      "keywords": "pasquillo, autoservizi pasquillo, NCC Como Milano, Transfer aeroporto Malpensa, Transfer Linate Como, NCC Como Svizzera, Transfer St. Moritz, Noleggio auto con conducente Milano"
     },
     "hero": {
       "title": "Taxi Como e NCC Como | Servizio 24/7",
@@ -162,12 +162,12 @@
   },
   "services": {
     "metadata": {
-      "title": "Servizi - Como Lake Car | Trasferimenti e Noleggio con Conducente",
-      "description": "Scopri tutti i nostri servizi: trasferimenti aeroportuali, servizi business, eventi e matrimoni. Servizio NCC professionale per Como, Milano e Svizzera."
+      "title": "Servizi Autoservizi Pasquillo | Trasferimenti e Noleggio con Conducente NCC Como",
+      "description": "Autoservizi Pasquillo: trasferimenti aeroportuali, servizi business, eventi e matrimoni. Servizio NCC professionale Como, Milano e Svizzera. Pasquillo - LakeComoInCar."
     },
     "hero": {
-      "title": "Servizi NCC Como | Transfer Aeroporti Milano | Business & Eventi",
-      "subtitle": "Soluzioni di trasporto premium personalizzate per ogni esigenza"
+      "title": "Servizi Autoservizi Pasquillo | NCC Como | Transfer Aeroporti Milano",
+      "subtitle": "Autoservizi Pasquillo: soluzioni di trasporto premium personalizzate per ogni esigenza. Pasquillo - LakeComoInCar."
     },
     "ncc": {
       "title": "Servizio Noleggio con Conducente (NCC)",
@@ -534,8 +534,8 @@
   },
   "contacts": {
     "metadata": {
-      "title": "Contatti - Como Lake Car | Contattaci per il Tuo Trasferimento",
-      "description": "Contatta Como Lake Car per informazioni, prenotazioni e preventivi. Telefono, email e informazioni per il servizio NCC a Como, Milano e Svizzera."
+      "title": "Contatti Autoservizi Pasquillo | NCC Como - Telefono e Email",
+      "description": "Contatti Autoservizi Pasquillo - NCC Como. Telefono +39 338 405 6027, email lakecomoincar@gmail.com. Prenotazioni e preventivi 24/7. Pasquillo - LakeComoInCar."
     },
     "hero": {
       "title": "Contatti NCC Como",
@@ -589,7 +589,7 @@
   "privacy": {
     "title": "Privacy Policy",
     "lastUpdate": "Ultimo aggiornamento",
-    "introduction": "La presente Privacy Policy descrive le modalità di trattamento dei dati personali degli utenti che consultano il sito web di LakeComoInCar (Autoservizi Pasquillo SRL SRL)."
+    "introduction": "La presente Privacy Policy descrive le modalità di trattamento dei dati personali degli utenti che consultano il sito web di LakeComoInCar (Autoservizi Pasquillo SRL)."
   },
   "cookies": {
     "title": "Cookie Policy",

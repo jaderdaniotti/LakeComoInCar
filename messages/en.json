@@ -52,7 +52,7 @@
     "companyInfo": "Company Information",
     "quickLinks": "Quick Links",
     "followUs": "Follow Us",
-    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL SRL",
+    "copyright": "© {year} LakeComoInCar - Autoservizi Pasquillo SRL",
     "vat": "VAT",
     "poweredBy": "Powered By",
     "allRightsReserved": "All rights reserved"
@@ -589,7 +589,7 @@
   "privacy": {
     "title": "Privacy Policy",
     "lastUpdate": "Last update",
-    "introduction": "This Privacy Policy describes how we process personal data of users who visit the LakeComoInCar website (Autoservizi Pasquillo SRL SRL)."
+    "introduction": "This Privacy Policy describes how we process personal data of users who visit the LakeComoInCar website (Autoservizi Pasquillo SRL)."
   },
   "cookies": {
     "title": "Cookie Policy",
