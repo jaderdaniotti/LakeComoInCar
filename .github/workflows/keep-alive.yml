@@ -1,0 +1,33 @@
+# Keep-Alive: ping periodico per mantenere attivi database e sito in produzione
+# Trigger: ogni 45 minuti (cron) + avvio manuale per test
+#
+# Configurazione obbligatoria:
+#   Repository → Settings → Secrets and variables → Actions → New repository secret
+#   Nome: PROD_URL   Valore: https://www.lakecomoincar.eu/it  (o il tuo URL di produzione)
+
+name: Keep-Alive Ping
+
+on:
+  schedule:
+    # Ogni 45 minuti (minuti 0 e 45 di ogni ora)
+    - cron: '0,45 * * * *'
+  workflow_dispatch:
+
+jobs:
+  keep-alive:
+    name: Ping produzione
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Home Page
+        run: |
+          if [ -z "$URL" ]; then
+            echo "::error::Secret PROD_URL non impostato. Aggiungi PROD_URL in Repository Secrets."
+            exit 1
+          fi
+          HTTP_CODE=$(curl -fsS -o /dev/null -w "%{http_code}" \
+            --max-time 30 \
+            --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36" \
+            "$URL")
+          echo "HTTP $HTTP_CODE - Keep-alive OK"
+        env:
+          URL: ${{ secrets.PROD_URL }}
