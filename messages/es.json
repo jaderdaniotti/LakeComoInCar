@@ -66,7 +66,7 @@
     "hero": {
       "title": "LakeComoInCar",
       "company": "Autoservizi Pasquillo SRL",
-      "tagline": "Servicio de Chofer Profesional • Disponible 24/7",
+      "tagline": "Servicio de Chofer Profesional • Disponible 24/7 con reserva",
       "locations": "Como • Milán • Varese • Cernobbio • Bellaggio • Varenna • Suiza • Venecia • Florencia • Roma • Toda Italia"
     },
     "about": {
@@ -84,7 +84,7 @@
       "title": "Por Qué Elegirnos",
       "subtitle": "Experiencia, profesionalidad y confort al servicio de su movilidad",
       "service247": {
-        "title": "Servicio 24/7",
+        "title": "Servicio 24/7 con reserva",
         "description": "Disponibilidad continua, día y noche. Servicio puntual y fiable en cualquier momento."
       },
       "experiencedDrivers": {
@@ -153,7 +153,7 @@
     },
     "cta": {
       "title": "Reserve Su Viaje Hoy",
-      "phone": "¡Llame ahora! +39 338 405 6027 • Disponible 24/7",
+      "phone": "¡Llame ahora! +39 338 405 6027 • Disponible 24/7 con reserva",
       "description": "No pierda tiempo, reserve ahora mismo su traslado y viaje con total confort y seguridad con Autoservizi Pasquillo SRL.",
       "bookOnline": "Reservar en Línea",
       "callNow": "Llamar Ahora",
@@ -547,7 +547,7 @@
     "info": {
       "phone": {
         "title": "Teléfono",
-        "available": "Disponible 24/7"
+        "available": "Disponible 24/7 con reserva"
       },
       "email": {
         "title": "Email",
@@ -555,7 +555,7 @@
       },
       "hours": {
         "title": "Horarios",
-        "service": "Servicio 24/7",
+        "service": "Servicio 24/7 con reserva",
         "office": "Oficina: Lun-Vie 9-18"
       },
       "areaService": {

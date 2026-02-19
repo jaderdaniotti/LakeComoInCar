@@ -64,9 +64,9 @@
       "keywords": "pasquillo, autoservizi pasquillo, NCC Como Milano, Transfer aeroporto Malpensa, Transfer Linate Como, NCC Como Svizzera, Transfer St. Moritz, Noleggio auto con conducente Milano"
     },
     "hero": {
-      "title": "Taxi Como e NCC Como | Servizio 24/7",
+      "title": "Taxi Como e NCC Como | Servizio 24/7 su prenotazione",
       "company": "Autoservizi Pasquillo SRL",
-      "tagline": "Servizio NCC Professionale • Disponibile 24/7",
+      "tagline": "Servizio NCC Professionale • Disponibile 24/7 su prenotazione",
       "locations": "Como • Milano • Varese • Cernobbio • Bellaggio • Varenna • Svizzera • Venezia • Firenze • Roma • Tutta Italia"
     },
     "about": {
@@ -84,7 +84,7 @@
       "title": "Perché Sceglierci",
       "subtitle": "Esperienza, professionalità e comfort al servizio della tua mobilità",
       "service247": {
-        "title": "Servizio 24/7",
+        "title": "Servizio 24/7 su prenotazione",
         "description": "Disponibilità continua, giorno e notte. Servizio puntuale e affidabile in qualsiasi momento."
       },
       "experiencedDrivers": {
@@ -153,7 +153,7 @@
     },
     "cta": {
       "title": "Prenota il Tuo Viaggio Oggi",
-      "phone": "Chiama ora! +39 338 405 6027 • Disponibile 24/7",
+      "phone": "Chiama ora! +39 338 405 6027 • Disponibile 24/7 su prenotazione",
       "description": "Non perdere tempo, prenota subito il tuo trasferimento e viaggia in totale comfort e sicurezza con Autoservizi Pasquillo SRL.",
       "bookOnline": "Prenota Online",
       "callNow": "Chiama Ora",
@@ -547,7 +547,7 @@
     "info": {
       "phone": {
         "title": "Telefono",
-        "available": "Disponibile 24/7"
+        "available": "Disponibile 24/7 su prenotazione"
       },
       "email": {
         "title": "Email",
@@ -555,7 +555,7 @@
       },
       "hours": {
         "title": "Orari",
-        "service": "Servizio 24/7",
+        "service": "Servizio 24/7 su prenotazione",
         "office": "Ufficio: Lun-Ven 9-18"
       },
       "areaService": {
