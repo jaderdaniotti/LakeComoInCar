@@ -125,7 +125,7 @@ export default function Footer() {
               <p className="text-gray-400 text-sm">
                 Powered By <span> </span>
                 <Link 
-                  href="https://jaderdaniotti.netlify.app/" 
+                  href="https://jaderweb.com/" 
                   target="_blank" 
                   className="text-white hover:text-gray-300 transition-colors duration-200"
                 >
